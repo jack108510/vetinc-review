@@ -7,18 +7,14 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #f0f6ff;
+  --bg: #f8fafc;
   --surface: #ffffff;
-  --surface2: #eff6ff;
-  --border: #dbeafe;
+  --surface2: #f1f5f9;
+  --border: #e2e8f0;
   --primary: #2563eb;
-  --primary-light: #60a5fa;
-  --text: #1e3a5f;
+  --text: #0f172a;
   --muted: #64748b;
   --green: #16a34a;
-  --amber: #d97706;
-  --purple: #7c3aed;
-  --red: #dc2626;
 }
 body {
   background: var(--bg);
@@ -34,277 +30,244 @@ body {
   border-bottom: 1px solid var(--border);
   padding: 0 2rem;
   display: flex; align-items: center; justify-content: space-between;
-  height: 80px;
+  height: 68px;
   position: sticky; top: 0; z-index: 200;
-  box-shadow: 0 1px 12px rgba(37,99,235,.07);
 }
 .header-left { display: flex; align-items: center; gap: 1rem; }
-.header-divider { width: 1px; height: 24px; background: var(--border); }
+.header-divider { width: 1px; height: 20px; background: var(--border); }
 .clinic-name { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-.owner-badge {
-  display: flex; align-items: center; gap: 6px;
-  background: var(--surface2); border: 1px solid var(--border);
-  color: var(--primary); font-size: 0.78rem; font-weight: 600;
-  padding: 6px 14px; border-radius: 8px;
-}
 
 /* ── CONTEXT STRIP ── */
 .ctx {
   background: var(--surface); border-bottom: 1px solid var(--border);
-  padding: 0.55rem 2rem;
-  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
-  font-size: 0.77rem; color: var(--muted);
+  padding: 0.5rem 2rem;
+  display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+  font-size: 0.75rem; color: var(--muted);
 }
-.ctx strong { color: var(--text); }
-.ctx-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); display: inline-block; margin-right: 5px; }
+.ctx strong { color: var(--text); font-weight: 600; }
 
 /* ── MAIN ── */
-main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+main { max-width: 960px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
 
-.intro { margin-bottom: 2.25rem; }
-.intro h1 { font-size: 1.55rem; font-weight: 900; color: var(--text); margin-bottom: 0.35rem; }
-.intro p  { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 560px; }
+.intro { margin-bottom: 2rem; }
+.intro h1 { font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+.intro p  { font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 520px; }
 
 /* ── OPTION CARDS ── */
-.options { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.25rem; }
-@media(max-width:700px){ .options { grid-template-columns:1fr; } }
+.options { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin-bottom: 1rem; }
+@media(max-width:640px){ .options { grid-template-columns:1fr; } }
 
 .opt {
-  background: var(--surface); border: 2px solid var(--border); border-radius: 16px;
-  padding: 1.5rem 1.4rem; cursor: pointer;
-  display: flex; gap: 1rem; align-items: flex-start;
-  transition: border-color .18s, box-shadow .18s, transform .18s;
-  position: relative;
+  background: var(--surface); border: 1.5px solid var(--border); border-radius: 12px;
+  padding: 1.3rem 1.25rem; cursor: pointer;
+  transition: border-color .15s, box-shadow .15s;
 }
-.opt:hover { border-color: var(--primary-light); box-shadow: 0 6px 24px rgba(37,99,235,.1); transform: translateY(-2px); }
-.opt.active { border-color: var(--primary); box-shadow: 0 6px 24px rgba(37,99,235,.15); }
-.opt.active::after {
-  content: '✓'; position: absolute; top: 12px; right: 13px;
-  width: 22px; height: 22px; background: var(--primary); color: #fff;
-  border-radius: 50%; font-size: 0.68rem; font-weight: 900;
-  display: flex; align-items: center; justify-content: center;
-}
-.opt-icon { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
-.ic-blue   { background: #dbeafe; }
-.ic-amber  { background: #fef3c7; }
-.ic-purple { background: #ede9fe; }
-.opt-title { font-size: 0.96rem; font-weight: 800; color: var(--text); margin-bottom: 0.3rem; }
-.opt-desc  { font-size: 0.79rem; color: var(--muted); line-height: 1.5; }
-.opt-pill  { display: inline-block; margin-top: 0.5rem; font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
-.pl-blue   { background: #dbeafe; color: var(--primary); }
-.pl-amber  { background: #fef3c7; color: var(--amber); }
-.pl-purple { background: #ede9fe; color: var(--purple); }
+.opt:hover { border-color: #94a3b8; }
+.opt.active { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,.08); }
+.opt-label { font-size: 0.62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.55rem; }
+.opt-title { font-size: 0.97rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+.opt-desc  { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+.opt-check { float: right; width: 18px; height: 18px; border-radius: 50%; background: var(--primary); display: none; align-items: center; justify-content: center; }
+.opt-check svg { display: block; }
+.opt.active .opt-check { display: flex; }
 
 /* ── ACTION PANEL ── */
 .panel {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
   overflow: hidden; margin-bottom: 2rem; display: none;
-  animation: slideIn .18s ease;
 }
-@keyframes slideIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
 .panel.open { display: block; }
 .panel-hd {
-  background: linear-gradient(135deg, #1d4ed8, #2563eb, #3b82f6);
-  color: #fff; padding: 1.25rem 1.75rem;
+  background: var(--primary);
+  color: #fff; padding: 1.1rem 1.5rem;
   display: flex; align-items: center; justify-content: space-between;
 }
-.panel-hd h2 { font-size: 1rem; font-weight: 800; margin-bottom: 2px; }
-.panel-hd p  { font-size: 0.78rem; opacity: 0.82; }
+.panel-hd h2 { font-size: 0.95rem; font-weight: 700; margin-bottom: 1px; }
+.panel-hd p  { font-size: 0.75rem; opacity: 0.75; }
 .btn-x {
   background: rgba(255,255,255,.15); border: none; color: #fff;
-  width: 27px; height: 27px; border-radius: 50%; cursor: pointer;
-  font-size: 0.9rem; display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; transition: background .15s;
+  width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+  font-size: 0.82rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-.btn-x:hover { background: rgba(255,255,255,.28); }
-.panel-bd { padding: 1.75rem; }
+.btn-x:hover { background: rgba(255,255,255,.25); }
+.panel-bd { padding: 1.5rem; }
 
 /* ── CONTROLS ── */
-.field-row { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: flex-end; }
-.field { flex: 1; min-width: 140px; }
-.flabel { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; display: block; margin-bottom: 0.4rem; }
+.field-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; align-items: flex-end; }
+.field { flex: 1; min-width: 130px; }
+.flabel { font-size: 0.65rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.35rem; }
 .finput {
-  width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px;
-  font-size: 0.9rem; color: var(--text); background: var(--surface); font-family: inherit; transition: border .15s;
+  width: 100%; padding: 8px 11px; border: 1px solid var(--border); border-radius: 7px;
+  font-size: 0.88rem; color: var(--text); background: var(--surface); font-family: inherit; transition: border .13s;
 }
-.finput:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+.finput:focus { outline: none; border-color: var(--primary); }
 .pct-w { position: relative; }
-.pct-w .finput { padding-right: 26px; }
-.pct-s { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 0.85rem; color: var(--muted); font-weight: 600; pointer-events: none; }
+.pct-w .finput { padding-right: 24px; }
+.pct-s { position: absolute; right: 9px; top: 50%; transform: translateY(-50%); font-size: 0.8rem; color: var(--muted); pointer-events: none; }
 input[type=range] {
-  width: 100%; -webkit-appearance: none; height: 5px; background: var(--border);
-  border-radius: 3px; cursor: pointer; margin-top: 6px;
+  width: 100%; -webkit-appearance: none; height: 4px; background: var(--border);
+  border-radius: 2px; cursor: pointer; margin-top: 6px;
 }
 input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none; width: 17px; height: 17px; background: var(--primary);
-  border-radius: 50%; box-shadow: 0 2px 6px rgba(37,99,235,.3);
+  -webkit-appearance: none; width: 16px; height: 16px; background: var(--primary);
+  border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.2);
 }
-.range-ends { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--muted); margin-top: 3px; }
+.range-ends { display: flex; justify-content: space-between; font-size: 0.65rem; color: var(--muted); margin-top: 3px; }
 
-/* ── SECTION DIVIDER ── */
-.sdiv { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; margin-top: 0.25rem; }
+/* ── SECTION LABEL ── */
+.sdiv { font-size: 0.65rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.65rem; }
 
 /* ── CATEGORY CHIPS ── */
-.cat-grid { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 1.25rem; }
+.cat-grid { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.25rem; }
 .chip {
-  display: flex; align-items: center; gap: 0.55rem;
-  padding: 0.55rem 1rem; border-radius: 10px;
-  border: 1.5px solid var(--border); background: var(--surface2);
-  cursor: pointer; transition: all .15s; user-select: none;
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.45rem 0.85rem; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--surface2);
+  cursor: pointer; transition: all .13s; user-select: none;
 }
-.chip:hover { border-color: var(--primary-light); }
-.chip.on  { border-color: var(--primary); background: #dbeafe; color: var(--primary); }
-.chip.off { border-color: #fca5a5; background: #fff5f5; color: #9f1239; opacity: 0.7; }
-.chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); flex-shrink: 0; transition: background .15s; }
-.chip.on  .chip-dot { background: var(--primary); }
-.chip.off .chip-dot { background: var(--red); }
-.chip-body { line-height: 1.2; }
-.chip-name { font-size: 0.8rem; font-weight: 700; }
-.chip-sub  { font-size: 0.67rem; color: var(--muted); margin-top: 1px; font-weight: 400; }
-.chip.on  .chip-sub { color: #3b82f6; }
+.chip:hover { border-color: #94a3b8; }
+.chip.on  { border-color: var(--primary); background: #eff6ff; color: var(--primary); }
+.chip.off { border-color: #fca5a5; background: #fff5f5; color: #9f1239; opacity: 0.65; }
+.chip-name { font-size: 0.78rem; font-weight: 600; }
+.chip-count { font-size: 0.68rem; color: var(--muted); }
+.chip.on .chip-count { color: #60a5fa; }
 .chip.off .chip-name { text-decoration: line-through; }
 
 /* ── TIMELINE CHIPS ── */
-.time-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.time-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
 .tc {
-  padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 600;
-  border: 1.5px solid var(--border); background: var(--surface2); color: var(--muted); transition: all .15s;
+  padding: 5px 14px; border-radius: 20px; cursor: pointer; font-size: 0.77rem; font-weight: 500;
+  border: 1px solid var(--border); background: var(--surface2); color: var(--muted); transition: all .13s;
 }
-.tc:hover { border-color: var(--primary-light); color: var(--text); }
-.tc.on { background: var(--primary); border-color: var(--primary); color: #fff; }
+.tc:hover { border-color: #94a3b8; color: var(--text); }
+.tc.on { background: var(--primary); border-color: var(--primary); color: #fff; font-weight: 600; }
 
 /* ── SHOPPABLE TOGGLE ── */
 .shp-row {
-  display: flex; align-items: center; gap: 0.9rem;
-  padding: 0.85rem 1rem; border-radius: 10px;
-  border: 1.5px solid #fde68a; background: #fffbeb;
-  margin-bottom: 1.5rem; cursor: pointer; transition: border .15s;
+  display: flex; align-items: center; gap: 0.85rem;
+  padding: 0.8rem 0.95rem; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--surface2);
+  margin-bottom: 1.25rem; cursor: pointer; transition: border .13s;
 }
-.shp-icon { font-size: 1.1rem; flex-shrink: 0; }
+.shp-row:hover { border-color: #94a3b8; }
 .shp-body { flex: 1; }
-.shp-body strong { font-size: 0.84rem; color: var(--text); display: block; margin-bottom: 2px; }
-.shp-body span   { font-size: 0.74rem; color: var(--muted); }
-.toggle { position: relative; width: 38px; height: 21px; flex-shrink: 0; }
+.shp-body strong { font-size: 0.82rem; color: var(--text); display: block; margin-bottom: 1px; }
+.shp-body span   { font-size: 0.72rem; color: var(--muted); }
+.toggle { position: relative; width: 36px; height: 20px; flex-shrink: 0; }
 .toggle input { opacity: 0; width: 0; height: 0; }
-.tsl { position: absolute; inset: 0; background: #cbd5e1; border-radius: 11px; cursor: pointer; transition: background .2s; }
-.tsl::before { content: ''; position: absolute; width: 15px; height: 15px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: transform .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
-.toggle input:checked + .tsl { background: var(--amber); }
-.toggle input:checked + .tsl::before { transform: translateX(17px); }
+.tsl { position: absolute; inset: 0; background: #cbd5e1; border-radius: 10px; cursor: pointer; transition: background .18s; }
+.tsl::before { content: ''; position: absolute; width: 14px; height: 14px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: transform .18s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.toggle input:checked + .tsl { background: var(--primary); }
+.toggle input:checked + .tsl::before { transform: translateX(16px); }
 
 /* ── PREVIEW BOX ── */
 .preview {
   background: var(--surface2); border: 1px solid var(--border);
-  border-radius: 12px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem;
+  border-radius: 9px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;
 }
-.preview-lbl { font-size: 0.67rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.75rem; }
-.preview-nums { display: flex; gap: 2.25rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
-.pn-val { font-size: 1.45rem; font-weight: 900; color: var(--text); line-height: 1; }
+.preview-lbl { font-size: 0.65rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.7rem; }
+.preview-nums { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.pn-val { font-size: 1.35rem; font-weight: 800; color: var(--text); line-height: 1; }
 .pn-val.g { color: var(--green); }
-.pn-lbl { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
-.preview-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; padding-top: 0.65rem; border-top: 1px solid var(--border); }
-.ptag { font-size: 0.7rem; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #fee2e2; color: #b91c1c; }
-.ptag.ok { background: #f0fdf4; color: var(--green); }
+.pn-lbl { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+.preview-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; padding-top: 0.6rem; border-top: 1px solid var(--border); }
+.ptag { font-size: 0.68rem; font-weight: 500; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: var(--muted); border: 1px solid var(--border); }
+.ptag.ok { background: #f0fdf4; color: var(--green); border-color: #bbf7d0; }
 
 /* ── BUTTONS ── */
-.btn-apply {
-  background: linear-gradient(135deg, #16a34a, #22c55e); color: #fff;
-  border: none; border-radius: 10px; padding: 11px 30px;
-  font-size: 0.92rem; font-weight: 800; cursor: pointer; transition: all .15s;
-  box-shadow: 0 4px 14px rgba(22,163,74,.28);
+.btn-primary {
+  background: var(--primary); color: #fff;
+  border: none; border-radius: 8px; padding: 9px 24px;
+  font-size: 0.86rem; font-weight: 600; cursor: pointer; transition: background .13s;
 }
-.btn-apply:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(22,163,74,.35); }
+.btn-primary:hover { background: #1d4ed8; }
 .btn-ghost {
-  background: none; color: var(--muted); border: 1px solid var(--border); border-radius: 8px;
-  padding: 10px 18px; font-size: 0.83rem; font-weight: 600; cursor: pointer; transition: all .15s;
+  background: none; color: var(--muted); border: 1px solid var(--border); border-radius: 7px;
+  padding: 8px 16px; font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all .13s;
 }
-.btn-ghost:hover { border-color: var(--primary); color: var(--primary); background: var(--surface2); }
-.btn-row { display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap; }
-.btn-hint { font-size: 0.72rem; color: var(--muted); margin-left: auto; }
+.btn-ghost:hover { border-color: #94a3b8; color: var(--text); }
+.btn-row { display: flex; gap: 0.55rem; align-items: center; }
 
 /* ── MANUAL TABLE ── */
-.m-search-w { position: relative; margin-bottom: 0.9rem; }
-.m-search-w svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
-.m-search { width: 100%; padding: 9px 14px 9px 36px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.86rem; font-family: inherit; color: var(--text); }
+.m-search-w { position: relative; margin-bottom: 0.85rem; }
+.m-search-w svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.m-search { width: 100%; padding: 8px 12px 8px 32px; border: 1px solid var(--border); border-radius: 7px; font-size: 0.84rem; font-family: inherit; color: var(--text); }
 .m-search:focus { outline: none; border-color: var(--primary); }
 .svc-tbl { width: 100%; border-collapse: collapse; }
-.svc-tbl th { font-size: 0.67rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; padding: 0 0.75rem 0.55rem; text-align: left; border-bottom: 1px solid var(--border); }
+.svc-tbl th { font-size: 0.65rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; padding: 0 0.7rem 0.5rem; text-align: left; border-bottom: 1px solid var(--border); }
 .svc-tbl th:last-child { text-align: right; }
-.svc-tbl td { padding: 0.65rem 0.75rem; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+.svc-tbl td { padding: 0.6rem 0.7rem; border-bottom: 1px solid #f8fafc; vertical-align: middle; }
 .svc-tbl tr:hover td { background: var(--surface2); }
-.td-name { font-size: 0.85rem; font-weight: 600; }
-.td-code { font-size: 0.7rem; color: var(--muted); margin-top: 1px; }
-.td-rev  { font-size: 0.82rem; color: var(--muted); }
-.shp-tag { font-size: 0.58rem; font-weight: 700; padding: 1px 5px; border-radius: 8px; background: #fef3c7; color: #92400e; margin-left: 4px; }
+.td-name { font-size: 0.84rem; font-weight: 600; }
+.td-code { font-size: 0.68rem; color: var(--muted); margin-top: 1px; }
+.td-rev  { font-size: 0.8rem; color: var(--muted); }
+.shp-flag { font-size: 0.62rem; font-weight: 600; padding: 1px 5px; border-radius: 3px; background: #fef9c3; color: #713f12; margin-left: 5px; border: 1px solid #fde68a; }
 .price-input {
-  width: 88px; padding: 5px 8px; text-align: right;
+  width: 84px; padding: 5px 8px; text-align: right;
   border: 1px solid var(--border); border-radius: 6px;
-  font-size: 0.86rem; font-weight: 700; color: var(--text); font-family: inherit;
+  font-size: 0.84rem; font-weight: 600; color: var(--text); font-family: inherit;
 }
-.price-input:focus { outline: none; border-color: var(--primary); background: var(--surface2); }
+.price-input:focus { outline: none; border-color: var(--primary); }
 .price-input.chg  { border-color: var(--green); background: #f0fdf4; color: var(--green); }
 .m-bar {
   background: var(--surface); border-top: 1px solid var(--border);
-  padding: 0.9rem 1.75rem;
+  padding: 0.85rem 1.5rem;
   display: none; align-items: center; justify-content: space-between; gap: 1rem;
-  box-shadow: 0 -3px 16px rgba(37,99,235,.07);
 }
 .m-bar.show { display: flex; }
 
-/* ── AI SUGGESTIONS ── */
-.ai-note { font-size: 0.77rem; color: #5b21b6; background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 8px; padding: 0.65rem 1rem; margin-bottom: 1rem; line-height: 1.5; }
-.sf-bar { display: flex; gap: 0.45rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
-.sf-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; color: var(--muted); font-size: 0.74rem; font-weight: 600; padding: 4px 14px; cursor: pointer; transition: all .13s; }
-.sf-btn:hover { border-color: var(--primary); color: var(--primary); }
-.sf-btn.on { background: var(--primary); border-color: var(--primary); color: #fff; }
-.sf-btn.amb.on { background: var(--amber); border-color: var(--amber); }
-.sug-list { display: flex; flex-direction: column; gap: 0.55rem; max-height: 400px; overflow-y: auto; padding-right: 2px; }
+/* ── AI PANEL ── */
+.ai-note { font-size: 0.76rem; color: var(--muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.65rem 1rem; margin-bottom: 0.9rem; line-height: 1.55; }
+.sf-bar { display: flex; gap: 0.4rem; margin-bottom: 0.85rem; flex-wrap: wrap; }
+.sf-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; color: var(--muted); font-size: 0.73rem; font-weight: 500; padding: 4px 12px; cursor: pointer; transition: all .13s; }
+.sf-btn:hover { border-color: #94a3b8; color: var(--text); }
+.sf-btn.on { background: var(--primary); border-color: var(--primary); color: #fff; font-weight: 600; }
+.sug-list { display: flex; flex-direction: column; gap: 0.45rem; max-height: 400px; overflow-y: auto; }
 .si {
   display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-  padding: 0.85rem 1rem; border: 1px solid var(--border); border-radius: 10px;
+  padding: 0.75rem 0.9rem; border: 1px solid var(--border); border-radius: 8px;
   background: var(--surface); transition: border .13s;
 }
 .si.acc { border-color: var(--green); background: #f0fdf4; }
-.si.skp { opacity: .42; }
-.si-info { flex: 1; min-width: 150px; }
-.si-name { font-size: 0.86rem; font-weight: 700; }
-.si-meta { font-size: 0.71rem; color: var(--muted); margin-top: 2px; }
-.si-price { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
-.si-old   { font-size: 0.82rem; color: var(--muted); text-decoration: line-through; }
-.si-new   { font-size: 0.96rem; font-weight: 800; color: var(--primary); }
-.si-delta { font-size: 0.72rem; font-weight: 700; color: var(--green); }
-.si-acts  { display: flex; gap: 0.35rem; flex-shrink: 0; }
-.btn-acc  { background: var(--green); color: #fff; border: none; border-radius: 7px; padding: 5px 13px; font-size: 0.76rem; font-weight: 700; cursor: pointer; transition: background .13s; }
+.si.skp { opacity: .4; }
+.si-info { flex: 1; min-width: 140px; }
+.si-name { font-size: 0.84rem; font-weight: 600; }
+.si-meta { font-size: 0.69rem; color: var(--muted); margin-top: 2px; }
+.si-price { display: flex; align-items: center; gap: 0.45rem; flex-shrink: 0; }
+.si-old   { font-size: 0.8rem; color: var(--muted); text-decoration: line-through; }
+.si-new   { font-size: 0.92rem; font-weight: 700; color: var(--primary); }
+.si-delta { font-size: 0.7rem; font-weight: 600; color: var(--green); }
+.si-acts  { display: flex; gap: 0.3rem; flex-shrink: 0; }
+.btn-acc { background: var(--green); color: #fff; border: none; border-radius: 6px; padding: 4px 12px; font-size: 0.74rem; font-weight: 600; cursor: pointer; }
 .btn-acc:hover { background: #15803d; }
-.btn-acc.on { background: #dcfce7; color: var(--green); border: 1.5px solid var(--green); }
-.btn-skp { background: none; color: var(--muted); border: 1px solid var(--border); border-radius: 7px; padding: 5px 11px; font-size: 0.76rem; font-weight: 600; cursor: pointer; }
+.btn-acc.on { background: #dcfce7; color: var(--green); border: 1px solid #86efac; }
+.btn-skp { background: none; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-size: 0.74rem; cursor: pointer; }
 .btn-skp:hover { background: var(--surface2); }
-.ai-confirm {
-  background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
-  padding: 0.85rem 1.1rem; margin-top: 1rem;
-  display: none; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+.ai-bar {
+  background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+  padding: 0.75rem 1rem; margin-top: 0.9rem;
+  display: none; align-items: center; justify-content: space-between; gap: 1rem;
 }
-.ai-confirm.show { display: flex; }
+.ai-bar.show { display: flex; }
 
 /* ── HISTORY ── */
 .hist { margin-top: 0.5rem; }
-.hist-lbl { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.7rem; }
-.hist-row { display: flex; gap: 0.85rem; flex-wrap: wrap; }
-.hc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0.9rem 1.1rem; flex: 1; min-width: 175px; max-width: 300px; }
-.hc-per  { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-.hc-act  { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-top: 3px; }
-.hc-det  { font-size: 0.76rem; color: var(--muted); margin-top: 2px; }
-.hc-tag  { display: inline-block; margin-top: 5px; font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 12px; background: #dcfce7; color: var(--green); text-transform: uppercase; letter-spacing: 0.04em; }
+.hist-lbl { font-size: 0.65rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.65rem; }
+.hist-row { display: flex; gap: 0.65rem; flex-wrap: wrap; }
+.hc { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem 1.05rem; flex: 1; min-width: 170px; max-width: 285px; }
+.hc-per  { font-size: 0.68rem; color: var(--muted); font-weight: 500; }
+.hc-act  { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-top: 2px; }
+.hc-det  { font-size: 0.73rem; color: var(--muted); margin-top: 1px; }
+.hc-tag  { display: inline-block; margin-top: 6px; font-size: 0.62rem; font-weight: 600; padding: 2px 7px; border-radius: 10px; background: #f0fdf4; color: var(--green); border: 1px solid #bbf7d0; }
 
 /* ── MODAL ── */
-.modal-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 500; align-items: center; justify-content: center; }
+.modal-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 500; align-items: center; justify-content: center; }
 .modal-bg.open { display: flex; }
-.modal { background: var(--surface); border-radius: 20px; padding: 2.5rem; max-width: 420px; width: 90%; text-align: center; animation: pop .2s ease; }
-@keyframes pop { from{transform:scale(.92);opacity:0} to{transform:scale(1);opacity:1} }
-.modal-ico { font-size: 3rem; margin-bottom: 0.7rem; }
-.modal h2 { font-size: 1.25rem; font-weight: 900; color: var(--text); margin-bottom: 0.35rem; }
-.modal p  { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.1rem; }
-.modal-detail { background: var(--surface2); border-radius: 9px; padding: 0.9rem 1rem; margin-bottom: 1.35rem; font-size: 0.84rem; color: var(--text); line-height: 1.65; text-align: left; }
-.btn-done { background: var(--primary); color: #fff; border: none; border-radius: 10px; padding: 11px 30px; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+.modal { background: var(--surface); border-radius: 14px; padding: 2rem; max-width: 380px; width: 90%; }
+.modal h2 { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+.modal p  { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; }
+.modal-detail { background: var(--surface2); border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 1.2rem; font-size: 0.82rem; color: var(--text); line-height: 1.65; }
+.btn-done { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 26px; font-size: 0.86rem; font-weight: 600; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -312,19 +275,15 @@ input[type=range]::-webkit-slider-thumb {
 <!-- HEADER -->
 <header class="header">
   <div class="header-left">
-    <img src="https://raw.githubusercontent.com/jack108510/vet-inc-clinic/main/logo.png" alt="Vet INC" height="64" style="display:block;height:64px;width:auto;">
+    <img src="https://raw.githubusercontent.com/jack108510/vet-inc-clinic/main/logo.png" alt="Vet INC" height="52" style="display:block;height:52px;width:auto;">
     <div class="header-divider"></div>
     <div class="clinic-name">Rosslyn Veterinary Clinic</div>
-  </div>
-  <div class="owner-badge">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    Owner Portal
   </div>
 </header>
 
 <!-- CONTEXT STRIP -->
 <div class="ctx">
-  <span><span class="ctx-dot"></span><strong>Q2 2026 review ready</strong></span>
+  <span><strong>Q2 2026 review ready</strong></span>
   <span>280 services on file</span>
   <span>Last reviewed March 14, 2026</span>
   <span>3 months ago</span>
@@ -333,54 +292,53 @@ input[type=range]::-webkit-slider-thumb {
 <main>
   <div class="intro">
     <h1>Q2 2026 Price Review</h1>
-    <p>It's been 3 months since your last update. Choose how you'd like to handle this quarter — or skip if your pricing is where you want it.</p>
+    <p>It's been 3 months since your last update. Choose how you'd like to handle this quarter, or skip if your pricing is where you want it.</p>
   </div>
 
   <!-- 3 OPTION CARDS -->
   <div class="options">
     <div class="opt" id="card-adjust" onclick="pick('adjust')">
-      <div class="opt-icon ic-blue">💲</div>
-      <div>
-        <div class="opt-title">Adjust prices</div>
-        <div class="opt-desc">Set a percentage increase. Filter by category, or by when services were last changed.</div>
-        <span class="opt-pill pl-blue">Flat &amp; Custom</span>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.55rem">
+        <div class="opt-label">Flat &amp; Custom</div>
+        <div class="opt-check" id="ck-adjust"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
+      <div class="opt-title">Adjust prices</div>
+      <div class="opt-desc">Set a percentage increase. Filter by service category or by when prices were last changed.</div>
     </div>
     <div class="opt" id="card-manual" onclick="pick('manual')">
-      <div class="opt-icon ic-amber">📋</div>
-      <div>
-        <div class="opt-title">Review fee guide</div>
-        <div class="opt-desc">Browse all services and update individual prices directly.</div>
-        <span class="opt-pill pl-amber">Manual</span>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.55rem">
+        <div class="opt-label">Manual</div>
+        <div class="opt-check" id="ck-manual"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
+      <div class="opt-title">Review fee guide</div>
+      <div class="opt-desc">Browse all services and update individual prices directly.</div>
     </div>
     <div class="opt" id="card-ai" onclick="pick('ai')">
-      <div class="opt-icon ic-purple">💡</div>
-      <div>
-        <div class="opt-title">AI consultant</div>
-        <div class="opt-desc">CPI-based analysis of your data. Apply as many or as few suggestions as you like.</div>
-        <span class="opt-pill pl-purple">Vet INC input</span>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.55rem">
+        <div class="opt-label">Vet INC Input</div>
+        <div class="opt-check" id="ck-ai"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
+      <div class="opt-title">AI consultant</div>
+      <div class="opt-desc">CPI-based analysis of your data. Accept as many or as few suggestions as you like.</div>
     </div>
   </div>
 
   <!-- ── PANEL: ADJUST ── -->
   <div class="panel" id="panel-adjust">
     <div class="panel-hd">
-      <div><h2>Adjust Prices</h2><p>Set your percentage, then filter by category and timeline</p></div>
-      <button class="btn-x" onclick="close()">✕</button>
+      <div><h2>Adjust Prices</h2><p>Set a percentage, filter by category and timeline</p></div>
+      <button class="btn-x" onclick="close()">&#x2715;</button>
     </div>
     <div class="panel-bd">
 
-      <!-- % input -->
       <div class="field-row">
         <div class="field">
-          <label class="flabel">Increase percentage</label>
+          <label class="flabel">Percentage increase</label>
           <input type="range" id="a-slider" min="1" max="15" value="5" oninput="syncA(this.value,'sl')">
           <div class="range-ends"><span>1%</span><span>15%</span></div>
         </div>
-        <div class="field" style="max-width:115px">
-          <label class="flabel">% amount</label>
+        <div class="field" style="max-width:110px">
+          <label class="flabel">Amount</label>
           <div class="pct-w">
             <input class="finput" type="number" id="a-pct" min="0.1" max="50" step="0.1" value="5" oninput="syncA(this.value,'in')">
             <span class="pct-s">%</span>
@@ -388,11 +346,9 @@ input[type=range]::-webkit-slider-thumb {
         </div>
       </div>
 
-      <!-- Category filters -->
-      <div class="sdiv">Include categories</div>
+      <div class="sdiv">Categories to include</div>
       <div class="cat-grid" id="cat-grid"></div>
 
-      <!-- Timeline filter -->
       <div class="sdiv">Only update services last changed</div>
       <div class="time-chips">
         <div class="tc" id="tc-any" onclick="setTime('any')">Any time</div>
@@ -402,12 +358,10 @@ input[type=range]::-webkit-slider-thumb {
         <div class="tc" id="tc-never" onclick="setTime('never')">Never changed</div>
       </div>
 
-      <!-- Shoppable toggle -->
       <div class="shp-row" onclick="toggleShp()">
-        <div class="shp-icon">⚠️</div>
         <div class="shp-body">
           <strong>Skip price-sensitive services</strong>
-          <span>Vaccines, wellness exams, dental — services clients compare between clinics</span>
+          <span>Services clients are most likely to compare between clinics (vaccines, wellness exams, dental)</span>
         </div>
         <label class="toggle" onclick="event.stopPropagation()">
           <input type="checkbox" id="a-shp" checked onchange="adjustPreview()">
@@ -415,21 +369,19 @@ input[type=range]::-webkit-slider-thumb {
         </label>
       </div>
 
-      <!-- Preview -->
       <div class="preview">
         <div class="preview-lbl">Preview</div>
         <div class="preview-nums">
           <div><div class="pn-val g" id="a-count">—</div><div class="pn-lbl">Services to update</div></div>
           <div><div class="pn-val" id="a-impact">—</div><div class="pn-lbl">Est. annual impact</div></div>
-          <div><div class="pn-val" id="a-avg">—</div><div class="pn-lbl">Avg increase/service</div></div>
+          <div><div class="pn-val" id="a-avg">—</div><div class="pn-lbl">Avg increase per service</div></div>
         </div>
         <div class="preview-tags" id="a-tags"></div>
       </div>
 
       <div class="btn-row">
-        <button class="btn-apply" onclick="applyIt('adjust')">Apply Changes</button>
+        <button class="btn-primary" onclick="applyIt('adjust')">Apply changes</button>
         <button class="btn-ghost" onclick="close()">Cancel</button>
-        <span class="btn-hint">Saved to your price history</span>
       </div>
     </div>
   </div>
@@ -438,12 +390,12 @@ input[type=range]::-webkit-slider-thumb {
   <div class="panel" id="panel-manual">
     <div class="panel-hd">
       <div><h2>Fee Guide</h2><p>Click any price to edit it directly</p></div>
-      <button class="btn-x" onclick="close()">✕</button>
+      <button class="btn-x" onclick="close()">&#x2715;</button>
     </div>
     <div class="panel-bd" style="padding-bottom:0">
       <div class="m-search-w">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input class="m-search" id="m-q" type="text" placeholder="Search services…" oninput="renderManual(this.value)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="m-search" id="m-q" type="text" placeholder="Search services..." oninput="renderManual(this.value)">
       </div>
       <div style="overflow-x:auto">
         <table class="svc-tbl">
@@ -453,10 +405,10 @@ input[type=range]::-webkit-slider-thumb {
       </div>
     </div>
     <div class="m-bar" id="m-bar">
-      <span style="font-size:0.84rem;color:var(--text)"><strong id="m-n">0</strong> prices changed</span>
-      <div style="display:flex;gap:0.65rem">
+      <span style="font-size:0.82rem;color:var(--text)"><strong id="m-n">0</strong> prices changed</span>
+      <div style="display:flex;gap:0.55rem">
         <button class="btn-ghost" onclick="resetManual()">Reset</button>
-        <button class="btn-apply" onclick="applyIt('manual')" style="padding:9px 22px;font-size:0.83rem">Save Changes</button>
+        <button class="btn-primary" onclick="applyIt('manual')" style="padding:8px 18px;font-size:0.82rem">Save changes</button>
       </div>
     </div>
   </div>
@@ -464,20 +416,20 @@ input[type=range]::-webkit-slider-thumb {
   <!-- ── PANEL: AI ── -->
   <div class="panel" id="panel-ai">
     <div class="panel-hd">
-      <div><h2>AI Consultant</h2><p>CPI-based suggestions — you decide what to apply</p></div>
-      <button class="btn-x" onclick="close()">✕</button>
+      <div><h2>AI Consultant</h2><p>CPI-based suggestions — apply as many or as few as you like</p></div>
+      <button class="btn-x" onclick="close()">&#x2715;</button>
     </div>
     <div class="panel-bd">
-      <p class="ai-note">We compared your year-over-year prices against Canada's <strong>2.38% inflation rate</strong>. Services that haven't kept pace are listed below. These are suggestions only — apply as many or as few as you like. You know your practice better than we do.</p>
+      <p class="ai-note">We compared your prices against Canada's 2.38% inflation rate for 2024. Services that haven't kept pace are listed below. These are suggestions only — you know your practice better than we do.</p>
       <div class="sf-bar">
         <button class="sf-btn on" id="sf-all" onclick="sfilt('all')">All <span id="sf-n-all"></span></button>
-        <button class="sf-btn" id="sf-safe" onclick="sfilt('safe')">✓ Safe to raise <span id="sf-n-safe"></span></button>
-        <button class="sf-btn amb" id="sf-shp" onclick="sfilt('shoppable')">⚠ Price-sensitive <span id="sf-n-shp"></span></button>
+        <button class="sf-btn" id="sf-safe" onclick="sfilt('safe')">Safe to raise <span id="sf-n-safe"></span></button>
+        <button class="sf-btn" id="sf-shp" onclick="sfilt('shoppable')">Price-sensitive <span id="sf-n-shp"></span></button>
       </div>
       <div class="sug-list" id="sug-list"></div>
-      <div class="ai-confirm" id="ai-bar">
-        <span style="font-size:0.84rem;color:var(--text)"><strong id="ai-n">0</strong> changes accepted</span>
-        <button class="btn-apply" onclick="applyIt('ai')" style="padding:9px 22px;font-size:0.83rem">Apply Accepted</button>
+      <div class="ai-bar" id="ai-bar">
+        <span style="font-size:0.82rem;color:var(--text)"><strong id="ai-n">0</strong> changes accepted</span>
+        <button class="btn-primary" onclick="applyIt('ai')" style="padding:8px 18px;font-size:0.82rem">Apply accepted</button>
       </div>
     </div>
   </div>
@@ -486,9 +438,9 @@ input[type=range]::-webkit-slider-thumb {
   <div class="hist">
     <div class="hist-lbl">Past reviews</div>
     <div class="hist-row">
-      <div class="hc"><div class="hc-per">Q1 2026 · Jan–Mar</div><div class="hc-act">Adjust · 5% · Surgery &amp; Diagnostics</div><div class="hc-det">94 services · excluded price-sensitives</div><span class="hc-tag">Applied Mar 14</span></div>
-      <div class="hc"><div class="hc-per">Q4 2025 · Oct–Dec</div><div class="hc-act">Flat increase · 3%</div><div class="hc-det">All 280 services</div><span class="hc-tag">Applied Dec 12</span></div>
-      <div class="hc"><div class="hc-per">Q3 2025 · Jul–Sep</div><div class="hc-act">Manual review</div><div class="hc-det">12 services updated individually</div><span class="hc-tag">Applied Sep 3</span></div>
+      <div class="hc"><div class="hc-per">Q1 2026 — Jan to Mar</div><div class="hc-act">5% — Surgery &amp; Diagnostics</div><div class="hc-det">94 services, price-sensitives excluded</div><span class="hc-tag">Applied Mar 14</span></div>
+      <div class="hc"><div class="hc-per">Q4 2025 — Oct to Dec</div><div class="hc-act">Flat 3% — all services</div><div class="hc-det">280 services</div><span class="hc-tag">Applied Dec 12</span></div>
+      <div class="hc"><div class="hc-per">Q3 2025 — Jul to Sep</div><div class="hc-act">Manual review</div><div class="hc-det">12 services updated individually</div><span class="hc-tag">Applied Sep 3</span></div>
     </div>
   </div>
 </main>
@@ -496,7 +448,6 @@ input[type=range]::-webkit-slider-thumb {
 <!-- MODAL -->
 <div class="modal-bg" id="modal">
   <div class="modal">
-    <div class="modal-ico">✅</div>
     <h2 id="mo-title">Changes Applied</h2>
     <p id="mo-sub">Your Q2 2026 update has been saved.</p>
     <div class="modal-detail" id="mo-detail"></div>
@@ -505,7 +456,6 @@ input[type=range]::-webkit-slider-thumb {
 </div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────
 const SVCS = [
   { code:'EXAM01', name:'Physical Examination',      price:65.00,  visits:650, cat:'preventive',  shoppable:true,  lastChanged:'2025-09-03' },
   { code:'VACC01', name:'DA2PP Vaccine',             price:32.50,  visits:570, cat:'preventive',  shoppable:true,  lastChanged:'2026-03-14' },
@@ -531,16 +481,15 @@ const SVCS = [
 SVCS.forEach(s => { s.rev = Math.round(s.price * s.visits); s.lastMs = new Date(s.lastChanged).getTime(); });
 
 const CATS = [
-  { id:'preventive',  label:'Preventive Care',    icon:'💉', count:35  },
-  { id:'surgery',     label:'Surgery',             icon:'🔬', count:22  },
-  { id:'diagnostics', label:'Diagnostics',         icon:'🧪', count:68  },
-  { id:'dental',      label:'Dental',              icon:'🦷', count:18  },
-  { id:'hospital',    label:'In-Hospital',         icon:'🏥', count:28  },
-  { id:'other',       label:'Palliative & Other',  icon:'❤️', count:109 },
+  { id:'preventive',  label:'Preventive Care', count:35  },
+  { id:'surgery',     label:'Surgery',         count:22  },
+  { id:'diagnostics', label:'Diagnostics',     count:68  },
+  { id:'dental',      label:'Dental',          count:18  },
+  { id:'hospital',    label:'In-Hospital',     count:28  },
+  { id:'other',       label:'Palliative',      count:109 },
 ];
 const TOTAL = 280, SHP_N = 48;
 
-// ── OPTION SELECTION ─────────────────────────────────────────────────
 let active = null;
 function pick(id) {
   if (active === id) { close(); return; }
@@ -561,7 +510,7 @@ function close() {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('open'));
 }
 
-// ── ADJUST PANEL ──────────────────────────────────────────────────────
+// ADJUST
 const excl = new Set();
 let timeFilter = '3m';
 
@@ -576,12 +525,8 @@ function buildCats() {
   if (document.getElementById('cat-grid').children.length) return;
   document.getElementById('cat-grid').innerHTML = CATS.map(c =>
     `<div class="chip on" id="ch-${c.id}" onclick="toggleCat('${c.id}')">
-      <span class="chip-dot"></span>
-      <span style="font-size:1.05rem">${c.icon}</span>
-      <div class="chip-body">
-        <div class="chip-name">${c.label}</div>
-        <div class="chip-sub">${c.count} services</div>
-      </div>
+      <div class="chip-name">${c.label}</div>
+      <div class="chip-count">${c.count}</div>
     </div>`
   ).join('');
 }
@@ -605,18 +550,14 @@ function toggleShp() {
   const cb = document.getElementById('a-shp'); cb.checked = !cb.checked; adjustPreview();
 }
 
-// How many services pass the timeline filter (approximate, based on sample)
 const timeCutoffs = { 'any': 0, '3m': Date.now()-90*86400000, '6m': Date.now()-180*86400000, '12m': Date.now()-365*86400000, 'never': Infinity };
 
 function adjustPreview() {
   const pct     = parseFloat(document.getElementById('a-pct').value)||0;
   const skipShp = document.getElementById('a-shp').checked;
   const cutoff  = timeCutoffs[timeFilter];
-
   const exclCount = Array.from(excl).reduce((t,id) => t + (CATS.find(c=>c.id===id)?.count||0), 0);
   const catCount  = TOTAL - exclCount;
-
-  // Estimate timeline-filtered (use sample as proxy)
   const samplePass = SVCS.filter(s =>
     !excl.has(s.cat) &&
     (!skipShp || !s.shoppable) &&
@@ -626,23 +567,21 @@ function adjustPreview() {
   const count       = Math.max(0, Math.min(catCount, scaledCount));
   const impact      = Math.round(count * pct * 43);
   const avgInc      = (SVCS.reduce((t,s)=>t+s.price,0)/SVCS.length * pct/100).toFixed(2);
-
   document.getElementById('a-count').textContent  = count.toLocaleString();
   document.getElementById('a-impact').textContent = '+$' + impact.toLocaleString();
   document.getElementById('a-avg').textContent    = '+$' + avgInc;
-
   const tags = [];
-  Array.from(excl).forEach(id => { const c = CATS.find(x=>x.id===id); if(c) tags.push(`<span class="ptag">⊘ ${c.label} excluded</span>`); });
-  if (skipShp) tags.push(`<span class="ptag">⊘ Price-sensitive skipped</span>`);
+  Array.from(excl).forEach(id => { const c = CATS.find(x=>x.id===id); if(c) tags.push(`<span class="ptag">${c.label} excluded</span>`); });
+  if (skipShp) tags.push(`<span class="ptag">Price-sensitive skipped</span>`);
   if (timeFilter !== 'any') {
-    const tl = { '3m':'3+ months', '6m':'6+ months', '12m':'12+ months', 'never':'Never changed' };
-    tags.push(`<span class="ptag">⏱ Last changed ${tl[timeFilter]} ago</span>`);
+    const tl = { '3m':'3+ months','6m':'6+ months','12m':'12+ months','never':'never changed' };
+    tags.push(`<span class="ptag">Last changed ${tl[timeFilter]} ago</span>`);
   }
-  if (!tags.length) tags.push(`<span class="ptag ok">✓ All ${TOTAL} services included</span>`);
+  if (!tags.length) tags.push(`<span class="ptag ok">All ${TOTAL} services included</span>`);
   document.getElementById('a-tags').innerHTML = tags.join('');
 }
 
-// ── MANUAL ────────────────────────────────────────────────────────────
+// MANUAL
 const mChg = {};
 function renderManual(q) {
   const lq = q.toLowerCase();
@@ -651,7 +590,7 @@ function renderManual(q) {
   document.getElementById('m-body').innerHTML = rows.map(s => {
     const chg = mChg[s.code], val = chg !== undefined ? chg : s.price.toFixed(2);
     return `<tr>
-      <td><div class="td-name">${s.name}${s.shoppable?`<span class="shp-tag">⚠ Sensitive</span>`:''}</div><div class="td-code">${s.code}</div></td>
+      <td><div class="td-name">${s.name}${s.shoppable?`<span class="shp-flag">price-sensitive</span>`:''}</div><div class="td-code">${s.code}</div></td>
       <td><div class="td-rev">$${s.rev.toLocaleString()}/yr</div></td>
       <td><div class="td-code">${fmtDate(s.lastChanged)}</div></td>
       <td><div class="td-name">$${s.price.toFixed(2)}</div></td>
@@ -674,7 +613,7 @@ function resetManual() {
   document.getElementById('m-bar').classList.remove('show');
 }
 
-// ── AI SUGGESTIONS ────────────────────────────────────────────────────
+// AI
 const acc = new Set(), skp = new Set();
 let sfA = 'all';
 const SUGS = SVCS.map(s => ({ ...s, newP: parseFloat((s.price * 1.0738).toFixed(2)) }));
@@ -694,7 +633,7 @@ function renderSugs(f) {
     const d = (s.newP - s.price).toFixed(2), isAcc = acc.has(s.code), isSkp = skp.has(s.code);
     return `<div class="si${isAcc?' acc':isSkp?' skp':''}" id="si-${s.code}">
       <div class="si-info">
-        <div class="si-name">${s.name}${s.shoppable?`<span class="shp-tag">⚠ Sensitive</span>`:''}</div>
+        <div class="si-name">${s.name}${s.shoppable?`<span class="shp-flag">price-sensitive</span>`:''}</div>
         <div class="si-meta">${s.code} · ${s.visits.toLocaleString()} visits/yr · Last changed ${new Date(s.lastChanged).toLocaleDateString('en-CA',{month:'short',year:'numeric'})}</div>
       </div>
       <div class="si-price">
@@ -704,7 +643,7 @@ function renderSugs(f) {
         <span class="si-delta">+$${d}</span>
       </div>
       <div class="si-acts">
-        <button class="btn-acc${isAcc?' on':''}" onclick="tAcc('${s.code}')">${isAcc?'✓ Accepted':'✓ Accept'}</button>
+        <button class="btn-acc${isAcc?' on':''}" onclick="tAcc('${s.code}')">${isAcc?'Accepted':'Accept'}</button>
         <button class="btn-skp" onclick="tSkp('${s.code}')">Skip</button>
       </div>
     </div>`;
@@ -718,30 +657,29 @@ function updAi() {
   document.getElementById('ai-bar').classList.toggle('show', n>0);
 }
 
-// ── APPLY & MODAL ──────────────────────────────────────────────────────
+// APPLY
 function applyIt(type) {
   let title, sub, detail;
   if (type==='adjust') {
     const pct=document.getElementById('a-pct').value, cnt=document.getElementById('a-count').textContent, imp=document.getElementById('a-impact').textContent;
-    const exclCats = Array.from(excl).map(id=>CATS.find(c=>c.id===id)?.label).filter(Boolean).join(', ')||null;
-    const tl = {any:'any time',  '3m':'3+ months ago','6m':'6+ months ago','12m':'12+ months ago','never':'never changed'}[timeFilter];
-    title='Changes Applied'; sub='Q2 2026 price update saved.';
+    const exclCats=Array.from(excl).map(id=>CATS.find(c=>c.id===id)?.label).filter(Boolean).join(', ')||null;
+    const tl={any:'any time','3m':'3+ months ago','6m':'6+ months ago','12m':'12+ months ago','never':'never changed'}[timeFilter];
+    title='Changes applied'; sub='Q2 2026 price update saved.';
     detail=`<strong>${pct}% increase</strong> applied to <strong>${cnt} services</strong>.<br>`
-      + (exclCats ? `Excluded: ${exclCats}.<br>` : '')
-      + `Last changed: ${tl}.<br>`
-      + `Est. annual impact: <strong style="color:var(--green)">${imp}/yr</strong>`;
+      +(exclCats?`Excluded: ${exclCats}.<br>`:'')
+      +`Last changed: ${tl}.<br>Est. annual impact: <strong style="color:var(--green)">${imp}/yr</strong>`;
   } else if (type==='manual') {
     const n=Object.keys(mChg).length;
-    title='Manual Changes Saved'; sub='Your updates are recorded.';
+    title='Changes saved'; sub='Your updates are recorded.';
     detail=`<strong>${n} service${n!==1?'s':''}</strong> updated. All changes are logged in your price history.`;
   } else {
     const n=acc.size;
-    title='Suggestions Applied'; sub='Selected changes saved.';
-    detail=`<strong>${n} suggestion${n!==1?'s':''}</strong> accepted and applied.<br>Based on Canada CPI 2.38% · View or revert any change in price history.`;
+    title='Suggestions applied'; sub='Selected changes saved.';
+    detail=`<strong>${n} suggestion${n!==1?'s':''}</strong> accepted and applied. Based on Canada CPI 2.38%.`;
   }
-  document.getElementById('mo-title').textContent = title;
-  document.getElementById('mo-sub').textContent   = sub;
-  document.getElementById('mo-detail').innerHTML  = detail;
+  document.getElementById('mo-title').textContent=title;
+  document.getElementById('mo-sub').textContent=sub;
+  document.getElementById('mo-detail').innerHTML=detail;
   document.getElementById('modal').classList.add('open');
 }
 function closeMo() { document.getElementById('modal').classList.remove('open'); close(); }
