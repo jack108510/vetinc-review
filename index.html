@@ -7,17 +7,18 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #f0f6ff;
+  --bg: #f4f7ff;
   --surface: #ffffff;
   --surface2: #eff6ff;
-  --border: #dbeafe;
+  --border: #e0eaff;
   --primary: #2563eb;
   --primary-light: #60a5fa;
-  --text: #1e3a5f;
+  --text: #1a2f50;
   --muted: #64748b;
   --green: #16a34a;
   --amber: #d97706;
   --red: #dc2626;
+  --purple: #7c3aed;
 }
 body {
   background: var(--bg);
@@ -27,929 +28,802 @@ body {
   min-height: 100vh;
 }
 
-/* HEADER */
+/* ── HEADER ─────────────────────────────────────────── */
 .header {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 0 2rem;
+  padding: 0 2.5rem;
   display: flex; align-items: center; justify-content: space-between;
-  height: 72px;
+  height: 68px;
   position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 1px 10px rgba(37,99,235,.06);
+  box-shadow: 0 1px 12px rgba(37,99,235,.06);
 }
-.header-left { display: flex; align-items: center; gap: 12px; }
 .logo-mark {
-  width: 36px; height: 36px;
+  width: 34px; height: 34px;
   background: linear-gradient(135deg, #2563eb, #60a5fa);
-  border-radius: 10px;
+  border-radius: 9px;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 2px 8px rgba(37,99,235,.3);
-  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(37,99,235,.28);
 }
 .logo-mark svg { color: #fff; }
-.header-brand { font-size: 1.05rem; font-weight: 800; color: var(--text); }
-.header-brand span { color: var(--primary); }
-.header-divider { width: 1px; height: 22px; background: var(--border); }
-.clinic-label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-.header-right { display: flex; align-items: center; gap: 0.5rem; }
-.period-chip {
+.header-left { display: flex; align-items: center; gap: 10px; }
+.header-brand { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em; }
+.header-brand em { color: var(--primary); font-style: normal; }
+.hdiv { width: 1px; height: 20px; background: var(--border); margin: 0 6px; }
+.clinic-tag { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+.period-pill {
   background: #dbeafe; color: var(--primary);
-  font-size: 0.75rem; font-weight: 700;
-  padding: 5px 12px; border-radius: 20px;
-  letter-spacing: 0.03em;
+  font-size: 0.72rem; font-weight: 700;
+  padding: 5px 13px; border-radius: 20px; letter-spacing: 0.04em;
 }
 
-/* CONTEXT STRIP */
-.context-strip {
+/* ── CONTEXT BAR ─────────────────────────────────────── */
+.ctx-bar {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 0.6rem 2rem;
-  font-size: 0.78rem; color: var(--muted);
-  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  padding: 0.55rem 2.5rem;
+  display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;
+  font-size: 0.77rem; color: var(--muted);
 }
-.context-strip strong { color: var(--text); }
-.status-dot {
+.ctx-bar strong { color: var(--text); }
+.review-dot {
   width: 7px; height: 7px; border-radius: 50%;
-  background: var(--amber); display: inline-block; margin-right: 5px;
+  background: var(--amber); display: inline-block; margin-right: 5px; flex-shrink: 0;
 }
 
-/* MAIN */
-main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+/* ── MAIN ─────────────────────────────────────────────── */
+main { max-width: 980px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
 
-.page-intro { margin-bottom: 2rem; }
-.page-intro h1 { font-size: 1.6rem; font-weight: 900; color: var(--text); margin-bottom: 0.4rem; }
-.page-intro p { font-size: 0.92rem; color: var(--muted); line-height: 1.5; max-width: 600px; }
+.intro { margin-bottom: 2.25rem; }
+.intro h1 { font-size: 1.55rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 0.35rem; }
+.intro p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 560px; }
 
-/* OPTIONS GRID */
-.options-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-@media (max-width: 700px) { .options-grid { grid-template-columns: 1fr; } }
+/* ── OPTION CARDS ────────────────────────────────────── */
+.options { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.85rem; margin-bottom: 1.25rem; }
+@media(max-width:640px){ .options { grid-template-columns:1fr; } }
 
-.option-card {
-  background: var(--surface);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  cursor: pointer;
-  transition: all 0.18s;
+.opt {
+  background: var(--surface); border: 2px solid var(--border); border-radius: 14px;
+  padding: 1.35rem 1.4rem; cursor: pointer;
+  display: flex; gap: 0.9rem; align-items: flex-start;
+  transition: border-color 0.16s, box-shadow 0.16s, transform 0.16s;
   position: relative;
-  display: flex; gap: 1rem; align-items: flex-start;
 }
-.option-card:hover { border-color: var(--primary-light); box-shadow: 0 6px 24px rgba(37,99,235,.1); transform: translateY(-1px); }
-.option-card.active { border-color: var(--primary); box-shadow: 0 6px 24px rgba(37,99,235,.15); }
-.option-card.active::after {
-  content: '✓';
-  position: absolute; top: 12px; right: 14px;
-  width: 22px; height: 22px;
-  background: var(--primary); color: #fff;
-  border-radius: 50%; font-size: 0.7rem; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
+.opt:hover { border-color: var(--primary-light); box-shadow: 0 5px 22px rgba(37,99,235,.09); transform: translateY(-1px); }
+.opt.active { border-color: var(--primary); box-shadow: 0 5px 22px rgba(37,99,235,.14); }
+.opt.active::after {
+  content:'✓'; position:absolute; top:11px; right:13px;
+  width:20px; height:20px; background:var(--primary); color:#fff;
+  border-radius:50%; font-size:0.65rem; font-weight:900;
+  display:flex; align-items:center; justify-content:center;
 }
-.option-icon {
-  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
+.opt-icon {
+  width:40px; height:40px; border-radius:10px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:1.2rem;
 }
-.option-icon.blue { background: #dbeafe; color: var(--primary); }
-.option-icon.green { background: #dcfce7; color: var(--green); }
-.option-icon.amber { background: #fef3c7; color: var(--amber); }
-.option-icon.purple { background: #ede9fe; color: #7c3aed; }
-.option-body { flex: 1; }
-.option-title { font-size: 0.98rem; font-weight: 800; color: var(--text); margin-bottom: 0.3rem; }
-.option-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
-.option-tag {
-  display: inline-block; margin-top: 0.5rem;
-  font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 20px;
-  text-transform: uppercase; letter-spacing: 0.05em;
-}
-.option-tag.fast { background: #dcfce7; color: var(--green); }
-.option-tag.custom { background: #dbeafe; color: var(--primary); }
-.option-tag.manual { background: #fef3c7; color: var(--amber); }
-.option-tag.ai { background: #ede9fe; color: #7c3aed; }
+.ic-blue   { background:#dbeafe; }
+.ic-green  { background:#dcfce7; }
+.ic-amber  { background:#fef3c7; }
+.ic-purple { background:#ede9fe; }
 
-/* ACTION PANEL */
-.action-panel {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-  display: none;
+.opt-title { font-size:0.94rem; font-weight:800; color:var(--text); margin-bottom:0.25rem; }
+.opt-desc  { font-size:0.78rem; color:var(--muted); line-height:1.5; }
+.opt-pill  {
+  display:inline-block; margin-top:0.45rem;
+  font-size:0.62rem; font-weight:700; padding:2px 8px; border-radius:20px;
+  text-transform:uppercase; letter-spacing:0.05em;
 }
-.action-panel.visible { display: block; }
-.panel-header {
-  background: linear-gradient(135deg, #1e40af, #2563eb);
-  color: #fff;
-  padding: 1.25rem 1.75rem;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.panel-header h2 { font-size: 1rem; font-weight: 800; }
-.panel-header p { font-size: 0.8rem; opacity: 0.8; margin-top: 2px; }
-.panel-body { padding: 1.75rem; }
-.panel-close {
-  background: rgba(255,255,255,0.15); border: none; color: #fff;
-  width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
-  font-size: 1rem; display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; transition: background 0.15s;
-}
-.panel-close:hover { background: rgba(255,255,255,0.25); }
+.pl-fast   { background:#dcfce7; color:var(--green); }
+.pl-custom { background:#dbeafe; color:var(--primary); }
+.pl-manual { background:#fef3c7; color:var(--amber); }
+.pl-ai     { background:#ede9fe; color:var(--purple); }
 
-/* FORM CONTROLS */
-.control-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; align-items: flex-start; }
-.control-group { flex: 1; min-width: 180px; }
-.control-label { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; display: block; margin-bottom: 0.4rem; }
-.control-input {
-  width: 100%; padding: 9px 12px;
-  border: 1px solid var(--border); border-radius: 8px;
-  font-size: 0.9rem; color: var(--text); background: var(--surface);
-  font-family: inherit; transition: border-color 0.15s;
+/* ── ACTION PANEL ────────────────────────────────────── */
+.panel {
+  background:var(--surface); border:1px solid var(--border); border-radius:16px;
+  overflow:hidden; margin-bottom:2rem; display:none;
+  animation: slideIn 0.18s ease;
 }
-.control-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
-.pct-wrap { position: relative; }
-.pct-wrap .control-input { padding-right: 28px; }
-.pct-suffix { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 0.88rem; color: var(--muted); font-weight: 600; pointer-events: none; }
+@keyframes slideIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+.panel.open { display:block; }
 
-/* RANGE SLIDER */
+.panel-hd {
+  background:linear-gradient(135deg,#1e40af,#2563eb);
+  color:#fff; padding:1.2rem 1.75rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.panel-hd-text h2 { font-size:0.98rem; font-weight:800; }
+.panel-hd-text p  { font-size:0.77rem; opacity:0.8; margin-top:2px; }
+.panel-x {
+  background:rgba(255,255,255,.15); border:none; color:#fff;
+  width:26px; height:26px; border-radius:50%; cursor:pointer;
+  font-size:0.9rem; display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; transition:background .15s;
+}
+.panel-x:hover { background:rgba(255,255,255,.28); }
+.panel-bd { padding:1.6rem 1.75rem; }
+
+/* ── CONTROLS ────────────────────────────────────────── */
+.field-row { display:flex; gap:1.25rem; flex-wrap:wrap; margin-bottom:1.25rem; align-items:flex-end; }
+.field { flex:1; min-width:140px; }
+.field label { font-size:0.68rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; display:block; margin-bottom:0.4rem; }
+.input {
+  width:100%; padding:9px 12px; border:1px solid var(--border); border-radius:8px;
+  font-size:0.9rem; color:var(--text); background:var(--surface); font-family:inherit; transition:border .15s;
+}
+.input:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(37,99,235,.1); }
+.pct-wrap { position:relative; }
+.pct-wrap .input { padding-right:26px; }
+.pct-sfx { position:absolute; right:10px; top:50%; transform:translateY(-50%); font-size:0.85rem; color:var(--muted); font-weight:600; pointer-events:none; }
+
+/* Range */
 input[type=range] {
-  width: 100%; height: 6px; -webkit-appearance: none; appearance: none;
-  background: var(--border); border-radius: 3px; cursor: pointer; margin-top: 8px;
+  width:100%; -webkit-appearance:none; appearance:none; height:5px;
+  background:var(--border); border-radius:3px; cursor:pointer; margin-top:6px;
 }
 input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none; width: 18px; height: 18px;
-  background: var(--primary); border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(37,99,235,.3);
+  -webkit-appearance:none; width:17px; height:17px; background:var(--primary);
+  border-radius:50%; box-shadow:0 2px 6px rgba(37,99,235,.3);
 }
-.range-labels { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
+.range-ends { display:flex; justify-content:space-between; font-size:0.68rem; color:var(--muted); margin-top:3px; }
 
-/* TOGGLE */
-.toggle-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-top: 1px solid var(--border); }
-.toggle-label { flex: 1; font-size: 0.85rem; color: var(--text); }
-.toggle-label small { display: block; font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
-.toggle { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
-.toggle input { opacity: 0; width: 0; height: 0; }
-.toggle-slider {
-  position: absolute; inset: 0; background: #cbd5e1; border-radius: 11px; cursor: pointer; transition: background 0.2s;
-}
-.toggle-slider::before {
-  content: ''; position: absolute;
-  width: 16px; height: 16px; left: 3px; top: 3px;
-  background: #fff; border-radius: 50%; transition: transform 0.2s;
-  box-shadow: 0 1px 3px rgba(0,0,0,.2);
-}
-.toggle input:checked + .toggle-slider { background: var(--primary); }
-.toggle input:checked + .toggle-slider::before { transform: translateX(18px); }
+/* ── CATEGORY TOGGLES ────────────────────────────────── */
+.cat-section { margin-bottom:1.25rem; }
+.cat-label { font-size:0.68rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.7rem; }
+.cat-grid { display:flex; flex-wrap:wrap; gap:0.55rem; }
 
-/* PREVIEW BOX */
-.preview-box {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  margin: 1.25rem 0;
+.cat-chip {
+  display:flex; align-items:center; gap:0.5rem;
+  padding:0.55rem 0.9rem; border-radius:10px;
+  border:1.5px solid var(--border); background:var(--surface);
+  cursor:pointer; user-select:none; transition:all 0.15s;
+  font-size:0.82rem; color:var(--muted); font-weight:600;
 }
-.preview-title { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
-.preview-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
-.preview-stat-val { font-size: 1.5rem; font-weight: 900; color: var(--text); line-height: 1; }
-.preview-stat-val.green { color: var(--green); }
-.preview-stat-val.amber { color: var(--amber); }
-.preview-stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
-.preview-breakdown {
-  margin-top: 0.75rem; padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.8rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+.cat-chip:hover { border-color:var(--primary-light); color:var(--text); }
+.cat-chip.on {
+  border-color: var(--primary); background:var(--surface2); color:var(--primary);
 }
-.preview-breakdown span { white-space: nowrap; }
-.preview-breakdown .skip { color: var(--amber); font-weight: 600; }
+.cat-chip.on .chip-dot { background:var(--primary); }
+.cat-chip.excluded {
+  border-color:#fca5a5; background:#fff5f5; color:#b91c1c;
+  text-decoration:line-through; opacity:0.7;
+}
+.cat-chip.excluded .chip-dot { background:#ef4444; }
+.chip-dot { width:8px; height:8px; border-radius:50%; background:var(--border); transition:background .15s; flex-shrink:0; }
+.chip-icon { font-size:1rem; flex-shrink:0; }
+.chip-info { line-height:1.2; }
+.chip-name { font-size:0.8rem; font-weight:700; }
+.chip-sub  { font-size:0.67rem; color:var(--muted); margin-top:1px; font-weight:400; }
+.cat-chip.on .chip-sub  { color:var(--primary); opacity:0.75; }
 
-/* BUTTONS */
+/* Shoppable special toggle */
+.shoppable-row {
+  display:flex; align-items:center; gap:0.85rem;
+  padding:0.85rem 1rem; border-radius:10px;
+  background:#fffbeb; border:1.5px solid #fde68a;
+  margin-bottom:1.25rem; cursor:pointer; transition:all .15s;
+}
+.shoppable-row.excluded { background:#fff5f5; border-color:#fca5a5; }
+.shoppable-badge { font-size:1.2rem; }
+.shoppable-text { flex:1; }
+.shoppable-text strong { font-size:0.85rem; color:var(--text); display:block; margin-bottom:2px; }
+.shoppable-text span { font-size:0.75rem; color:var(--muted); }
+.toggle { position:relative; width:38px; height:21px; flex-shrink:0; }
+.toggle input { opacity:0; width:0; height:0; }
+.tslider {
+  position:absolute; inset:0; background:#cbd5e1; border-radius:11px; cursor:pointer; transition:background .2s;
+}
+.tslider::before {
+  content:''; position:absolute; width:15px; height:15px; left:3px; top:3px;
+  background:#fff; border-radius:50%; transition:transform .2s; box-shadow:0 1px 3px rgba(0,0,0,.2);
+}
+.toggle input:checked + .tslider { background:var(--amber); }
+.toggle input:checked + .tslider::before { transform:translateX(17px); }
+
+/* ── PREVIEW ─────────────────────────────────────────── */
+.preview {
+  background:var(--surface2); border:1px solid var(--border);
+  border-radius:12px; padding:1.1rem 1.4rem; margin:1.25rem 0;
+}
+.preview-label { font-size:0.67rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.7rem; }
+.preview-nums { display:flex; gap:2rem; flex-wrap:wrap; margin-bottom:0.7rem; }
+.pnum-val { font-size:1.4rem; font-weight:900; color:var(--text); line-height:1; }
+.pnum-val.g { color:var(--green); }
+.pnum-lbl { font-size:0.7rem; color:var(--muted); margin-top:2px; }
+.preview-chips { display:flex; flex-wrap:wrap; gap:0.35rem; padding-top:0.65rem; border-top:1px solid var(--border); }
+.pchip {
+  font-size:0.7rem; font-weight:600; padding:2px 9px; border-radius:20px;
+  background:#fee2e2; color:#b91c1c;
+}
+.pchip.safe { background:#f0fdf4; color:var(--green); }
+
+/* ── BUTTONS ─────────────────────────────────────────── */
 .btn-apply {
-  background: linear-gradient(135deg, #16a34a, #22c55e);
-  color: #fff; border: none; border-radius: 10px;
-  padding: 12px 32px; font-size: 0.95rem; font-weight: 800;
-  cursor: pointer; transition: all 0.15s;
-  box-shadow: 0 4px 14px rgba(22,163,74,.3);
+  background:linear-gradient(135deg,#16a34a,#22c55e); color:#fff;
+  border:none; border-radius:10px; padding:11px 28px;
+  font-size:0.92rem; font-weight:800; cursor:pointer; transition:all .15s;
+  box-shadow:0 4px 14px rgba(22,163,74,.28);
 }
-.btn-apply:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(22,163,74,.35); }
-.btn-apply:disabled { background: #94a3b8; box-shadow: none; cursor: not-allowed; transform: none; }
-.btn-secondary {
-  background: none; color: var(--muted);
-  border: 1px solid var(--border); border-radius: 8px;
-  padding: 10px 20px; font-size: 0.85rem; font-weight: 600;
-  cursor: pointer; transition: all 0.15s;
+.btn-apply:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(22,163,74,.35); }
+.btn-apply:disabled { background:#94a3b8; box-shadow:none; cursor:not-allowed; transform:none; }
+.btn-ghost {
+  background:none; color:var(--muted); border:1px solid var(--border); border-radius:8px;
+  padding:10px 18px; font-size:0.83rem; font-weight:600; cursor:pointer; transition:all .15s;
 }
-.btn-secondary:hover { border-color: var(--primary); color: var(--primary); background: var(--surface2); }
-.btn-row { display: flex; gap: 0.75rem; align-items: center; margin-top: 1.25rem; flex-wrap: wrap; }
+.btn-ghost:hover { border-color:var(--primary); color:var(--primary); background:var(--surface2); }
+.btn-row { display:flex; gap:0.65rem; align-items:center; margin-top:1.1rem; flex-wrap:wrap; }
+.btn-hint { font-size:0.73rem; color:var(--muted); margin-left:auto; }
 
-/* SERVICE LIST (manual review) */
-.svc-search-wrap { position: relative; margin-bottom: 1rem; }
-.svc-search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); }
-.svc-search { width: 100%; padding: 10px 16px 10px 38px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; font-family: inherit; color: var(--text); }
-.svc-search:focus { outline: none; border-color: var(--primary); }
+/* ── MANUAL TABLE ────────────────────────────────────── */
+.svc-search-wrap { position:relative; margin-bottom:0.85rem; }
+.svc-search-wrap svg { position:absolute; left:11px; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none; }
+.svc-search { width:100%; padding:9px 14px 9px 36px; border:1px solid var(--border); border-radius:8px; font-size:0.86rem; font-family:inherit; color:var(--text); }
+.svc-search:focus { outline:none; border-color:var(--primary); }
+.svc-tbl { width:100%; border-collapse:collapse; }
+.svc-tbl th { font-size:0.67rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; padding:0 0.75rem 0.55rem; text-align:left; border-bottom:1px solid var(--border); }
+.svc-tbl th:last-child { text-align:right; }
+.svc-tbl td { padding:0.65rem 0.75rem; border-bottom:1px solid #f1f5f9; vertical-align:middle; }
+.svc-tbl tr:hover td { background:var(--surface2); }
+.td-name { font-size:0.85rem; font-weight:600; color:var(--text); }
+.td-code { font-size:0.7rem; color:var(--muted); margin-top:1px; }
+.td-rev  { font-size:0.82rem; color:var(--muted); }
+.td-cur  { font-size:0.88rem; font-weight:700; }
+.svc-input {
+  width:86px; padding:5px 8px; text-align:right;
+  border:1px solid var(--border); border-radius:6px;
+  font-size:0.86rem; font-weight:700; color:var(--text); font-family:inherit;
+}
+.svc-input:focus { outline:none; border-color:var(--primary); background:var(--surface2); }
+.svc-input.chg { border-color:var(--green); background:#f0fdf4; color:var(--green); }
+.shp-tag { font-size:0.58rem; font-weight:700; padding:1px 5px; border-radius:8px; background:#fef3c7; color:#92400e; margin-left:4px; }
+.manual-bar {
+  background:var(--surface); border-top:1px solid var(--border);
+  padding:0.9rem 1.75rem;
+  display:none; align-items:center; justify-content:space-between; gap:1rem;
+  box-shadow:0 -3px 16px rgba(37,99,235,.07);
+}
+.manual-bar.show { display:flex; }
 
-.svc-table { width: 100%; border-collapse: collapse; }
-.svc-table th { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; padding: 0 0.75rem 0.6rem; text-align: left; border-bottom: 1px solid var(--border); }
-.svc-table th:last-child { text-align: right; }
-.svc-table td { padding: 0.7rem 0.75rem; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
-.svc-table tr:hover td { background: var(--surface2); }
-.svc-name { font-size: 0.88rem; font-weight: 600; color: var(--text); }
-.svc-code { font-size: 0.72rem; color: var(--muted); }
-.svc-revenue { font-size: 0.85rem; color: var(--muted); }
-.svc-price-current { font-size: 0.9rem; font-weight: 700; color: var(--text); }
-.svc-price-input {
-  width: 90px; padding: 5px 8px; text-align: right;
-  border: 1px solid var(--border); border-radius: 6px;
-  font-size: 0.88rem; font-weight: 700; color: var(--text);
-  font-family: inherit;
+/* ── AI SUGGESTIONS ──────────────────────────────────── */
+.ai-note { font-size:0.77rem; color:#5b21b6; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:8px; padding:0.6rem 1rem; margin-bottom:1rem; line-height:1.5; }
+.sug-filters { display:flex; gap:0.45rem; margin-bottom:0.9rem; flex-wrap:wrap; }
+.sf-btn { background:var(--surface2); border:1px solid var(--border); border-radius:20px; color:var(--muted); font-size:0.74rem; font-weight:600; padding:4px 13px; cursor:pointer; transition:all .13s; }
+.sf-btn:hover { border-color:var(--primary); color:var(--primary); }
+.sf-btn.on { background:var(--primary); border-color:var(--primary); color:#fff; }
+.sf-btn.amb.on { background:var(--amber); border-color:var(--amber); }
+.sug-list { display:flex; flex-direction:column; gap:0.55rem; max-height:380px; overflow-y:auto; padding-right:2px; }
+.sug-item {
+  display:flex; align-items:center; gap:0.9rem; flex-wrap:wrap;
+  padding:0.8rem 1rem; border:1px solid var(--border); border-radius:10px;
+  background:var(--surface); transition:border .13s;
 }
-.svc-price-input:focus { outline: none; border-color: var(--primary); background: #eff6ff; }
-.svc-price-input.changed { border-color: var(--green); background: #f0fdf4; color: var(--green); }
-.shoppable-tag {
-  font-size: 0.6rem; font-weight: 700; padding: 2px 6px; border-radius: 10px;
-  background: #fef3c7; color: #92400e; margin-left: 5px; white-space: nowrap;
-}
-.manual-changes-bar {
-  position: sticky; bottom: 0;
-  background: var(--surface); border-top: 1px solid var(--border);
-  padding: 1rem 1.75rem;
-  display: none; align-items: center; justify-content: space-between; gap: 1rem;
-  box-shadow: 0 -4px 20px rgba(37,99,235,.08);
-}
-.manual-changes-bar.visible { display: flex; }
+.sug-item.acc { border-color:var(--green); background:#f0fdf4; }
+.sug-item.skp { opacity:.42; }
+.si-info { flex:1; min-width:150px; }
+.si-name { font-size:0.86rem; font-weight:700; color:var(--text); }
+.si-meta { font-size:0.71rem; color:var(--muted); margin-top:2px; }
+.si-price { display:flex; align-items:center; gap:0.5rem; flex-shrink:0; }
+.si-old { font-size:0.82rem; color:var(--muted); text-decoration:line-through; }
+.si-new { font-size:0.96rem; font-weight:800; color:var(--primary); }
+.si-delta { font-size:0.72rem; font-weight:700; color:var(--green); }
+.si-acts { display:flex; gap:0.35rem; flex-shrink:0; }
+.btn-acc { background:var(--green); color:#fff; border:none; border-radius:7px; padding:5px 13px; font-size:0.76rem; font-weight:700; cursor:pointer; }
+.btn-acc:hover { background:#15803d; }
+.btn-acc.on { background:#dcfce7; color:var(--green); border:1.5px solid var(--green); }
+.btn-skp { background:none; color:var(--muted); border:1px solid var(--border); border-radius:7px; padding:5px 11px; font-size:0.76rem; font-weight:600; cursor:pointer; }
+.btn-skp:hover { background:var(--surface2); }
+.ai-bar { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:0.85rem 1.1rem; margin-top:1rem; display:none; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.ai-bar.show { display:flex; }
 
-/* AI SUGGESTIONS */
-.suggestion-list { display: flex; flex-direction: column; gap: 0.6rem; max-height: 420px; overflow-y: auto; padding-right: 4px; }
-.suggestion-item {
-  display: flex; align-items: center; gap: 1rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--border); border-radius: 10px;
-  background: var(--surface); transition: border-color 0.15s; flex-wrap: wrap;
-}
-.suggestion-item.accepted { border-color: var(--green); background: #f0fdf4; }
-.suggestion-item.skipped { opacity: 0.45; }
-.sug-info { flex: 1; min-width: 160px; }
-.sug-name { font-size: 0.88rem; font-weight: 700; color: var(--text); }
-.sug-meta { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
-.sug-price { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
-.sug-old { font-size: 0.85rem; color: var(--muted); text-decoration: line-through; }
-.sug-new { font-size: 1rem; font-weight: 800; color: var(--primary); }
-.sug-delta { font-size: 0.75rem; font-weight: 700; color: var(--green); }
-.sug-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
-.btn-accept { background: var(--green); color: #fff; border: none; border-radius: 7px; padding: 6px 14px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.13s; }
-.btn-accept:hover { background: #15803d; }
-.btn-accept.on { background: #dcfce7; color: var(--green); border: 1.5px solid var(--green); }
-.btn-skip { background: none; color: var(--muted); border: 1px solid var(--border); border-radius: 7px; padding: 6px 12px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.13s; }
-.btn-skip:hover { background: var(--surface2); }
-.sug-filter-bar { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-.sug-filter { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; color: var(--muted); font-size: 0.75rem; font-weight: 600; padding: 4px 14px; cursor: pointer; transition: all 0.13s; }
-.sug-filter:hover { border-color: var(--primary); color: var(--primary); }
-.sug-filter.on { background: var(--primary); border-color: var(--primary); color: #fff; }
-.sug-filter.amber.on { background: var(--amber); border-color: var(--amber); }
-.ai-note { font-size: 0.78rem; color: var(--muted); background: #ede9fe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 0.65rem 1rem; margin-bottom: 1rem; }
-.ai-note strong { color: #5b21b6; }
-.ai-confirm-bar {
-  background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
-  padding: 0.9rem 1.1rem; margin-top: 1rem;
-  display: none; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-}
-.ai-confirm-bar.visible { display: flex; }
+/* ── HISTORY ─────────────────────────────────────────── */
+.hist-section { margin-top:0.5rem; }
+.hist-label { font-size:0.68rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.7rem; }
+.hist-row { display:flex; gap:0.85rem; flex-wrap:wrap; }
+.hist-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:0.9rem 1.1rem; flex:1; min-width:180px; max-width:300px; }
+.hc-period { font-size:0.7rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.04em; }
+.hc-action { font-size:0.88rem; font-weight:700; color:var(--text); margin-top:3px; }
+.hc-detail { font-size:0.76rem; color:var(--muted); margin-top:2px; }
+.hc-tag { display:inline-block; margin-top:5px; font-size:0.6rem; font-weight:700; padding:2px 7px; border-radius:12px; background:#dcfce7; color:var(--green); text-transform:uppercase; letter-spacing:0.04em; }
 
-/* HISTORY */
-.history-section { margin-top: 1rem; }
-.history-title { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
-.history-cards { display: flex; gap: 1rem; flex-wrap: wrap; }
-.history-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-  padding: 1rem 1.25rem; flex: 1; min-width: 200px; max-width: 320px;
-}
-.history-period { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-.history-action { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-top: 3px; }
-.history-detail { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
-.history-tag { display: inline-block; margin-top: 6px; font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; background: #dcfce7; color: var(--green); text-transform: uppercase; letter-spacing: 0.04em; }
-
-/* SUCCESS MODAL */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 500; align-items: center; justify-content: center; }
-.modal-overlay.open { display: flex; }
-.modal { background: var(--surface); border-radius: 20px; padding: 2.5rem; max-width: 420px; width: 90%; text-align: center; animation: pop 0.2s ease; }
-@keyframes pop { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.modal-icon { font-size: 3rem; margin-bottom: 0.75rem; }
-.modal h2 { font-size: 1.3rem; font-weight: 900; color: var(--text); margin-bottom: 0.4rem; }
-.modal p { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.25rem; }
-.modal-detail { background: var(--surface2); border-radius: 10px; padding: 0.9rem 1.1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text); line-height: 1.6; text-align: left; }
-.btn-modal-close { background: var(--primary); color: #fff; border: none; border-radius: 10px; padding: 11px 30px; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+/* ── MODAL ───────────────────────────────────────────── */
+.modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,.42); z-index:500; align-items:center; justify-content:center; }
+.modal-bg.open { display:flex; }
+.modal { background:var(--surface); border-radius:20px; padding:2.25rem; max-width:400px; width:90%; text-align:center; animation:pop .2s ease; }
+@keyframes pop { from{transform:scale(.92);opacity:0} to{transform:scale(1);opacity:1} }
+.modal-ico { font-size:2.8rem; margin-bottom:0.65rem; }
+.modal h2 { font-size:1.2rem; font-weight:900; color:var(--text); margin-bottom:0.35rem; }
+.modal p  { font-size:0.84rem; color:var(--muted); margin-bottom:1.1rem; }
+.modal-detail { background:var(--surface2); border-radius:9px; padding:0.85rem 1rem; margin-bottom:1.25rem; font-size:0.83rem; color:var(--text); line-height:1.6; text-align:left; }
+.btn-done { background:var(--primary); color:#fff; border:none; border-radius:10px; padding:10px 28px; font-size:0.88rem; font-weight:700; cursor:pointer; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="header-left">
     <div class="logo-mark">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
     </div>
-    <div class="header-brand">Vet <span>INC</span></div>
-    <div class="header-divider"></div>
-    <div class="clinic-label">Rosslyn Veterinary Clinic</div>
+    <div class="header-brand">Vet <em>INC</em></div>
+    <div class="hdiv"></div>
+    <div class="clinic-tag">Rosslyn Veterinary Clinic</div>
   </div>
-  <div class="header-right">
-    <div class="period-chip">Q2 2026 Review</div>
-  </div>
+  <div class="period-pill">Q2 2026 Review</div>
 </header>
 
-<!-- CONTEXT STRIP -->
-<div class="context-strip">
-  <span><span class="status-dot"></span><strong>Review pending</strong></span>
+<div class="ctx-bar">
+  <span><span class="review-dot"></span><strong>Review ready</strong></span>
   <span>280 services on file</span>
-  <span>Last reviewed: March 14, 2026</span>
-  <span>3 months since last update</span>
+  <span>Last reviewed March 14, 2026</span>
+  <span>3 months ago</span>
 </div>
 
-<!-- MAIN -->
 <main>
-  <div class="page-intro">
+  <div class="intro">
     <h1>Q2 2026 Price Review</h1>
-    <p>It's been 3 months since your last price update. Choose how you'd like to approach this quarter — or skip it if your pricing is where you want it.</p>
+    <p>It's been 3 months since your last update. Choose how you'd like to handle this quarter — or skip it if your pricing is where you want it.</p>
   </div>
 
-  <!-- 4 OPTION CARDS -->
-  <div class="options-grid">
-    <div class="option-card" id="card-flat" onclick="selectOption('flat')">
-      <div class="option-icon blue">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-      </div>
-      <div class="option-body">
-        <div class="option-title">Apply a flat increase</div>
-        <div class="option-desc">Set a percentage and apply it across your services. Quick and uniform — done in under a minute.</div>
-        <span class="option-tag fast">Fastest</span>
-      </div>
-    </div>
-
-    <div class="option-card" id="card-smart" onclick="selectOption('smart')">
-      <div class="option-icon green">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-      </div>
-      <div class="option-body">
-        <div class="option-title">Increase by your rules</div>
-        <div class="option-desc">Set a revenue minimum, skip price-sensitive services, choose your %. Full control over what gets updated.</div>
-        <span class="option-tag custom">Custom</span>
-      </div>
-    </div>
-
-    <div class="option-card" id="card-manual" onclick="selectOption('manual')">
-      <div class="option-icon amber">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-      </div>
-      <div class="option-body">
-        <div class="option-title">Review the fee guide yourself</div>
-        <div class="option-desc">Browse all services and update prices on your own terms. Full fee guide with current pricing and history.</div>
-        <span class="option-tag manual">Manual</span>
-      </div>
-    </div>
-
-    <div class="option-card" id="card-ai" onclick="selectOption('ai')">
-      <div class="option-icon purple">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      </div>
-      <div class="option-body">
-        <div class="option-title">See Vet INC's suggestions</div>
-        <div class="option-desc">We ran your data against Canada CPI. Here's what we'd suggest — apply as many or as few as you like.</div>
-        <span class="option-tag ai">Our input</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ACTION PANELS -->
-
-  <!-- FLAT INCREASE -->
-  <div class="action-panel" id="panel-flat">
-    <div class="panel-header">
+  <!-- OPTION CARDS -->
+  <div class="options">
+    <div class="opt" id="card-flat" onclick="pick('flat')">
+      <div class="opt-icon ic-blue">💲</div>
       <div>
-        <h2>Flat Percentage Increase</h2>
-        <p>Apply a uniform increase across your services</p>
+        <div class="opt-title">Flat increase</div>
+        <div class="opt-desc">Set a percentage and apply it across your services. Quick and uniform.</div>
+        <span class="opt-pill pl-fast">Fastest</span>
       </div>
-      <button class="panel-close" onclick="closePanel()">✕</button>
     </div>
-    <div class="panel-body">
-      <div class="control-row">
-        <div class="control-group">
-          <label class="control-label">Increase percentage</label>
-          <div style="margin-top:8px">
-            <input type="range" id="flat-pct-slider" min="1" max="15" value="5" oninput="syncFlat(this.value,'slider')">
-            <div class="range-labels"><span>1%</span><span>15%</span></div>
-          </div>
+    <div class="opt" id="card-smart" onclick="pick('smart')">
+      <div class="opt-icon ic-green">🎛</div>
+      <div>
+        <div class="opt-title">Increase by category</div>
+        <div class="opt-desc">Choose which types of services to include or exclude, then set your percentage.</div>
+        <span class="opt-pill pl-custom">Custom</span>
+      </div>
+    </div>
+    <div class="opt" id="card-manual" onclick="pick('manual')">
+      <div class="opt-icon ic-amber">📋</div>
+      <div>
+        <div class="opt-title">Review the fee guide</div>
+        <div class="opt-desc">Browse all services and update individual prices yourself.</div>
+        <span class="opt-pill pl-manual">Manual</span>
+      </div>
+    </div>
+    <div class="opt" id="card-ai" onclick="pick('ai')">
+      <div class="opt-icon ic-purple">💡</div>
+      <div>
+        <div class="opt-title">See our suggestions</div>
+        <div class="opt-desc">Based on Canada CPI data — apply as many or as few as you like.</div>
+        <span class="opt-pill pl-ai">Vet INC input</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PANEL: FLAT ─────────────────────────────────── -->
+  <div class="panel" id="panel-flat">
+    <div class="panel-hd">
+      <div class="panel-hd-text"><h2>Flat Increase</h2><p>Apply a uniform percentage to your services</p></div>
+      <button class="panel-x" onclick="close()">✕</button>
+    </div>
+    <div class="panel-bd">
+      <div class="field-row">
+        <div class="field">
+          <label>Increase percentage</label>
+          <input type="range" id="f-slider" min="1" max="15" value="5" oninput="syncF(this.value,'sl')">
+          <div class="range-ends"><span>1%</span><span>15%</span></div>
         </div>
-        <div class="control-group" style="max-width:120px">
-          <label class="control-label">% amount</label>
+        <div class="field" style="max-width:110px">
+          <label>% amount</label>
           <div class="pct-wrap">
-            <input class="control-input" type="number" id="flat-pct-input" min="0.1" max="50" step="0.1" value="5" oninput="syncFlat(this.value,'input')">
-            <span class="pct-suffix">%</span>
+            <input class="input" type="number" id="f-pct" min="0.1" max="50" step="0.1" value="5" oninput="syncF(this.value,'in')">
+            <span class="pct-sfx">%</span>
           </div>
         </div>
       </div>
 
-      <div class="toggle-row">
-        <div class="toggle-label">
-          Skip price-sensitive services
-          <small>Vaccines, exams, dental, spay/neuter, etc. — services clients compare between clinics</small>
+      <!-- Shoppable exclusion -->
+      <div class="shoppable-row" id="f-shp-row" onclick="toggleFShop()">
+        <div class="shoppable-badge">⚠️</div>
+        <div class="shoppable-text">
+          <strong>Skip price-sensitive services</strong>
+          <span>Vaccines, wellness exams, dental cleanings — services clients compare between clinics</span>
         </div>
-        <label class="toggle">
-          <input type="checkbox" id="flat-skip-shoppable" checked onchange="updateFlatPreview()">
-          <span class="toggle-slider"></span>
+        <label class="toggle" onclick="event.stopPropagation()">
+          <input type="checkbox" id="f-shp" checked onchange="flatPreview()">
+          <span class="tslider"></span>
         </label>
       </div>
 
-      <div class="preview-box">
-        <div class="preview-title">Preview</div>
-        <div class="preview-stats">
-          <div>
-            <div class="preview-stat-val green" id="flat-count">152</div>
-            <div class="preview-stat-label">Services to update</div>
-          </div>
-          <div>
-            <div class="preview-stat-val" id="flat-impact">+$42,500</div>
-            <div class="preview-stat-label">Est. annual impact if applied</div>
-          </div>
-          <div>
-            <div class="preview-stat-val" id="flat-avg-delta">+$4.75</div>
-            <div class="preview-stat-label">Avg price increase per service</div>
-          </div>
+      <div class="preview">
+        <div class="preview-label">Preview</div>
+        <div class="preview-nums">
+          <div><div class="pnum-val g" id="f-count">232</div><div class="pnum-lbl">Services to update</div></div>
+          <div><div class="pnum-val" id="f-impact">+$43,200</div><div class="pnum-lbl">Est. annual impact</div></div>
+          <div><div class="pnum-val" id="f-avg">+$4.75</div><div class="pnum-lbl">Avg increase/service</div></div>
         </div>
-        <div class="preview-breakdown" id="flat-breakdown">
-          <span class="skip">⊘ 48 price-sensitive skipped</span>
-          <span>· 280 total services</span>
-        </div>
+        <div class="preview-chips" id="f-chips"></div>
       </div>
 
       <div class="btn-row">
-        <button class="btn-apply" onclick="applyChanges('flat')">Apply Changes</button>
-        <button class="btn-secondary" onclick="closePanel()">Cancel</button>
-        <span style="font-size:0.75rem;color:var(--muted);margin-left:auto">Changes are saved to your price history</span>
+        <button class="btn-apply" onclick="apply('flat')">Apply Changes</button>
+        <button class="btn-ghost" onclick="close()">Cancel</button>
+        <span class="btn-hint">Saved to your price history</span>
       </div>
     </div>
   </div>
 
-  <!-- SMART FILTER -->
-  <div class="action-panel" id="panel-smart">
-    <div class="panel-header">
-      <div>
-        <h2>Rule-Based Increase</h2>
-        <p>Increase only the services that meet your criteria</p>
-      </div>
-      <button class="panel-close" onclick="closePanel()">✕</button>
+  <!-- ─── PANEL: SMART ────────────────────────────────── -->
+  <div class="panel" id="panel-smart">
+    <div class="panel-hd">
+      <div class="panel-hd-text"><h2>Increase by Category</h2><p>Toggle which service types to include or exclude</p></div>
+      <button class="panel-x" onclick="close()">✕</button>
     </div>
-    <div class="panel-body">
-      <div class="control-row">
-        <div class="control-group">
-          <label class="control-label">Minimum annual revenue</label>
-          <div style="margin-top:8px">
-            <input type="range" id="smart-rev-slider" min="0" max="20000" step="500" value="5000" oninput="syncSmartRev(this.value,'slider')">
-            <div class="range-labels"><span>$0</span><span>$20K+</span></div>
-          </div>
-        </div>
-        <div class="control-group" style="max-width:140px">
-          <label class="control-label">Min revenue ($)</label>
-          <input class="control-input" type="number" id="smart-rev-input" min="0" step="500" value="5000" oninput="syncSmartRev(this.value,'input')">
-        </div>
-        <div class="control-group" style="max-width:120px">
-          <label class="control-label">Increase %</label>
+    <div class="panel-bd">
+      <div class="field-row" style="margin-bottom:1.5rem">
+        <div class="field" style="max-width:120px">
+          <label>Increase %</label>
           <div class="pct-wrap">
-            <input class="control-input" type="number" id="smart-pct" min="0.1" max="50" step="0.1" value="5" oninput="updateSmartPreview()">
-            <span class="pct-suffix">%</span>
+            <input class="input" type="number" id="s-pct" min="0.1" max="50" step="0.1" value="5" oninput="smartPreview()">
+            <span class="pct-sfx">%</span>
           </div>
         </div>
       </div>
 
-      <div class="toggle-row">
-        <div class="toggle-label">
-          Skip price-sensitive services
-          <small>Vaccines, exams, dental, spay/neuter — services clients shop around for</small>
+      <div class="cat-section">
+        <div class="cat-label">Service categories — click to exclude</div>
+        <div class="cat-grid" id="cat-grid">
+          <!-- rendered by JS -->
         </div>
-        <label class="toggle">
-          <input type="checkbox" id="smart-skip-shoppable" checked onchange="updateSmartPreview()">
-          <span class="toggle-slider"></span>
-        </label>
       </div>
-      <div class="toggle-row">
-        <div class="toggle-label">
-          Skip low-volume services
-          <small>Services with fewer than 15 visits/yr — unlikely to move the needle</small>
+
+      <div class="shoppable-row" id="s-shp-row" onclick="toggleSShop()">
+        <div class="shoppable-badge">⚠️</div>
+        <div class="shoppable-text">
+          <strong>Also skip price-sensitive services</strong>
+          <span>Even within included categories, skip services clients shop around for</span>
         </div>
-        <label class="toggle">
-          <input type="checkbox" id="smart-skip-lowvol" checked onchange="updateSmartPreview()">
-          <span class="toggle-slider"></span>
+        <label class="toggle" onclick="event.stopPropagation()">
+          <input type="checkbox" id="s-shp" checked onchange="smartPreview()">
+          <span class="tslider"></span>
         </label>
       </div>
 
-      <div class="preview-box">
-        <div class="preview-title">Preview</div>
-        <div class="preview-stats">
-          <div>
-            <div class="preview-stat-val green" id="smart-count">87</div>
-            <div class="preview-stat-label">Services to update</div>
-          </div>
-          <div>
-            <div class="preview-stat-val" id="smart-impact">+$31,200</div>
-            <div class="preview-stat-label">Est. annual impact if applied</div>
-          </div>
+      <div class="preview">
+        <div class="preview-label">Preview</div>
+        <div class="preview-nums">
+          <div><div class="pnum-val g" id="s-count">—</div><div class="pnum-lbl">Services to update</div></div>
+          <div><div class="pnum-val" id="s-impact">—</div><div class="pnum-lbl">Est. annual impact</div></div>
         </div>
-        <div class="preview-breakdown" id="smart-breakdown">
-          <span class="skip">⊘ 48 price-sensitive skipped</span>
-          <span>· <span class="skip" id="smart-lowvol-skip">65 low-volume skipped</span></span>
-          <span>· <span class="skip" id="smart-rev-skip">80 below revenue threshold</span></span>
-        </div>
+        <div class="preview-chips" id="s-chips"></div>
       </div>
 
       <div class="btn-row">
-        <button class="btn-apply" onclick="applyChanges('smart')">Apply Changes</button>
-        <button class="btn-secondary" onclick="closePanel()">Cancel</button>
+        <button class="btn-apply" onclick="apply('smart')">Apply Changes</button>
+        <button class="btn-ghost" onclick="close()">Cancel</button>
       </div>
     </div>
   </div>
 
-  <!-- MANUAL REVIEW -->
-  <div class="action-panel" id="panel-manual">
-    <div class="panel-header">
-      <div>
-        <h2>Fee Guide Review</h2>
-        <p>Edit prices directly — click any price to change it</p>
-      </div>
-      <button class="panel-close" onclick="closePanel()">✕</button>
+  <!-- ─── PANEL: MANUAL ───────────────────────────────── -->
+  <div class="panel" id="panel-manual">
+    <div class="panel-hd">
+      <div class="panel-hd-text"><h2>Fee Guide</h2><p>Click any price to edit it directly</p></div>
+      <button class="panel-x" onclick="close()">✕</button>
     </div>
-    <div class="panel-body" style="padding-bottom:0">
+    <div class="panel-bd" style="padding-bottom:0">
       <div class="svc-search-wrap">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input class="svc-search" type="text" placeholder="Search by service name or code…" oninput="filterManual(this.value)" id="manual-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="svc-search" id="m-search" type="text" placeholder="Search services…" oninput="renderManual(this.value)">
       </div>
       <div style="overflow-x:auto">
-        <table class="svc-table" id="manual-table">
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Annual Revenue</th>
-              <th>Current Price</th>
-              <th style="text-align:right">New Price</th>
-            </tr>
-          </thead>
-          <tbody id="manual-tbody"></tbody>
+        <table class="svc-tbl">
+          <thead><tr><th>Service</th><th>Annual Revenue</th><th>Current Price</th><th style="text-align:right">New Price</th></tr></thead>
+          <tbody id="m-body"></tbody>
         </table>
       </div>
     </div>
-    <div class="manual-changes-bar" id="manual-bar">
-      <span style="font-size:0.85rem;color:var(--text)"><strong id="manual-change-count">0</strong> prices changed</span>
-      <div style="display:flex;gap:0.75rem">
-        <button class="btn-secondary" onclick="resetManual()">Reset all</button>
-        <button class="btn-apply" onclick="applyChanges('manual')" style="padding:10px 24px;font-size:0.85rem">Save Changes</button>
+    <div class="manual-bar" id="m-bar">
+      <span style="font-size:0.84rem;color:var(--text)"><strong id="m-count">0</strong> prices changed</span>
+      <div style="display:flex;gap:0.6rem">
+        <button class="btn-ghost" onclick="resetManual()">Reset</button>
+        <button class="btn-apply" onclick="apply('manual')" style="padding:9px 22px;font-size:0.83rem">Save Changes</button>
       </div>
     </div>
   </div>
 
-  <!-- VET INC SUGGESTIONS -->
-  <div class="action-panel" id="panel-ai">
-    <div class="panel-header">
-      <div>
-        <h2>Vet INC's Suggestions</h2>
-        <p>CPI-based analysis of your transaction data · You decide what to apply</p>
-      </div>
-      <button class="panel-close" onclick="closePanel()">✕</button>
+  <!-- ─── PANEL: AI ────────────────────────────────────── -->
+  <div class="panel" id="panel-ai">
+    <div class="panel-hd">
+      <div class="panel-hd-text"><h2>Vet INC's Suggestions</h2><p>CPI-based · You decide what to apply</p></div>
+      <button class="panel-x" onclick="close()">✕</button>
     </div>
-    <div class="panel-body">
-      <div class="ai-note">
-        <strong>How we came up with these:</strong> We compared your average prices year-over-year against Canada's 2.38% annual inflation rate (Statistics Canada, 2024). Services that haven't kept up are listed below. These are suggestions — apply as many or as few as you like.
+    <div class="panel-bd">
+      <p class="ai-note">We compared your year-over-year prices against Canada's <strong>2.38% inflation rate</strong> (2024). Services that haven't kept up are listed below. These are suggestions — apply as many or as few as you like. You know your practice better than we do.</p>
+      <div class="sug-filters">
+        <button class="sf-btn on" id="sf-all" onclick="sfilt('all')">All <span id="sf-n-all"></span></button>
+        <button class="sf-btn" id="sf-safe" onclick="sfilt('safe')">✓ Safe to raise <span id="sf-n-safe"></span></button>
+        <button class="sf-btn amb" id="sf-shp" onclick="sfilt('shoppable')">⚠ Price-sensitive <span id="sf-n-shp"></span></button>
       </div>
-      <div class="sug-filter-bar">
-        <button class="sug-filter on" id="sf-all" onclick="setSugFilter('all')">All <span id="sf-count-all">20</span></button>
-        <button class="sug-filter" id="sf-safe" onclick="setSugFilter('safe')">✓ Safe to raise <span id="sf-count-safe">12</span></button>
-        <button class="sug-filter amber" id="sf-shoppable" onclick="setSugFilter('shoppable')">⚠ Price-sensitive <span id="sf-count-shoppable">8</span></button>
-      </div>
-      <div class="suggestion-list" id="suggestion-list"></div>
-      <div class="ai-confirm-bar" id="ai-confirm-bar">
-        <span style="font-size:0.85rem;color:var(--text)"><strong id="ai-accepted-count">0</strong> changes accepted</span>
-        <button class="btn-apply" onclick="applyChanges('ai')" style="padding:10px 24px;font-size:0.85rem">Apply Accepted Changes</button>
+      <div class="sug-list" id="sug-list"></div>
+      <div class="ai-bar" id="ai-bar">
+        <span style="font-size:0.84rem;color:var(--text)"><strong id="ai-n">0</strong> changes accepted</span>
+        <button class="btn-apply" onclick="apply('ai')" style="padding:9px 22px;font-size:0.83rem">Apply Accepted</button>
       </div>
     </div>
   </div>
 
   <!-- PAST REVIEWS -->
-  <div class="history-section">
-    <div class="history-title">Past Reviews</div>
-    <div class="history-cards">
-      <div class="history-card">
-        <div class="history-period">Q1 2026 · Jan–Mar</div>
-        <div class="history-action">Smart increase · 5%</div>
-        <div class="history-detail">94 services updated · excluded shoppables</div>
-        <span class="history-tag">Applied Mar 14</span>
+  <div class="hist-section">
+    <div class="hist-label">Past reviews</div>
+    <div class="hist-row">
+      <div class="hist-card">
+        <div class="hc-period">Q1 2026 · Jan – Mar</div>
+        <div class="hc-action">Smart increase · 5%</div>
+        <div class="hc-detail">Surgery &amp; Diagnostics only · excluded shoppables</div>
+        <span class="hc-tag">Applied Mar 14</span>
       </div>
-      <div class="history-card">
-        <div class="history-period">Q4 2025 · Oct–Dec</div>
-        <div class="history-action">Flat increase · 3%</div>
-        <div class="history-detail">All 280 services · no exclusions</div>
-        <span class="history-tag">Applied Dec 12</span>
+      <div class="hist-card">
+        <div class="hc-period">Q4 2025 · Oct – Dec</div>
+        <div class="hc-action">Flat increase · 3%</div>
+        <div class="hc-detail">All 280 services</div>
+        <span class="hc-tag">Applied Dec 12</span>
       </div>
-      <div class="history-card">
-        <div class="history-period">Q3 2025 · Jul–Sep</div>
-        <div class="history-action">Manual review</div>
-        <div class="history-detail">12 services updated individually</div>
-        <span class="history-tag">Applied Sep 3</span>
+      <div class="hist-card">
+        <div class="hc-period">Q3 2025 · Jul – Sep</div>
+        <div class="hc-action">Manual review</div>
+        <div class="hc-detail">12 services updated individually</div>
+        <span class="hc-tag">Applied Sep 3</span>
       </div>
     </div>
   </div>
 </main>
 
-<!-- SUCCESS MODAL -->
-<div class="modal-overlay" id="success-modal">
+<!-- MODAL -->
+<div class="modal-bg" id="modal">
   <div class="modal">
-    <div class="modal-icon">✅</div>
-    <h2 id="modal-title">Changes Applied</h2>
-    <p id="modal-sub">Your price update for Q2 2026 has been saved.</p>
-    <div class="modal-detail" id="modal-detail"></div>
-    <button class="btn-modal-close" onclick="closeModal()">Done</button>
+    <div class="modal-ico">✅</div>
+    <h2 id="m-title">Changes Applied</h2>
+    <p id="m-sub">Your Q2 2026 price update has been saved.</p>
+    <div class="modal-detail" id="m-detail"></div>
+    <button class="btn-done" onclick="closeModal()">Done</button>
   </div>
 </div>
 
 <script>
-// ─── DATA ───────────────────────────────────────────────────────────
-const SERVICES = [
-  { code:'EXAM01', name:'Physical Examination',      price:65.00,  visits:650, isShoppable:true  },
-  { code:'LAB01',  name:'Chemistry Panel',           price:115.00, visits:320, isShoppable:false },
-  { code:'BLOOD01',name:'Complete Blood Count',      price:89.00,  visits:320, isShoppable:false },
-  { code:'ANES01', name:'Anesthesia',                price:185.00, visits:160, isShoppable:false },
-  { code:'SURG02', name:'Soft Tissue Surgery',       price:680.00, visits:40,  isShoppable:false },
-  { code:'DENT01', name:'Dental Cleaning',           price:285.00, visits:120, isShoppable:true  },
-  { code:'VACC01', name:'DA2PP Vaccine',             price:32.50,  visits:570, isShoppable:true  },
-  { code:'VACC02', name:'Rabies Vaccine',            price:28.00,  visits:600, isShoppable:true  },
-  { code:'IV01',   name:'IV Catheter & Fluids',      price:95.00,  visits:240, isShoppable:false },
-  { code:'XRAY01', name:'Radiograph (2 views)',      price:145.00, visits:130, isShoppable:false },
-  { code:'ULTRA01',name:'Abdominal Ultrasound',      price:220.00, visits:70,  isShoppable:false },
-  { code:'HW01',   name:'Heartworm Test',            price:45.00,  visits:330, isShoppable:true  },
-  { code:'MICRO01',name:'Microchip Implant',         price:55.00,  visits:150, isShoppable:true  },
-  { code:'URINE01',name:'Urinalysis',                price:52.00,  visits:240, isShoppable:false },
-  { code:'PATH01', name:'Histopathology',            price:165.00, visits:90,  isShoppable:false },
-  { code:'FLEA01', name:'Flea/Tick Prevention',      price:58.00,  visits:190, isShoppable:true  },
-  { code:'DENT02', name:'Dental Extraction',         price:45.00,  visits:180, isShoppable:false },
-  { code:'NAIL01', name:'Nail Trim',                 price:18.00,  visits:180, isShoppable:true  },
-  { code:'SURG01', name:'Ovariohysterectomy (Spay)', price:425.00, visits:60,  isShoppable:true  },
-  { code:'HOSP01', name:'Hospitalization (per day)', price:75.00,  visits:220, isShoppable:false },
+// ── DATA ──────────────────────────────────────────────────────────────
+const SVCS = [
+  { code:'EXAM01', name:'Physical Examination',       price:65.00,  visits:650, cat:'preventive',    shoppable:true  },
+  { code:'VACC01', name:'DA2PP Vaccine',              price:32.50,  visits:570, cat:'preventive',    shoppable:true  },
+  { code:'VACC02', name:'Rabies Vaccine',             price:28.00,  visits:600, cat:'preventive',    shoppable:true  },
+  { code:'HW01',   name:'Heartworm Test',             price:45.00,  visits:330, cat:'preventive',    shoppable:true  },
+  { code:'FLEA01', name:'Flea/Tick Prevention',       price:58.00,  visits:190, cat:'preventive',    shoppable:true  },
+  { code:'MICRO01',name:'Microchip Implant',          price:55.00,  visits:150, cat:'preventive',    shoppable:true  },
+  { code:'SURG01', name:'Ovariohysterectomy (Spay)',  price:425.00, visits:60,  cat:'surgery',       shoppable:true  },
+  { code:'SURG02', name:'Soft Tissue Surgery',        price:680.00, visits:40,  cat:'surgery',       shoppable:false },
+  { code:'DENT02', name:'Dental Extraction',          price:45.00,  visits:180, cat:'surgery',       shoppable:false },
+  { code:'BLOOD01',name:'Complete Blood Count',       price:89.00,  visits:320, cat:'diagnostics',   shoppable:false },
+  { code:'LAB01',  name:'Chemistry Panel',            price:115.00, visits:320, cat:'diagnostics',   shoppable:false },
+  { code:'URINE01',name:'Urinalysis',                 price:52.00,  visits:240, cat:'diagnostics',   shoppable:false },
+  { code:'XRAY01', name:'Radiograph (2 views)',       price:145.00, visits:130, cat:'diagnostics',   shoppable:false },
+  { code:'ULTRA01',name:'Abdominal Ultrasound',       price:220.00, visits:70,  cat:'diagnostics',   shoppable:false },
+  { code:'PATH01', name:'Histopathology',             price:165.00, visits:90,  cat:'diagnostics',   shoppable:false },
+  { code:'DENT01', name:'Dental Cleaning',            price:285.00, visits:120, cat:'dental',        shoppable:true  },
+  { code:'ANES01', name:'Anesthesia',                 price:185.00, visits:160, cat:'in-hospital',   shoppable:false },
+  { code:'IV01',   name:'IV Catheter & Fluids',       price:95.00,  visits:240, cat:'in-hospital',   shoppable:false },
+  { code:'HOSP01', name:'Hospitalization (per day)',  price:75.00,  visits:220, cat:'in-hospital',   shoppable:false },
+  { code:'NAIL01', name:'Nail Trim',                  price:18.00,  visits:180, cat:'palliative',    shoppable:true  },
 ];
-SERVICES.forEach(s => s.annualRevenue = Math.round(s.price * s.visits));
+SVCS.forEach(s => s.rev = Math.round(s.price * s.visits));
 
-const TOTAL_SERVICES  = 280;
-const SHOPPABLE_COUNT = 48;
-const LOW_VOL_COUNT   = 65;
-const SAFE_COUNT      = TOTAL_SERVICES - SHOPPABLE_COUNT - LOW_VOL_COUNT; // 167
+// Category definitions
+const CATS = [
+  { id:'preventive',  label:'Preventive Care',  icon:'💉', sub:'Vaccines, wellness, parasite prevention', count:35 },
+  { id:'surgery',     label:'Surgery',           icon:'🔬', sub:'Soft tissue, ortho, spay/neuter',         count:22 },
+  { id:'diagnostics', label:'Diagnostics',       icon:'🧪', sub:'Labs, imaging, urinalysis, pathology',    count:68 },
+  { id:'dental',      label:'Dental',            icon:'🦷', sub:'Cleanings, extractions, oral procedures', count:18 },
+  { id:'in-hospital', label:'In-Hospital',       icon:'🏥', sub:'Anesthesia, fluids, hospitalization',     count:28 },
+  { id:'palliative',  label:'Palliative & Other',icon:'❤️', sub:'Pain mgmt, comfort care, misc services',  count:109 },
+];
+const TOTAL = 280;
+const SHOPPABLE_N = 48;
 
-// ─── OPTION SELECTION ───────────────────────────────────────────────
-let activeOption = null;
-
-function selectOption(opt) {
-  if (activeOption === opt) { closePanel(); return; }
-  activeOption = opt;
-  document.querySelectorAll('.option-card').forEach(c => c.classList.remove('active'));
-  document.getElementById('card-' + opt).classList.add('active');
-  document.querySelectorAll('.action-panel').forEach(p => p.classList.remove('visible'));
-  const panel = document.getElementById('panel-' + opt);
-  panel.classList.add('visible');
-  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  if (opt === 'flat')   updateFlatPreview();
-  if (opt === 'smart')  updateSmartPreview();
-  if (opt === 'manual') renderManualTable('');
-  if (opt === 'ai')     renderSuggestions('all');
+// ── OPTION SELECTION ─────────────────────────────────────────────────
+let active = null;
+function pick(id) {
+  if (active === id) { close(); return; }
+  active = id;
+  document.querySelectorAll('.opt').forEach(c => c.classList.remove('active'));
+  document.getElementById('card-' + id).classList.add('active');
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('open'));
+  const p = document.getElementById('panel-' + id);
+  p.classList.add('open');
+  setTimeout(() => p.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
+  if (id === 'flat')   flatPreview();
+  if (id === 'smart')  { buildCats(); smartPreview(); }
+  if (id === 'manual') renderManual('');
+  if (id === 'ai')     { renderSugs('all'); }
+}
+function close() {
+  active = null;
+  document.querySelectorAll('.opt').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('open'));
 }
 
-function closePanel() {
-  activeOption = null;
-  document.querySelectorAll('.option-card').forEach(c => c.classList.remove('active'));
-  document.querySelectorAll('.action-panel').forEach(p => p.classList.remove('visible'));
+// ── FLAT ─────────────────────────────────────────────────────────────
+function syncF(v, src) {
+  const n = Math.max(0.1, Math.min(50, parseFloat(v)||0));
+  if (src==='sl') document.getElementById('f-pct').value = n;
+  else { const sl = document.getElementById('f-slider'); if (n>=1&&n<=15) sl.value=n; }
+  flatPreview();
+}
+function flatPreview() {
+  const pct  = parseFloat(document.getElementById('f-pct').value)||0;
+  const skip = document.getElementById('f-shp').checked;
+  const count = skip ? TOTAL - SHOPPABLE_N : TOTAL;
+  const avgRev = SVCS.reduce((t,s)=>t+s.rev,0)/SVCS.length * (TOTAL/SVCS.length);
+  const impact = Math.round(count * (avgRev/TOTAL) * pct/100 * TOTAL * 0.9);
+  const avgPrice = SVCS.reduce((t,s)=>t+s.price,0)/SVCS.length;
+  document.getElementById('f-count').textContent  = count.toLocaleString();
+  document.getElementById('f-impact').textContent = '+$' + Math.round(pct * 8600).toLocaleString();
+  document.getElementById('f-avg').textContent    = '+$' + (avgPrice * pct/100).toFixed(2);
+  document.getElementById('f-chips').innerHTML    = skip
+    ? `<span class="pchip">⊘ ${SHOPPABLE_N} price-sensitive skipped</span>`
+    : `<span class="pchip safe">✓ All ${TOTAL} services included</span>`;
 }
 
-// ─── FLAT INCREASE ──────────────────────────────────────────────────
-function syncFlat(val, src) {
-  const v = Math.max(0.1, Math.min(50, parseFloat(val) || 0));
-  if (src === 'slider') document.getElementById('flat-pct-input').value = v;
-  else { const sl = document.getElementById('flat-pct-slider'); if (v >= 1 && v <= 15) sl.value = v; }
-  updateFlatPreview();
+// ── SMART / CATEGORIES ────────────────────────────────────────────────
+const excluded = new Set();
+function buildCats() {
+  document.getElementById('cat-grid').innerHTML = CATS.map(c => `
+    <div class="cat-chip${excluded.has(c.id) ? ' excluded' : ' on'}" id="chip-${c.id}" onclick="toggleCat('${c.id}')">
+      <span class="chip-dot"></span>
+      <span class="chip-icon">${c.icon}</span>
+      <div class="chip-info">
+        <div class="chip-name">${c.label}</div>
+        <div class="chip-sub">${c.count} services</div>
+      </div>
+    </div>`).join('');
+}
+function toggleCat(id) {
+  excluded.has(id) ? excluded.delete(id) : excluded.add(id);
+  const el = document.getElementById('chip-' + id);
+  el.classList.toggle('on', !excluded.has(id));
+  el.classList.toggle('excluded', excluded.has(id));
+  smartPreview();
+}
+function toggleSShop() {
+  const cb = document.getElementById('s-shp');
+  cb.checked = !cb.checked; smartPreview();
+}
+function toggleFShop() {
+  const cb = document.getElementById('f-shp');
+  cb.checked = !cb.checked; flatPreview();
+}
+function smartPreview() {
+  const pct  = parseFloat(document.getElementById('s-pct').value)||0;
+  const skip = document.getElementById('s-shp').checked;
+  const exCount = Array.from(excluded).reduce((t,id) => {
+    const c = CATS.find(x=>x.id===id); return t + (c?c.count:0);
+  }, 0);
+  const shopHit = skip ? Math.round(SHOPPABLE_N * (1 - exCount/TOTAL)) : 0;
+  const count   = Math.max(0, TOTAL - exCount - shopHit);
+  const excl    = Array.from(excluded).map(id => CATS.find(c=>c.id===id)?.label).filter(Boolean);
+  document.getElementById('s-count').textContent  = count.toLocaleString();
+  document.getElementById('s-impact').textContent = '+$' + Math.round(count * pct * 42).toLocaleString();
+  const chips = excl.map(l=>`<span class="pchip">⊘ ${l} excluded</span>`).join('');
+  const shopChip = shopHit ? `<span class="pchip">⊘ ~${shopHit} price-sensitive skipped</span>` : '';
+  document.getElementById('s-chips').innerHTML = chips + shopChip ||
+    `<span class="pchip safe">✓ All categories included</span>`;
 }
 
-function updateFlatPreview() {
-  const pct = parseFloat(document.getElementById('flat-pct-input').value) || 0;
-  const skipShop = document.getElementById('flat-skip-shoppable').checked;
-  const count = skipShop ? TOTAL_SERVICES - SHOPPABLE_COUNT : TOTAL_SERVICES;
-  const sampleRevenue = SERVICES.filter(s => skipShop ? !s.isShoppable : true)
-    .reduce((t, s) => t + s.annualRevenue, 0);
-  const scaleFactor   = (skipShop ? TOTAL_SERVICES - SHOPPABLE_COUNT : TOTAL_SERVICES) / SERVICES.length;
-  const impact        = Math.round(sampleRevenue * scaleFactor * 2.1 * pct / 100);
-  const avgPrice      = SERVICES.reduce((t,s) => t + s.price, 0) / SERVICES.length;
-  const avgDelta      = (avgPrice * pct / 100).toFixed(2);
-
-  document.getElementById('flat-count').textContent  = count.toLocaleString();
-  document.getElementById('flat-impact').textContent  = '+$' + impact.toLocaleString();
-  document.getElementById('flat-avg-delta').textContent = '+$' + avgDelta;
-  document.getElementById('flat-breakdown').innerHTML = skipShop
-    ? `<span class="skip">⊘ ${SHOPPABLE_COUNT} price-sensitive skipped</span><span>· ${TOTAL_SERVICES} total services</span>`
-    : `<span>All ${TOTAL_SERVICES} services included</span>`;
-}
-
-// ─── SMART INCREASE ─────────────────────────────────────────────────
-function syncSmartRev(val, src) {
-  const v = Math.max(0, Math.min(20000, parseInt(val) || 0));
-  if (src === 'slider') document.getElementById('smart-rev-input').value = v;
-  else { const sl = document.getElementById('smart-rev-slider'); sl.value = Math.min(v, 20000); }
-  updateSmartPreview();
-}
-
-function updateSmartPreview() {
-  const minRev    = parseInt(document.getElementById('smart-rev-input').value) || 0;
-  const pct       = parseFloat(document.getElementById('smart-pct').value) || 0;
-  const skipShop  = document.getElementById('smart-skip-shoppable').checked;
-  const skipLowVol= document.getElementById('smart-skip-lowvol').checked;
-
-  const revSkip   = Math.round((minRev / 20000) * 80);
-  const shopSkip  = skipShop  ? SHOPPABLE_COUNT : 0;
-  const lowSkip   = skipLowVol ? LOW_VOL_COUNT  : 0;
-  const count     = Math.max(0, TOTAL_SERVICES - shopSkip - lowSkip - revSkip);
-
-  const sampleMatch = SERVICES.filter(s =>
-    s.annualRevenue >= minRev &&
-    (!skipShop  || !s.isShoppable) &&
-    (!skipLowVol || s.visits >= 15)
-  );
-  const impact = Math.round(sampleMatch.reduce((t,s) => t + s.annualRevenue * pct/100, 0) * 5.2);
-
-  document.getElementById('smart-count').textContent  = count.toLocaleString();
-  document.getElementById('smart-impact').textContent  = '+$' + impact.toLocaleString();
-  document.getElementById('smart-breakdown').innerHTML =
-    (skipShop   ? `<span class="skip">⊘ ${shopSkip} price-sensitive skipped</span>` : '') +
-    (skipLowVol ? `<span> · <span class="skip">${lowSkip} low-volume skipped</span></span>` : '') +
-    (revSkip    ? `<span> · <span class="skip">${revSkip} below $${minRev.toLocaleString()} threshold</span></span>` : '');
-}
-
-// ─── MANUAL TABLE ───────────────────────────────────────────────────
-const manualChanges = {};
-
-function renderManualTable(query) {
-  const q = query.toLowerCase();
-  const rows = SERVICES.filter(s =>
-    !q || s.name.toLowerCase().includes(q) || s.code.toLowerCase().includes(q)
-  );
-  document.getElementById('manual-tbody').innerHTML = rows.map(s => {
-    const changed = manualChanges[s.code];
-    const val = changed !== undefined ? changed : s.price.toFixed(2);
-    const isChanged = changed !== undefined;
+// ── MANUAL ────────────────────────────────────────────────────────────
+const mChanges = {};
+function renderManual(q) {
+  const lq = q.toLowerCase();
+  const rows = SVCS.filter(s => !lq || s.name.toLowerCase().includes(lq) || s.code.toLowerCase().includes(lq));
+  document.getElementById('m-body').innerHTML = rows.map(s => {
+    const chg = mChanges[s.code];
+    const val = chg !== undefined ? chg : s.price.toFixed(2);
     return `<tr>
-      <td>
-        <div class="svc-name">${s.name}${s.isShoppable ? '<span class="shoppable-tag">⚠ Price-Sensitive</span>' : ''}</div>
-        <div class="svc-code">${s.code}</div>
-      </td>
-      <td><div class="svc-revenue">$${s.annualRevenue.toLocaleString()}/yr</div></td>
-      <td><div class="svc-price-current">$${s.price.toFixed(2)}</div></td>
-      <td style="text-align:right">
-        <input class="svc-price-input${isChanged ? ' changed' : ''}" type="number" step="0.01" min="0"
-          value="${val}" data-code="${s.code}" data-original="${s.price.toFixed(2)}"
-          oninput="onManualChange(this)" />
-      </td>
+      <td><div class="td-name">${s.name}${s.shoppable?`<span class="shp-tag">⚠ Sensitive</span>`:''}</div><div class="td-code">${s.code}</div></td>
+      <td><div class="td-rev">$${s.rev.toLocaleString()}/yr</div></td>
+      <td><div class="td-cur">$${s.price.toFixed(2)}</div></td>
+      <td style="text-align:right"><input class="svc-input${chg!==undefined?' chg':''}" type="number" step="0.01" min="0" value="${val}" data-code="${s.code}" data-orig="${s.price.toFixed(2)}" oninput="onMChg(this)"></td>
     </tr>`;
   }).join('');
 }
-
-function onManualChange(input) {
-  const code = input.dataset.code;
-  const orig = parseFloat(input.dataset.original);
-  const val  = parseFloat(input.value);
-  if (!isNaN(val) && val !== orig) {
-    manualChanges[code] = val.toFixed(2);
-    input.classList.add('changed');
-  } else {
-    delete manualChanges[code];
-    input.classList.remove('changed');
-  }
-  const count = Object.keys(manualChanges).length;
-  document.getElementById('manual-change-count').textContent = count;
-  const bar = document.getElementById('manual-bar');
-  count > 0 ? bar.classList.add('visible') : bar.classList.remove('visible');
+function onMChg(el) {
+  const code = el.dataset.code, orig = parseFloat(el.dataset.orig), val = parseFloat(el.value);
+  if (!isNaN(val) && val !== orig) { mChanges[code] = val.toFixed(2); el.classList.add('chg'); }
+  else { delete mChanges[code]; el.classList.remove('chg'); }
+  const n = Object.keys(mChanges).length;
+  document.getElementById('m-count').textContent = n;
+  document.getElementById('m-bar').classList.toggle('show', n > 0);
 }
-
-function filterManual(q) { renderManualTable(q); }
 function resetManual() {
-  Object.keys(manualChanges).forEach(k => delete manualChanges[k]);
-  renderManualTable(document.getElementById('manual-search').value);
-  document.getElementById('manual-change-count').textContent = '0';
-  document.getElementById('manual-bar').classList.remove('visible');
+  Object.keys(mChanges).forEach(k=>delete mChanges[k]);
+  renderManual(document.getElementById('m-search').value);
+  document.getElementById('m-count').textContent = '0';
+  document.getElementById('m-bar').classList.remove('show');
 }
 
-// ─── AI SUGGESTIONS ─────────────────────────────────────────────────
-const aiAccepted = new Set();
-const aiSkipped  = new Set();
-let sugFilter    = 'all';
+// ── AI SUGGESTIONS ────────────────────────────────────────────────────
+const accepted = new Set(), skipped = new Set();
+let sfActive = 'all';
+const SUGS = SVCS.map(s => ({ ...s, newPrice: parseFloat((s.price * 1.0738).toFixed(2)) }));
 
-const SUGGESTIONS = SERVICES.map(s => ({
-  ...s,
-  suggestedPrice: parseFloat((s.price * 1.0738).toFixed(2))
-}));
-
-function setSugFilter(f) {
-  sugFilter = f;
-  document.querySelectorAll('.sug-filter').forEach(b => b.classList.remove('on'));
-  document.getElementById('sf-' + f).classList.add('on');
-  renderSuggestions(f);
+function sfilt(f) {
+  sfActive = f;
+  document.querySelectorAll('.sf-btn').forEach(b => b.classList.remove('on'));
+  document.getElementById('sf-' + (f==='shoppable'?'shp':f==='safe'?'safe':'all')).classList.add('on');
+  renderSugs(f);
 }
-
-function renderSuggestions(f) {
-  const items = f === 'all' ? SUGGESTIONS
-    : f === 'safe'     ? SUGGESTIONS.filter(s => !s.isShoppable)
-    : SUGGESTIONS.filter(s => s.isShoppable);
-
-  document.getElementById('sf-count-all').textContent      = SUGGESTIONS.length;
-  document.getElementById('sf-count-safe').textContent     = SUGGESTIONS.filter(s => !s.isShoppable).length;
-  document.getElementById('sf-count-shoppable').textContent= SUGGESTIONS.filter(s => s.isShoppable).length;
-
-  document.getElementById('suggestion-list').innerHTML = items.map(s => {
-    const delta = (s.suggestedPrice - s.price).toFixed(2);
-    const accepted = aiAccepted.has(s.code);
-    const skipped  = aiSkipped.has(s.code);
-    return `<div class="suggestion-item${accepted ? ' accepted' : skipped ? ' skipped' : ''}" id="sug-${s.code}">
-      <div class="sug-info">
-        <div class="sug-name">${s.name}${s.isShoppable ? '<span class="shoppable-tag">⚠ Sensitive</span>' : ''}</div>
-        <div class="sug-meta">${s.code} · ${s.visits.toLocaleString()} visits/yr · $${s.annualRevenue.toLocaleString()}/yr revenue</div>
+function renderSugs(f) {
+  const items = f==='all' ? SUGS : f==='safe' ? SUGS.filter(s=>!s.shoppable) : SUGS.filter(s=>s.shoppable);
+  document.getElementById('sf-n-all').textContent  = SUGS.length;
+  document.getElementById('sf-n-safe').textContent = SUGS.filter(s=>!s.shoppable).length;
+  document.getElementById('sf-n-shp').textContent  = SUGS.filter(s=>s.shoppable).length;
+  document.getElementById('sug-list').innerHTML = items.map(s => {
+    const delta = (s.newPrice - s.price).toFixed(2);
+    const acc = accepted.has(s.code), skp = skipped.has(s.code);
+    return `<div class="sug-item${acc?' acc':skp?' skp':''}" id="si-${s.code}">
+      <div class="si-info">
+        <div class="si-name">${s.name}${s.shoppable?`<span class="shp-tag">⚠ Sensitive</span>`:''}</div>
+        <div class="si-meta">${s.code} · ${s.visits.toLocaleString()} visits/yr</div>
       </div>
-      <div class="sug-price">
-        <span class="sug-old">$${s.price.toFixed(2)}</span>
+      <div class="si-price">
+        <span class="si-old">$${s.price.toFixed(2)}</span>
         <span style="color:var(--muted)">→</span>
-        <span class="sug-new">$${s.suggestedPrice.toFixed(2)}</span>
-        <span class="sug-delta">+$${delta}</span>
+        <span class="si-new">$${s.newPrice.toFixed(2)}</span>
+        <span class="si-delta">+$${delta}</span>
       </div>
-      <div class="sug-actions">
-        <button class="btn-accept${accepted ? ' on' : ''}" onclick="toggleAccept('${s.code}')">${accepted ? '✓ Accepted' : '✓ Accept'}</button>
-        <button class="btn-skip" onclick="skipSug('${s.code}')">Skip</button>
+      <div class="si-acts">
+        <button class="btn-acc${acc?' on':''}" onclick="tAcc('${s.code}')">${acc?'✓ Accepted':'✓ Accept'}</button>
+        <button class="btn-skp" onclick="tSkp('${s.code}')">Skip</button>
       </div>
     </div>`;
   }).join('');
 }
-
-function toggleAccept(code) {
-  if (aiAccepted.has(code)) { aiAccepted.delete(code); }
-  else { aiAccepted.add(code); aiSkipped.delete(code); }
-  updateAiBar();
-  renderSuggestions(sugFilter);
-}
-function skipSug(code) {
-  aiSkipped.add(code); aiAccepted.delete(code);
-  updateAiBar();
-  renderSuggestions(sugFilter);
-}
-function updateAiBar() {
-  const count = aiAccepted.size;
-  document.getElementById('ai-accepted-count').textContent = count;
-  const bar = document.getElementById('ai-confirm-bar');
-  count > 0 ? bar.classList.add('visible') : bar.classList.remove('visible');
+function tAcc(code) { accepted.has(code)?accepted.delete(code):accepted.add(code); skipped.delete(code); updAiBar(); renderSugs(sfActive); }
+function tSkp(code) { skipped.add(code); accepted.delete(code); updAiBar(); renderSugs(sfActive); }
+function updAiBar() {
+  const n = accepted.size;
+  document.getElementById('ai-n').textContent = n;
+  document.getElementById('ai-bar').classList.toggle('show', n>0);
 }
 
-// ─── APPLY / MODAL ──────────────────────────────────────────────────
-function applyChanges(type) {
+// ── APPLY & MODAL ─────────────────────────────────────────────────────
+function apply(type) {
   let title, sub, detail;
-  if (type === 'flat') {
-    const pct   = document.getElementById('flat-pct-input').value;
-    const count = document.getElementById('flat-count').textContent;
-    const impact= document.getElementById('flat-impact').textContent;
-    const skipShop = document.getElementById('flat-skip-shoppable').checked;
-    title  = 'Flat Increase Applied';
-    sub    = `Q2 2026 price update saved to your history.`;
-    detail = `<strong>${pct}% increase</strong> applied to <strong>${count} services</strong>${skipShop ? ', excluding price-sensitive items' : ''}.<br>Estimated annual impact if prices hold: <strong style="color:var(--green)">${impact}/yr</strong>`;
-  } else if (type === 'smart') {
-    const pct   = document.getElementById('smart-pct').value;
-    const count = document.getElementById('smart-count').textContent;
-    const impact= document.getElementById('smart-impact').textContent;
-    title  = 'Smart Increase Applied';
-    sub    = `Q2 2026 price update saved to your history.`;
-    detail = `<strong>${pct}% increase</strong> applied to <strong>${count} services</strong> matching your rules.<br>Estimated annual impact: <strong style="color:var(--green)">${impact}/yr</strong>`;
-  } else if (type === 'manual') {
-    const count = Object.keys(manualChanges).length;
-    title  = 'Price Changes Saved';
-    sub    = `Your manual updates have been saved.`;
-    detail = `<strong>${count} service${count !== 1 ? 's' : ''}</strong> updated manually.<br>Changes are recorded in your price history.`;
-  } else if (type === 'ai') {
-    const count = aiAccepted.size;
-    title  = 'Suggestions Applied';
-    sub    = `Selected Vet INC suggestions have been saved.`;
-    detail = `<strong>${count} suggestion${count !== 1 ? 's' : ''}</strong> accepted and applied.<br>Based on Canada CPI 2.38% · You can revert any change from price history.`;
+  if (type==='flat') {
+    const pct=document.getElementById('f-pct').value, cnt=document.getElementById('f-count').textContent, imp=document.getElementById('f-impact').textContent, skip=document.getElementById('f-shp').checked;
+    title='Flat Increase Applied'; sub='Q2 2026 update saved.';
+    detail=`<strong>${pct}% increase</strong> applied to <strong>${cnt} services</strong>${skip?', excluding price-sensitive items':''}.<br>Est. annual impact: <strong style="color:var(--green)">${imp}/yr</strong>`;
+  } else if (type==='smart') {
+    const pct=document.getElementById('s-pct').value, cnt=document.getElementById('s-count').textContent, imp=document.getElementById('s-impact').textContent;
+    const excl=Array.from(excluded).map(id=>CATS.find(c=>c.id===id)?.label).filter(Boolean).join(', ')||'none';
+    title='Category Increase Applied'; sub='Q2 2026 update saved.';
+    detail=`<strong>${pct}% increase</strong> applied to <strong>${cnt} services</strong>.<br>Excluded: ${excl}.<br>Est. impact: <strong style="color:var(--green)">${imp}/yr</strong>`;
+  } else if (type==='manual') {
+    const n=Object.keys(mChanges).length;
+    title='Manual Changes Saved'; sub='Your updates are recorded.';
+    detail=`<strong>${n} service${n!==1?'s':''}</strong> updated directly. All changes are logged in your price history.`;
+  } else {
+    const n=accepted.size;
+    title='Suggestions Applied'; sub='Selected changes have been saved.';
+    detail=`<strong>${n} suggestion${n!==1?'s':''}</strong> accepted and applied.<br>Based on Canada CPI 2.38% · You can view or revert any change in your price history.`;
   }
-  document.getElementById('modal-title').textContent  = title;
-  document.getElementById('modal-sub').textContent    = sub;
-  document.getElementById('modal-detail').innerHTML   = detail;
-  document.getElementById('success-modal').classList.add('open');
+  document.getElementById('m-title').textContent = title;
+  document.getElementById('m-sub').textContent   = sub;
+  document.getElementById('m-detail').innerHTML  = detail;
+  document.getElementById('modal').classList.add('open');
 }
+function closeModal() { document.getElementById('modal').classList.remove('open'); close(); }
+document.getElementById('modal').addEventListener('click', e => { if(e.target===document.getElementById('modal')) closeModal(); });
 
-function closeModal() {
-  document.getElementById('success-modal').classList.remove('open');
-  closePanel();
-}
-document.getElementById('success-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
-// ─── INIT ────────────────────────────────────────────────────────────
-updateFlatPreview();
-updateSmartPreview();
+// init previews
+flatPreview();
 </script>
 </body>
 </html>
