@@ -7,18 +7,18 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #f4f7ff;
+  --bg: #f0f6ff;
   --surface: #ffffff;
   --surface2: #eff6ff;
-  --border: #e0eaff;
+  --border: #dbeafe;
   --primary: #2563eb;
   --primary-light: #60a5fa;
-  --text: #1a2f50;
+  --text: #1e3a5f;
   --muted: #64748b;
   --green: #16a34a;
   --amber: #d97706;
-  --red: #dc2626;
   --purple: #7c3aed;
+  --red: #dc2626;
 }
 body {
   background: var(--bg);
@@ -28,331 +28,303 @@ body {
   min-height: 100vh;
 }
 
-/* ── HEADER ─────────────────────────────────────────── */
+/* ── HEADER ── */
 .header {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 0 2.5rem;
+  padding: 0 2rem;
   display: flex; align-items: center; justify-content: space-between;
-  height: 68px;
-  position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 1px 12px rgba(37,99,235,.06);
+  height: 80px;
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 1px 12px rgba(37,99,235,.07);
 }
-.logo-mark {
-  width: 34px; height: 34px;
-  background: linear-gradient(135deg, #2563eb, #60a5fa);
-  border-radius: 9px;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 2px 8px rgba(37,99,235,.28);
-}
-.logo-mark svg { color: #fff; }
-.header-left { display: flex; align-items: center; gap: 10px; }
-.header-brand { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em; }
-.header-brand em { color: var(--primary); font-style: normal; }
-.hdiv { width: 1px; height: 20px; background: var(--border); margin: 0 6px; }
-.clinic-tag { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
-.period-pill {
-  background: #dbeafe; color: var(--primary);
-  font-size: 0.72rem; font-weight: 700;
-  padding: 5px 13px; border-radius: 20px; letter-spacing: 0.04em;
+.header-left { display: flex; align-items: center; gap: 1rem; }
+.header-divider { width: 1px; height: 24px; background: var(--border); }
+.clinic-name { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+.owner-badge {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--primary); font-size: 0.78rem; font-weight: 600;
+  padding: 6px 14px; border-radius: 8px;
 }
 
-/* ── CONTEXT BAR ─────────────────────────────────────── */
-.ctx-bar {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 0.55rem 2.5rem;
-  display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;
+/* ── CONTEXT STRIP ── */
+.ctx {
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 0.55rem 2rem;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
   font-size: 0.77rem; color: var(--muted);
 }
-.ctx-bar strong { color: var(--text); }
-.review-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--amber); display: inline-block; margin-right: 5px; flex-shrink: 0;
-}
+.ctx strong { color: var(--text); }
+.ctx-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); display: inline-block; margin-right: 5px; }
 
-/* ── MAIN ─────────────────────────────────────────────── */
-main { max-width: 980px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+/* ── MAIN ── */
+main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
 
 .intro { margin-bottom: 2.25rem; }
-.intro h1 { font-size: 1.55rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 0.35rem; }
-.intro p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 560px; }
+.intro h1 { font-size: 1.55rem; font-weight: 900; color: var(--text); margin-bottom: 0.35rem; }
+.intro p  { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 560px; }
 
-/* ── OPTION CARDS ────────────────────────────────────── */
-.options { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.85rem; margin-bottom: 1.25rem; }
-@media(max-width:640px){ .options { grid-template-columns:1fr; } }
+/* ── OPTION CARDS ── */
+.options { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.25rem; }
+@media(max-width:700px){ .options { grid-template-columns:1fr; } }
 
 .opt {
-  background: var(--surface); border: 2px solid var(--border); border-radius: 14px;
-  padding: 1.35rem 1.4rem; cursor: pointer;
-  display: flex; gap: 0.9rem; align-items: flex-start;
-  transition: border-color 0.16s, box-shadow 0.16s, transform 0.16s;
+  background: var(--surface); border: 2px solid var(--border); border-radius: 16px;
+  padding: 1.5rem 1.4rem; cursor: pointer;
+  display: flex; gap: 1rem; align-items: flex-start;
+  transition: border-color .18s, box-shadow .18s, transform .18s;
   position: relative;
 }
-.opt:hover { border-color: var(--primary-light); box-shadow: 0 5px 22px rgba(37,99,235,.09); transform: translateY(-1px); }
-.opt.active { border-color: var(--primary); box-shadow: 0 5px 22px rgba(37,99,235,.14); }
+.opt:hover { border-color: var(--primary-light); box-shadow: 0 6px 24px rgba(37,99,235,.1); transform: translateY(-2px); }
+.opt.active { border-color: var(--primary); box-shadow: 0 6px 24px rgba(37,99,235,.15); }
 .opt.active::after {
-  content:'✓'; position:absolute; top:11px; right:13px;
-  width:20px; height:20px; background:var(--primary); color:#fff;
-  border-radius:50%; font-size:0.65rem; font-weight:900;
-  display:flex; align-items:center; justify-content:center;
+  content: '✓'; position: absolute; top: 12px; right: 13px;
+  width: 22px; height: 22px; background: var(--primary); color: #fff;
+  border-radius: 50%; font-size: 0.68rem; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
 }
-.opt-icon {
-  width:40px; height:40px; border-radius:10px; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center; font-size:1.2rem;
-}
-.ic-blue   { background:#dbeafe; }
-.ic-green  { background:#dcfce7; }
-.ic-amber  { background:#fef3c7; }
-.ic-purple { background:#ede9fe; }
+.opt-icon { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+.ic-blue   { background: #dbeafe; }
+.ic-amber  { background: #fef3c7; }
+.ic-purple { background: #ede9fe; }
+.opt-title { font-size: 0.96rem; font-weight: 800; color: var(--text); margin-bottom: 0.3rem; }
+.opt-desc  { font-size: 0.79rem; color: var(--muted); line-height: 1.5; }
+.opt-pill  { display: inline-block; margin-top: 0.5rem; font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+.pl-blue   { background: #dbeafe; color: var(--primary); }
+.pl-amber  { background: #fef3c7; color: var(--amber); }
+.pl-purple { background: #ede9fe; color: var(--purple); }
 
-.opt-title { font-size:0.94rem; font-weight:800; color:var(--text); margin-bottom:0.25rem; }
-.opt-desc  { font-size:0.78rem; color:var(--muted); line-height:1.5; }
-.opt-pill  {
-  display:inline-block; margin-top:0.45rem;
-  font-size:0.62rem; font-weight:700; padding:2px 8px; border-radius:20px;
-  text-transform:uppercase; letter-spacing:0.05em;
-}
-.pl-fast   { background:#dcfce7; color:var(--green); }
-.pl-custom { background:#dbeafe; color:var(--primary); }
-.pl-manual { background:#fef3c7; color:var(--amber); }
-.pl-ai     { background:#ede9fe; color:var(--purple); }
-
-/* ── ACTION PANEL ────────────────────────────────────── */
+/* ── ACTION PANEL ── */
 .panel {
-  background:var(--surface); border:1px solid var(--border); border-radius:16px;
-  overflow:hidden; margin-bottom:2rem; display:none;
-  animation: slideIn 0.18s ease;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  overflow: hidden; margin-bottom: 2rem; display: none;
+  animation: slideIn .18s ease;
 }
 @keyframes slideIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
-.panel.open { display:block; }
-
+.panel.open { display: block; }
 .panel-hd {
-  background:linear-gradient(135deg,#1e40af,#2563eb);
-  color:#fff; padding:1.2rem 1.75rem;
-  display:flex; align-items:center; justify-content:space-between;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb, #3b82f6);
+  color: #fff; padding: 1.25rem 1.75rem;
+  display: flex; align-items: center; justify-content: space-between;
 }
-.panel-hd-text h2 { font-size:0.98rem; font-weight:800; }
-.panel-hd-text p  { font-size:0.77rem; opacity:0.8; margin-top:2px; }
-.panel-x {
-  background:rgba(255,255,255,.15); border:none; color:#fff;
-  width:26px; height:26px; border-radius:50%; cursor:pointer;
-  font-size:0.9rem; display:flex; align-items:center; justify-content:center;
-  flex-shrink:0; transition:background .15s;
+.panel-hd h2 { font-size: 1rem; font-weight: 800; margin-bottom: 2px; }
+.panel-hd p  { font-size: 0.78rem; opacity: 0.82; }
+.btn-x {
+  background: rgba(255,255,255,.15); border: none; color: #fff;
+  width: 27px; height: 27px; border-radius: 50%; cursor: pointer;
+  font-size: 0.9rem; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background .15s;
 }
-.panel-x:hover { background:rgba(255,255,255,.28); }
-.panel-bd { padding:1.6rem 1.75rem; }
+.btn-x:hover { background: rgba(255,255,255,.28); }
+.panel-bd { padding: 1.75rem; }
 
-/* ── CONTROLS ────────────────────────────────────────── */
-.field-row { display:flex; gap:1.25rem; flex-wrap:wrap; margin-bottom:1.25rem; align-items:flex-end; }
-.field { flex:1; min-width:140px; }
-.field label { font-size:0.68rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; display:block; margin-bottom:0.4rem; }
-.input {
-  width:100%; padding:9px 12px; border:1px solid var(--border); border-radius:8px;
-  font-size:0.9rem; color:var(--text); background:var(--surface); font-family:inherit; transition:border .15s;
+/* ── CONTROLS ── */
+.field-row { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: flex-end; }
+.field { flex: 1; min-width: 140px; }
+.flabel { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; display: block; margin-bottom: 0.4rem; }
+.finput {
+  width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px;
+  font-size: 0.9rem; color: var(--text); background: var(--surface); font-family: inherit; transition: border .15s;
 }
-.input:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(37,99,235,.1); }
-.pct-wrap { position:relative; }
-.pct-wrap .input { padding-right:26px; }
-.pct-sfx { position:absolute; right:10px; top:50%; transform:translateY(-50%); font-size:0.85rem; color:var(--muted); font-weight:600; pointer-events:none; }
-
-/* Range */
+.finput:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+.pct-w { position: relative; }
+.pct-w .finput { padding-right: 26px; }
+.pct-s { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 0.85rem; color: var(--muted); font-weight: 600; pointer-events: none; }
 input[type=range] {
-  width:100%; -webkit-appearance:none; appearance:none; height:5px;
-  background:var(--border); border-radius:3px; cursor:pointer; margin-top:6px;
+  width: 100%; -webkit-appearance: none; height: 5px; background: var(--border);
+  border-radius: 3px; cursor: pointer; margin-top: 6px;
 }
 input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance:none; width:17px; height:17px; background:var(--primary);
-  border-radius:50%; box-shadow:0 2px 6px rgba(37,99,235,.3);
+  -webkit-appearance: none; width: 17px; height: 17px; background: var(--primary);
+  border-radius: 50%; box-shadow: 0 2px 6px rgba(37,99,235,.3);
 }
-.range-ends { display:flex; justify-content:space-between; font-size:0.68rem; color:var(--muted); margin-top:3px; }
+.range-ends { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--muted); margin-top: 3px; }
 
-/* ── CATEGORY TOGGLES ────────────────────────────────── */
-.cat-section { margin-bottom:1.25rem; }
-.cat-label { font-size:0.68rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.7rem; }
-.cat-grid { display:flex; flex-wrap:wrap; gap:0.55rem; }
+/* ── SECTION DIVIDER ── */
+.sdiv { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; margin-top: 0.25rem; }
 
-.cat-chip {
-  display:flex; align-items:center; gap:0.5rem;
-  padding:0.55rem 0.9rem; border-radius:10px;
-  border:1.5px solid var(--border); background:var(--surface);
-  cursor:pointer; user-select:none; transition:all 0.15s;
-  font-size:0.82rem; color:var(--muted); font-weight:600;
+/* ── CATEGORY CHIPS ── */
+.cat-grid { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 1.25rem; }
+.chip {
+  display: flex; align-items: center; gap: 0.55rem;
+  padding: 0.55rem 1rem; border-radius: 10px;
+  border: 1.5px solid var(--border); background: var(--surface2);
+  cursor: pointer; transition: all .15s; user-select: none;
 }
-.cat-chip:hover { border-color:var(--primary-light); color:var(--text); }
-.cat-chip.on {
-  border-color: var(--primary); background:var(--surface2); color:var(--primary);
-}
-.cat-chip.on .chip-dot { background:var(--primary); }
-.cat-chip.excluded {
-  border-color:#fca5a5; background:#fff5f5; color:#b91c1c;
-  text-decoration:line-through; opacity:0.7;
-}
-.cat-chip.excluded .chip-dot { background:#ef4444; }
-.chip-dot { width:8px; height:8px; border-radius:50%; background:var(--border); transition:background .15s; flex-shrink:0; }
-.chip-icon { font-size:1rem; flex-shrink:0; }
-.chip-info { line-height:1.2; }
-.chip-name { font-size:0.8rem; font-weight:700; }
-.chip-sub  { font-size:0.67rem; color:var(--muted); margin-top:1px; font-weight:400; }
-.cat-chip.on .chip-sub  { color:var(--primary); opacity:0.75; }
+.chip:hover { border-color: var(--primary-light); }
+.chip.on  { border-color: var(--primary); background: #dbeafe; color: var(--primary); }
+.chip.off { border-color: #fca5a5; background: #fff5f5; color: #9f1239; opacity: 0.7; }
+.chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); flex-shrink: 0; transition: background .15s; }
+.chip.on  .chip-dot { background: var(--primary); }
+.chip.off .chip-dot { background: var(--red); }
+.chip-body { line-height: 1.2; }
+.chip-name { font-size: 0.8rem; font-weight: 700; }
+.chip-sub  { font-size: 0.67rem; color: var(--muted); margin-top: 1px; font-weight: 400; }
+.chip.on  .chip-sub { color: #3b82f6; }
+.chip.off .chip-name { text-decoration: line-through; }
 
-/* Shoppable special toggle */
-.shoppable-row {
-  display:flex; align-items:center; gap:0.85rem;
-  padding:0.85rem 1rem; border-radius:10px;
-  background:#fffbeb; border:1.5px solid #fde68a;
-  margin-bottom:1.25rem; cursor:pointer; transition:all .15s;
+/* ── TIMELINE CHIPS ── */
+.time-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.tc {
+  padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+  border: 1.5px solid var(--border); background: var(--surface2); color: var(--muted); transition: all .15s;
 }
-.shoppable-row.excluded { background:#fff5f5; border-color:#fca5a5; }
-.shoppable-badge { font-size:1.2rem; }
-.shoppable-text { flex:1; }
-.shoppable-text strong { font-size:0.85rem; color:var(--text); display:block; margin-bottom:2px; }
-.shoppable-text span { font-size:0.75rem; color:var(--muted); }
-.toggle { position:relative; width:38px; height:21px; flex-shrink:0; }
-.toggle input { opacity:0; width:0; height:0; }
-.tslider {
-  position:absolute; inset:0; background:#cbd5e1; border-radius:11px; cursor:pointer; transition:background .2s;
-}
-.tslider::before {
-  content:''; position:absolute; width:15px; height:15px; left:3px; top:3px;
-  background:#fff; border-radius:50%; transition:transform .2s; box-shadow:0 1px 3px rgba(0,0,0,.2);
-}
-.toggle input:checked + .tslider { background:var(--amber); }
-.toggle input:checked + .tslider::before { transform:translateX(17px); }
+.tc:hover { border-color: var(--primary-light); color: var(--text); }
+.tc.on { background: var(--primary); border-color: var(--primary); color: #fff; }
 
-/* ── PREVIEW ─────────────────────────────────────────── */
+/* ── SHOPPABLE TOGGLE ── */
+.shp-row {
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 0.85rem 1rem; border-radius: 10px;
+  border: 1.5px solid #fde68a; background: #fffbeb;
+  margin-bottom: 1.5rem; cursor: pointer; transition: border .15s;
+}
+.shp-icon { font-size: 1.1rem; flex-shrink: 0; }
+.shp-body { flex: 1; }
+.shp-body strong { font-size: 0.84rem; color: var(--text); display: block; margin-bottom: 2px; }
+.shp-body span   { font-size: 0.74rem; color: var(--muted); }
+.toggle { position: relative; width: 38px; height: 21px; flex-shrink: 0; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.tsl { position: absolute; inset: 0; background: #cbd5e1; border-radius: 11px; cursor: pointer; transition: background .2s; }
+.tsl::before { content: ''; position: absolute; width: 15px; height: 15px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: transform .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.toggle input:checked + .tsl { background: var(--amber); }
+.toggle input:checked + .tsl::before { transform: translateX(17px); }
+
+/* ── PREVIEW BOX ── */
 .preview {
-  background:var(--surface2); border:1px solid var(--border);
-  border-radius:12px; padding:1.1rem 1.4rem; margin:1.25rem 0;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem;
 }
-.preview-label { font-size:0.67rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.7rem; }
-.preview-nums { display:flex; gap:2rem; flex-wrap:wrap; margin-bottom:0.7rem; }
-.pnum-val { font-size:1.4rem; font-weight:900; color:var(--text); line-height:1; }
-.pnum-val.g { color:var(--green); }
-.pnum-lbl { font-size:0.7rem; color:var(--muted); margin-top:2px; }
-.preview-chips { display:flex; flex-wrap:wrap; gap:0.35rem; padding-top:0.65rem; border-top:1px solid var(--border); }
-.pchip {
-  font-size:0.7rem; font-weight:600; padding:2px 9px; border-radius:20px;
-  background:#fee2e2; color:#b91c1c;
-}
-.pchip.safe { background:#f0fdf4; color:var(--green); }
+.preview-lbl { font-size: 0.67rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.75rem; }
+.preview-nums { display: flex; gap: 2.25rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
+.pn-val { font-size: 1.45rem; font-weight: 900; color: var(--text); line-height: 1; }
+.pn-val.g { color: var(--green); }
+.pn-lbl { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+.preview-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; padding-top: 0.65rem; border-top: 1px solid var(--border); }
+.ptag { font-size: 0.7rem; font-weight: 600; padding: 2px 9px; border-radius: 20px; background: #fee2e2; color: #b91c1c; }
+.ptag.ok { background: #f0fdf4; color: var(--green); }
 
-/* ── BUTTONS ─────────────────────────────────────────── */
+/* ── BUTTONS ── */
 .btn-apply {
-  background:linear-gradient(135deg,#16a34a,#22c55e); color:#fff;
-  border:none; border-radius:10px; padding:11px 28px;
-  font-size:0.92rem; font-weight:800; cursor:pointer; transition:all .15s;
-  box-shadow:0 4px 14px rgba(22,163,74,.28);
+  background: linear-gradient(135deg, #16a34a, #22c55e); color: #fff;
+  border: none; border-radius: 10px; padding: 11px 30px;
+  font-size: 0.92rem; font-weight: 800; cursor: pointer; transition: all .15s;
+  box-shadow: 0 4px 14px rgba(22,163,74,.28);
 }
-.btn-apply:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(22,163,74,.35); }
-.btn-apply:disabled { background:#94a3b8; box-shadow:none; cursor:not-allowed; transform:none; }
+.btn-apply:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(22,163,74,.35); }
 .btn-ghost {
-  background:none; color:var(--muted); border:1px solid var(--border); border-radius:8px;
-  padding:10px 18px; font-size:0.83rem; font-weight:600; cursor:pointer; transition:all .15s;
+  background: none; color: var(--muted); border: 1px solid var(--border); border-radius: 8px;
+  padding: 10px 18px; font-size: 0.83rem; font-weight: 600; cursor: pointer; transition: all .15s;
 }
-.btn-ghost:hover { border-color:var(--primary); color:var(--primary); background:var(--surface2); }
-.btn-row { display:flex; gap:0.65rem; align-items:center; margin-top:1.1rem; flex-wrap:wrap; }
-.btn-hint { font-size:0.73rem; color:var(--muted); margin-left:auto; }
+.btn-ghost:hover { border-color: var(--primary); color: var(--primary); background: var(--surface2); }
+.btn-row { display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap; }
+.btn-hint { font-size: 0.72rem; color: var(--muted); margin-left: auto; }
 
-/* ── MANUAL TABLE ────────────────────────────────────── */
-.svc-search-wrap { position:relative; margin-bottom:0.85rem; }
-.svc-search-wrap svg { position:absolute; left:11px; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none; }
-.svc-search { width:100%; padding:9px 14px 9px 36px; border:1px solid var(--border); border-radius:8px; font-size:0.86rem; font-family:inherit; color:var(--text); }
-.svc-search:focus { outline:none; border-color:var(--primary); }
-.svc-tbl { width:100%; border-collapse:collapse; }
-.svc-tbl th { font-size:0.67rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; padding:0 0.75rem 0.55rem; text-align:left; border-bottom:1px solid var(--border); }
-.svc-tbl th:last-child { text-align:right; }
-.svc-tbl td { padding:0.65rem 0.75rem; border-bottom:1px solid #f1f5f9; vertical-align:middle; }
-.svc-tbl tr:hover td { background:var(--surface2); }
-.td-name { font-size:0.85rem; font-weight:600; color:var(--text); }
-.td-code { font-size:0.7rem; color:var(--muted); margin-top:1px; }
-.td-rev  { font-size:0.82rem; color:var(--muted); }
-.td-cur  { font-size:0.88rem; font-weight:700; }
-.svc-input {
-  width:86px; padding:5px 8px; text-align:right;
-  border:1px solid var(--border); border-radius:6px;
-  font-size:0.86rem; font-weight:700; color:var(--text); font-family:inherit;
+/* ── MANUAL TABLE ── */
+.m-search-w { position: relative; margin-bottom: 0.9rem; }
+.m-search-w svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.m-search { width: 100%; padding: 9px 14px 9px 36px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.86rem; font-family: inherit; color: var(--text); }
+.m-search:focus { outline: none; border-color: var(--primary); }
+.svc-tbl { width: 100%; border-collapse: collapse; }
+.svc-tbl th { font-size: 0.67rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; padding: 0 0.75rem 0.55rem; text-align: left; border-bottom: 1px solid var(--border); }
+.svc-tbl th:last-child { text-align: right; }
+.svc-tbl td { padding: 0.65rem 0.75rem; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+.svc-tbl tr:hover td { background: var(--surface2); }
+.td-name { font-size: 0.85rem; font-weight: 600; }
+.td-code { font-size: 0.7rem; color: var(--muted); margin-top: 1px; }
+.td-rev  { font-size: 0.82rem; color: var(--muted); }
+.shp-tag { font-size: 0.58rem; font-weight: 700; padding: 1px 5px; border-radius: 8px; background: #fef3c7; color: #92400e; margin-left: 4px; }
+.price-input {
+  width: 88px; padding: 5px 8px; text-align: right;
+  border: 1px solid var(--border); border-radius: 6px;
+  font-size: 0.86rem; font-weight: 700; color: var(--text); font-family: inherit;
 }
-.svc-input:focus { outline:none; border-color:var(--primary); background:var(--surface2); }
-.svc-input.chg { border-color:var(--green); background:#f0fdf4; color:var(--green); }
-.shp-tag { font-size:0.58rem; font-weight:700; padding:1px 5px; border-radius:8px; background:#fef3c7; color:#92400e; margin-left:4px; }
-.manual-bar {
-  background:var(--surface); border-top:1px solid var(--border);
-  padding:0.9rem 1.75rem;
-  display:none; align-items:center; justify-content:space-between; gap:1rem;
-  box-shadow:0 -3px 16px rgba(37,99,235,.07);
+.price-input:focus { outline: none; border-color: var(--primary); background: var(--surface2); }
+.price-input.chg  { border-color: var(--green); background: #f0fdf4; color: var(--green); }
+.m-bar {
+  background: var(--surface); border-top: 1px solid var(--border);
+  padding: 0.9rem 1.75rem;
+  display: none; align-items: center; justify-content: space-between; gap: 1rem;
+  box-shadow: 0 -3px 16px rgba(37,99,235,.07);
 }
-.manual-bar.show { display:flex; }
+.m-bar.show { display: flex; }
 
-/* ── AI SUGGESTIONS ──────────────────────────────────── */
-.ai-note { font-size:0.77rem; color:#5b21b6; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:8px; padding:0.6rem 1rem; margin-bottom:1rem; line-height:1.5; }
-.sug-filters { display:flex; gap:0.45rem; margin-bottom:0.9rem; flex-wrap:wrap; }
-.sf-btn { background:var(--surface2); border:1px solid var(--border); border-radius:20px; color:var(--muted); font-size:0.74rem; font-weight:600; padding:4px 13px; cursor:pointer; transition:all .13s; }
-.sf-btn:hover { border-color:var(--primary); color:var(--primary); }
-.sf-btn.on { background:var(--primary); border-color:var(--primary); color:#fff; }
-.sf-btn.amb.on { background:var(--amber); border-color:var(--amber); }
-.sug-list { display:flex; flex-direction:column; gap:0.55rem; max-height:380px; overflow-y:auto; padding-right:2px; }
-.sug-item {
-  display:flex; align-items:center; gap:0.9rem; flex-wrap:wrap;
-  padding:0.8rem 1rem; border:1px solid var(--border); border-radius:10px;
-  background:var(--surface); transition:border .13s;
+/* ── AI SUGGESTIONS ── */
+.ai-note { font-size: 0.77rem; color: #5b21b6; background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 8px; padding: 0.65rem 1rem; margin-bottom: 1rem; line-height: 1.5; }
+.sf-bar { display: flex; gap: 0.45rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
+.sf-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; color: var(--muted); font-size: 0.74rem; font-weight: 600; padding: 4px 14px; cursor: pointer; transition: all .13s; }
+.sf-btn:hover { border-color: var(--primary); color: var(--primary); }
+.sf-btn.on { background: var(--primary); border-color: var(--primary); color: #fff; }
+.sf-btn.amb.on { background: var(--amber); border-color: var(--amber); }
+.sug-list { display: flex; flex-direction: column; gap: 0.55rem; max-height: 400px; overflow-y: auto; padding-right: 2px; }
+.si {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  padding: 0.85rem 1rem; border: 1px solid var(--border); border-radius: 10px;
+  background: var(--surface); transition: border .13s;
 }
-.sug-item.acc { border-color:var(--green); background:#f0fdf4; }
-.sug-item.skp { opacity:.42; }
-.si-info { flex:1; min-width:150px; }
-.si-name { font-size:0.86rem; font-weight:700; color:var(--text); }
-.si-meta { font-size:0.71rem; color:var(--muted); margin-top:2px; }
-.si-price { display:flex; align-items:center; gap:0.5rem; flex-shrink:0; }
-.si-old { font-size:0.82rem; color:var(--muted); text-decoration:line-through; }
-.si-new { font-size:0.96rem; font-weight:800; color:var(--primary); }
-.si-delta { font-size:0.72rem; font-weight:700; color:var(--green); }
-.si-acts { display:flex; gap:0.35rem; flex-shrink:0; }
-.btn-acc { background:var(--green); color:#fff; border:none; border-radius:7px; padding:5px 13px; font-size:0.76rem; font-weight:700; cursor:pointer; }
-.btn-acc:hover { background:#15803d; }
-.btn-acc.on { background:#dcfce7; color:var(--green); border:1.5px solid var(--green); }
-.btn-skp { background:none; color:var(--muted); border:1px solid var(--border); border-radius:7px; padding:5px 11px; font-size:0.76rem; font-weight:600; cursor:pointer; }
-.btn-skp:hover { background:var(--surface2); }
-.ai-bar { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:0.85rem 1.1rem; margin-top:1rem; display:none; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
-.ai-bar.show { display:flex; }
+.si.acc { border-color: var(--green); background: #f0fdf4; }
+.si.skp { opacity: .42; }
+.si-info { flex: 1; min-width: 150px; }
+.si-name { font-size: 0.86rem; font-weight: 700; }
+.si-meta { font-size: 0.71rem; color: var(--muted); margin-top: 2px; }
+.si-price { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+.si-old   { font-size: 0.82rem; color: var(--muted); text-decoration: line-through; }
+.si-new   { font-size: 0.96rem; font-weight: 800; color: var(--primary); }
+.si-delta { font-size: 0.72rem; font-weight: 700; color: var(--green); }
+.si-acts  { display: flex; gap: 0.35rem; flex-shrink: 0; }
+.btn-acc  { background: var(--green); color: #fff; border: none; border-radius: 7px; padding: 5px 13px; font-size: 0.76rem; font-weight: 700; cursor: pointer; transition: background .13s; }
+.btn-acc:hover { background: #15803d; }
+.btn-acc.on { background: #dcfce7; color: var(--green); border: 1.5px solid var(--green); }
+.btn-skp { background: none; color: var(--muted); border: 1px solid var(--border); border-radius: 7px; padding: 5px 11px; font-size: 0.76rem; font-weight: 600; cursor: pointer; }
+.btn-skp:hover { background: var(--surface2); }
+.ai-confirm {
+  background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
+  padding: 0.85rem 1.1rem; margin-top: 1rem;
+  display: none; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.ai-confirm.show { display: flex; }
 
-/* ── HISTORY ─────────────────────────────────────────── */
-.hist-section { margin-top:0.5rem; }
-.hist-label { font-size:0.68rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.7rem; }
-.hist-row { display:flex; gap:0.85rem; flex-wrap:wrap; }
-.hist-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:0.9rem 1.1rem; flex:1; min-width:180px; max-width:300px; }
-.hc-period { font-size:0.7rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.04em; }
-.hc-action { font-size:0.88rem; font-weight:700; color:var(--text); margin-top:3px; }
-.hc-detail { font-size:0.76rem; color:var(--muted); margin-top:2px; }
-.hc-tag { display:inline-block; margin-top:5px; font-size:0.6rem; font-weight:700; padding:2px 7px; border-radius:12px; background:#dcfce7; color:var(--green); text-transform:uppercase; letter-spacing:0.04em; }
+/* ── HISTORY ── */
+.hist { margin-top: 0.5rem; }
+.hist-lbl { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.7rem; }
+.hist-row { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+.hc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0.9rem 1.1rem; flex: 1; min-width: 175px; max-width: 300px; }
+.hc-per  { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+.hc-act  { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-top: 3px; }
+.hc-det  { font-size: 0.76rem; color: var(--muted); margin-top: 2px; }
+.hc-tag  { display: inline-block; margin-top: 5px; font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 12px; background: #dcfce7; color: var(--green); text-transform: uppercase; letter-spacing: 0.04em; }
 
-/* ── MODAL ───────────────────────────────────────────── */
-.modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,.42); z-index:500; align-items:center; justify-content:center; }
-.modal-bg.open { display:flex; }
-.modal { background:var(--surface); border-radius:20px; padding:2.25rem; max-width:400px; width:90%; text-align:center; animation:pop .2s ease; }
+/* ── MODAL ── */
+.modal-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 500; align-items: center; justify-content: center; }
+.modal-bg.open { display: flex; }
+.modal { background: var(--surface); border-radius: 20px; padding: 2.5rem; max-width: 420px; width: 90%; text-align: center; animation: pop .2s ease; }
 @keyframes pop { from{transform:scale(.92);opacity:0} to{transform:scale(1);opacity:1} }
-.modal-ico { font-size:2.8rem; margin-bottom:0.65rem; }
-.modal h2 { font-size:1.2rem; font-weight:900; color:var(--text); margin-bottom:0.35rem; }
-.modal p  { font-size:0.84rem; color:var(--muted); margin-bottom:1.1rem; }
-.modal-detail { background:var(--surface2); border-radius:9px; padding:0.85rem 1rem; margin-bottom:1.25rem; font-size:0.83rem; color:var(--text); line-height:1.6; text-align:left; }
-.btn-done { background:var(--primary); color:#fff; border:none; border-radius:10px; padding:10px 28px; font-size:0.88rem; font-weight:700; cursor:pointer; }
+.modal-ico { font-size: 3rem; margin-bottom: 0.7rem; }
+.modal h2 { font-size: 1.25rem; font-weight: 900; color: var(--text); margin-bottom: 0.35rem; }
+.modal p  { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.1rem; }
+.modal-detail { background: var(--surface2); border-radius: 9px; padding: 0.9rem 1rem; margin-bottom: 1.35rem; font-size: 0.84rem; color: var(--text); line-height: 1.65; text-align: left; }
+.btn-done { background: var(--primary); color: #fff; border: none; border-radius: 10px; padding: 11px 30px; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="header">
   <div class="header-left">
-    <div class="logo-mark">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-    </div>
-    <div class="header-brand">Vet <em>INC</em></div>
-    <div class="hdiv"></div>
-    <div class="clinic-tag">Rosslyn Veterinary Clinic</div>
+    <img src="https://raw.githubusercontent.com/jack108510/vet-inc-clinic/main/logo.png" alt="Vet INC" height="64" style="display:block;height:64px;width:auto;">
+    <div class="header-divider"></div>
+    <div class="clinic-name">Rosslyn Veterinary Clinic</div>
   </div>
-  <div class="period-pill">Q2 2026 Review</div>
+  <div class="owner-badge">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    Owner Portal
+  </div>
 </header>
 
-<div class="ctx-bar">
-  <span><span class="review-dot"></span><strong>Review ready</strong></span>
+<!-- CONTEXT STRIP -->
+<div class="ctx">
+  <span><span class="ctx-dot"></span><strong>Q2 2026 review ready</strong></span>
   <span>280 services on file</span>
   <span>Last reviewed March 14, 2026</span>
   <span>3 months ago</span>
@@ -361,220 +333,162 @@ input[type=range]::-webkit-slider-thumb {
 <main>
   <div class="intro">
     <h1>Q2 2026 Price Review</h1>
-    <p>It's been 3 months since your last update. Choose how you'd like to handle this quarter — or skip it if your pricing is where you want it.</p>
+    <p>It's been 3 months since your last update. Choose how you'd like to handle this quarter — or skip if your pricing is where you want it.</p>
   </div>
 
-  <!-- OPTION CARDS -->
+  <!-- 3 OPTION CARDS -->
   <div class="options">
-    <div class="opt" id="card-flat" onclick="pick('flat')">
+    <div class="opt" id="card-adjust" onclick="pick('adjust')">
       <div class="opt-icon ic-blue">💲</div>
       <div>
-        <div class="opt-title">Flat increase</div>
-        <div class="opt-desc">Set a percentage and apply it across your services. Quick and uniform.</div>
-        <span class="opt-pill pl-fast">Fastest</span>
-      </div>
-    </div>
-    <div class="opt" id="card-smart" onclick="pick('smart')">
-      <div class="opt-icon ic-green">🎛</div>
-      <div>
-        <div class="opt-title">Increase by category</div>
-        <div class="opt-desc">Choose which types of services to include or exclude, then set your percentage.</div>
-        <span class="opt-pill pl-custom">Custom</span>
+        <div class="opt-title">Adjust prices</div>
+        <div class="opt-desc">Set a percentage increase. Filter by category, or by when services were last changed.</div>
+        <span class="opt-pill pl-blue">Flat &amp; Custom</span>
       </div>
     </div>
     <div class="opt" id="card-manual" onclick="pick('manual')">
       <div class="opt-icon ic-amber">📋</div>
       <div>
-        <div class="opt-title">Review the fee guide</div>
-        <div class="opt-desc">Browse all services and update individual prices yourself.</div>
-        <span class="opt-pill pl-manual">Manual</span>
+        <div class="opt-title">Review fee guide</div>
+        <div class="opt-desc">Browse all services and update individual prices directly.</div>
+        <span class="opt-pill pl-amber">Manual</span>
       </div>
     </div>
     <div class="opt" id="card-ai" onclick="pick('ai')">
       <div class="opt-icon ic-purple">💡</div>
       <div>
-        <div class="opt-title">See our suggestions</div>
-        <div class="opt-desc">Based on Canada CPI data — apply as many or as few as you like.</div>
-        <span class="opt-pill pl-ai">Vet INC input</span>
+        <div class="opt-title">AI consultant</div>
+        <div class="opt-desc">CPI-based analysis of your data. Apply as many or as few suggestions as you like.</div>
+        <span class="opt-pill pl-purple">Vet INC input</span>
       </div>
     </div>
   </div>
 
-  <!-- ─── PANEL: FLAT ─────────────────────────────────── -->
-  <div class="panel" id="panel-flat">
+  <!-- ── PANEL: ADJUST ── -->
+  <div class="panel" id="panel-adjust">
     <div class="panel-hd">
-      <div class="panel-hd-text"><h2>Flat Increase</h2><p>Apply a uniform percentage to your services</p></div>
-      <button class="panel-x" onclick="close()">✕</button>
+      <div><h2>Adjust Prices</h2><p>Set your percentage, then filter by category and timeline</p></div>
+      <button class="btn-x" onclick="close()">✕</button>
     </div>
     <div class="panel-bd">
+
+      <!-- % input -->
       <div class="field-row">
         <div class="field">
-          <label>Increase percentage</label>
-          <input type="range" id="f-slider" min="1" max="15" value="5" oninput="syncF(this.value,'sl')">
+          <label class="flabel">Increase percentage</label>
+          <input type="range" id="a-slider" min="1" max="15" value="5" oninput="syncA(this.value,'sl')">
           <div class="range-ends"><span>1%</span><span>15%</span></div>
         </div>
-        <div class="field" style="max-width:110px">
-          <label>% amount</label>
-          <div class="pct-wrap">
-            <input class="input" type="number" id="f-pct" min="0.1" max="50" step="0.1" value="5" oninput="syncF(this.value,'in')">
-            <span class="pct-sfx">%</span>
+        <div class="field" style="max-width:115px">
+          <label class="flabel">% amount</label>
+          <div class="pct-w">
+            <input class="finput" type="number" id="a-pct" min="0.1" max="50" step="0.1" value="5" oninput="syncA(this.value,'in')">
+            <span class="pct-s">%</span>
           </div>
         </div>
       </div>
 
-      <!-- Shoppable exclusion -->
-      <div class="shoppable-row" id="f-shp-row" onclick="toggleFShop()">
-        <div class="shoppable-badge">⚠️</div>
-        <div class="shoppable-text">
+      <!-- Category filters -->
+      <div class="sdiv">Include categories</div>
+      <div class="cat-grid" id="cat-grid"></div>
+
+      <!-- Timeline filter -->
+      <div class="sdiv">Only update services last changed</div>
+      <div class="time-chips">
+        <div class="tc" id="tc-any" onclick="setTime('any')">Any time</div>
+        <div class="tc on" id="tc-3m" onclick="setTime('3m')">3+ months ago</div>
+        <div class="tc" id="tc-6m" onclick="setTime('6m')">6+ months ago</div>
+        <div class="tc" id="tc-12m" onclick="setTime('12m')">12+ months ago</div>
+        <div class="tc" id="tc-never" onclick="setTime('never')">Never changed</div>
+      </div>
+
+      <!-- Shoppable toggle -->
+      <div class="shp-row" onclick="toggleShp()">
+        <div class="shp-icon">⚠️</div>
+        <div class="shp-body">
           <strong>Skip price-sensitive services</strong>
-          <span>Vaccines, wellness exams, dental cleanings — services clients compare between clinics</span>
+          <span>Vaccines, wellness exams, dental — services clients compare between clinics</span>
         </div>
         <label class="toggle" onclick="event.stopPropagation()">
-          <input type="checkbox" id="f-shp" checked onchange="flatPreview()">
-          <span class="tslider"></span>
+          <input type="checkbox" id="a-shp" checked onchange="adjustPreview()">
+          <span class="tsl"></span>
         </label>
       </div>
 
+      <!-- Preview -->
       <div class="preview">
-        <div class="preview-label">Preview</div>
+        <div class="preview-lbl">Preview</div>
         <div class="preview-nums">
-          <div><div class="pnum-val g" id="f-count">232</div><div class="pnum-lbl">Services to update</div></div>
-          <div><div class="pnum-val" id="f-impact">+$43,200</div><div class="pnum-lbl">Est. annual impact</div></div>
-          <div><div class="pnum-val" id="f-avg">+$4.75</div><div class="pnum-lbl">Avg increase/service</div></div>
+          <div><div class="pn-val g" id="a-count">—</div><div class="pn-lbl">Services to update</div></div>
+          <div><div class="pn-val" id="a-impact">—</div><div class="pn-lbl">Est. annual impact</div></div>
+          <div><div class="pn-val" id="a-avg">—</div><div class="pn-lbl">Avg increase/service</div></div>
         </div>
-        <div class="preview-chips" id="f-chips"></div>
+        <div class="preview-tags" id="a-tags"></div>
       </div>
 
       <div class="btn-row">
-        <button class="btn-apply" onclick="apply('flat')">Apply Changes</button>
+        <button class="btn-apply" onclick="applyIt('adjust')">Apply Changes</button>
         <button class="btn-ghost" onclick="close()">Cancel</button>
         <span class="btn-hint">Saved to your price history</span>
       </div>
     </div>
   </div>
 
-  <!-- ─── PANEL: SMART ────────────────────────────────── -->
-  <div class="panel" id="panel-smart">
-    <div class="panel-hd">
-      <div class="panel-hd-text"><h2>Increase by Category</h2><p>Toggle which service types to include or exclude</p></div>
-      <button class="panel-x" onclick="close()">✕</button>
-    </div>
-    <div class="panel-bd">
-      <div class="field-row" style="margin-bottom:1.5rem">
-        <div class="field" style="max-width:120px">
-          <label>Increase %</label>
-          <div class="pct-wrap">
-            <input class="input" type="number" id="s-pct" min="0.1" max="50" step="0.1" value="5" oninput="smartPreview()">
-            <span class="pct-sfx">%</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cat-section">
-        <div class="cat-label">Service categories — click to exclude</div>
-        <div class="cat-grid" id="cat-grid">
-          <!-- rendered by JS -->
-        </div>
-      </div>
-
-      <div class="shoppable-row" id="s-shp-row" onclick="toggleSShop()">
-        <div class="shoppable-badge">⚠️</div>
-        <div class="shoppable-text">
-          <strong>Also skip price-sensitive services</strong>
-          <span>Even within included categories, skip services clients shop around for</span>
-        </div>
-        <label class="toggle" onclick="event.stopPropagation()">
-          <input type="checkbox" id="s-shp" checked onchange="smartPreview()">
-          <span class="tslider"></span>
-        </label>
-      </div>
-
-      <div class="preview">
-        <div class="preview-label">Preview</div>
-        <div class="preview-nums">
-          <div><div class="pnum-val g" id="s-count">—</div><div class="pnum-lbl">Services to update</div></div>
-          <div><div class="pnum-val" id="s-impact">—</div><div class="pnum-lbl">Est. annual impact</div></div>
-        </div>
-        <div class="preview-chips" id="s-chips"></div>
-      </div>
-
-      <div class="btn-row">
-        <button class="btn-apply" onclick="apply('smart')">Apply Changes</button>
-        <button class="btn-ghost" onclick="close()">Cancel</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── PANEL: MANUAL ───────────────────────────────── -->
+  <!-- ── PANEL: MANUAL ── -->
   <div class="panel" id="panel-manual">
     <div class="panel-hd">
-      <div class="panel-hd-text"><h2>Fee Guide</h2><p>Click any price to edit it directly</p></div>
-      <button class="panel-x" onclick="close()">✕</button>
+      <div><h2>Fee Guide</h2><p>Click any price to edit it directly</p></div>
+      <button class="btn-x" onclick="close()">✕</button>
     </div>
     <div class="panel-bd" style="padding-bottom:0">
-      <div class="svc-search-wrap">
+      <div class="m-search-w">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input class="svc-search" id="m-search" type="text" placeholder="Search services…" oninput="renderManual(this.value)">
+        <input class="m-search" id="m-q" type="text" placeholder="Search services…" oninput="renderManual(this.value)">
       </div>
       <div style="overflow-x:auto">
         <table class="svc-tbl">
-          <thead><tr><th>Service</th><th>Annual Revenue</th><th>Current Price</th><th style="text-align:right">New Price</th></tr></thead>
+          <thead><tr><th>Service</th><th>Annual Revenue</th><th>Last Changed</th><th>Current Price</th><th style="text-align:right">New Price</th></tr></thead>
           <tbody id="m-body"></tbody>
         </table>
       </div>
     </div>
-    <div class="manual-bar" id="m-bar">
-      <span style="font-size:0.84rem;color:var(--text)"><strong id="m-count">0</strong> prices changed</span>
-      <div style="display:flex;gap:0.6rem">
+    <div class="m-bar" id="m-bar">
+      <span style="font-size:0.84rem;color:var(--text)"><strong id="m-n">0</strong> prices changed</span>
+      <div style="display:flex;gap:0.65rem">
         <button class="btn-ghost" onclick="resetManual()">Reset</button>
-        <button class="btn-apply" onclick="apply('manual')" style="padding:9px 22px;font-size:0.83rem">Save Changes</button>
+        <button class="btn-apply" onclick="applyIt('manual')" style="padding:9px 22px;font-size:0.83rem">Save Changes</button>
       </div>
     </div>
   </div>
 
-  <!-- ─── PANEL: AI ────────────────────────────────────── -->
+  <!-- ── PANEL: AI ── -->
   <div class="panel" id="panel-ai">
     <div class="panel-hd">
-      <div class="panel-hd-text"><h2>Vet INC's Suggestions</h2><p>CPI-based · You decide what to apply</p></div>
-      <button class="panel-x" onclick="close()">✕</button>
+      <div><h2>AI Consultant</h2><p>CPI-based suggestions — you decide what to apply</p></div>
+      <button class="btn-x" onclick="close()">✕</button>
     </div>
     <div class="panel-bd">
-      <p class="ai-note">We compared your year-over-year prices against Canada's <strong>2.38% inflation rate</strong> (2024). Services that haven't kept up are listed below. These are suggestions — apply as many or as few as you like. You know your practice better than we do.</p>
-      <div class="sug-filters">
+      <p class="ai-note">We compared your year-over-year prices against Canada's <strong>2.38% inflation rate</strong>. Services that haven't kept pace are listed below. These are suggestions only — apply as many or as few as you like. You know your practice better than we do.</p>
+      <div class="sf-bar">
         <button class="sf-btn on" id="sf-all" onclick="sfilt('all')">All <span id="sf-n-all"></span></button>
         <button class="sf-btn" id="sf-safe" onclick="sfilt('safe')">✓ Safe to raise <span id="sf-n-safe"></span></button>
         <button class="sf-btn amb" id="sf-shp" onclick="sfilt('shoppable')">⚠ Price-sensitive <span id="sf-n-shp"></span></button>
       </div>
       <div class="sug-list" id="sug-list"></div>
-      <div class="ai-bar" id="ai-bar">
+      <div class="ai-confirm" id="ai-bar">
         <span style="font-size:0.84rem;color:var(--text)"><strong id="ai-n">0</strong> changes accepted</span>
-        <button class="btn-apply" onclick="apply('ai')" style="padding:9px 22px;font-size:0.83rem">Apply Accepted</button>
+        <button class="btn-apply" onclick="applyIt('ai')" style="padding:9px 22px;font-size:0.83rem">Apply Accepted</button>
       </div>
     </div>
   </div>
 
   <!-- PAST REVIEWS -->
-  <div class="hist-section">
-    <div class="hist-label">Past reviews</div>
+  <div class="hist">
+    <div class="hist-lbl">Past reviews</div>
     <div class="hist-row">
-      <div class="hist-card">
-        <div class="hc-period">Q1 2026 · Jan – Mar</div>
-        <div class="hc-action">Smart increase · 5%</div>
-        <div class="hc-detail">Surgery &amp; Diagnostics only · excluded shoppables</div>
-        <span class="hc-tag">Applied Mar 14</span>
-      </div>
-      <div class="hist-card">
-        <div class="hc-period">Q4 2025 · Oct – Dec</div>
-        <div class="hc-action">Flat increase · 3%</div>
-        <div class="hc-detail">All 280 services</div>
-        <span class="hc-tag">Applied Dec 12</span>
-      </div>
-      <div class="hist-card">
-        <div class="hc-period">Q3 2025 · Jul – Sep</div>
-        <div class="hc-action">Manual review</div>
-        <div class="hc-detail">12 services updated individually</div>
-        <span class="hc-tag">Applied Sep 3</span>
-      </div>
+      <div class="hc"><div class="hc-per">Q1 2026 · Jan–Mar</div><div class="hc-act">Adjust · 5% · Surgery &amp; Diagnostics</div><div class="hc-det">94 services · excluded price-sensitives</div><span class="hc-tag">Applied Mar 14</span></div>
+      <div class="hc"><div class="hc-per">Q4 2025 · Oct–Dec</div><div class="hc-act">Flat increase · 3%</div><div class="hc-det">All 280 services</div><span class="hc-tag">Applied Dec 12</span></div>
+      <div class="hc"><div class="hc-per">Q3 2025 · Jul–Sep</div><div class="hc-act">Manual review</div><div class="hc-det">12 services updated individually</div><span class="hc-tag">Applied Sep 3</span></div>
     </div>
   </div>
 </main>
@@ -583,50 +497,48 @@ input[type=range]::-webkit-slider-thumb {
 <div class="modal-bg" id="modal">
   <div class="modal">
     <div class="modal-ico">✅</div>
-    <h2 id="m-title">Changes Applied</h2>
-    <p id="m-sub">Your Q2 2026 price update has been saved.</p>
-    <div class="modal-detail" id="m-detail"></div>
-    <button class="btn-done" onclick="closeModal()">Done</button>
+    <h2 id="mo-title">Changes Applied</h2>
+    <p id="mo-sub">Your Q2 2026 update has been saved.</p>
+    <div class="modal-detail" id="mo-detail"></div>
+    <button class="btn-done" onclick="closeMo()">Done</button>
   </div>
 </div>
 
 <script>
 // ── DATA ──────────────────────────────────────────────────────────────
 const SVCS = [
-  { code:'EXAM01', name:'Physical Examination',       price:65.00,  visits:650, cat:'preventive',    shoppable:true  },
-  { code:'VACC01', name:'DA2PP Vaccine',              price:32.50,  visits:570, cat:'preventive',    shoppable:true  },
-  { code:'VACC02', name:'Rabies Vaccine',             price:28.00,  visits:600, cat:'preventive',    shoppable:true  },
-  { code:'HW01',   name:'Heartworm Test',             price:45.00,  visits:330, cat:'preventive',    shoppable:true  },
-  { code:'FLEA01', name:'Flea/Tick Prevention',       price:58.00,  visits:190, cat:'preventive',    shoppable:true  },
-  { code:'MICRO01',name:'Microchip Implant',          price:55.00,  visits:150, cat:'preventive',    shoppable:true  },
-  { code:'SURG01', name:'Ovariohysterectomy (Spay)',  price:425.00, visits:60,  cat:'surgery',       shoppable:true  },
-  { code:'SURG02', name:'Soft Tissue Surgery',        price:680.00, visits:40,  cat:'surgery',       shoppable:false },
-  { code:'DENT02', name:'Dental Extraction',          price:45.00,  visits:180, cat:'surgery',       shoppable:false },
-  { code:'BLOOD01',name:'Complete Blood Count',       price:89.00,  visits:320, cat:'diagnostics',   shoppable:false },
-  { code:'LAB01',  name:'Chemistry Panel',            price:115.00, visits:320, cat:'diagnostics',   shoppable:false },
-  { code:'URINE01',name:'Urinalysis',                 price:52.00,  visits:240, cat:'diagnostics',   shoppable:false },
-  { code:'XRAY01', name:'Radiograph (2 views)',       price:145.00, visits:130, cat:'diagnostics',   shoppable:false },
-  { code:'ULTRA01',name:'Abdominal Ultrasound',       price:220.00, visits:70,  cat:'diagnostics',   shoppable:false },
-  { code:'PATH01', name:'Histopathology',             price:165.00, visits:90,  cat:'diagnostics',   shoppable:false },
-  { code:'DENT01', name:'Dental Cleaning',            price:285.00, visits:120, cat:'dental',        shoppable:true  },
-  { code:'ANES01', name:'Anesthesia',                 price:185.00, visits:160, cat:'in-hospital',   shoppable:false },
-  { code:'IV01',   name:'IV Catheter & Fluids',       price:95.00,  visits:240, cat:'in-hospital',   shoppable:false },
-  { code:'HOSP01', name:'Hospitalization (per day)',  price:75.00,  visits:220, cat:'in-hospital',   shoppable:false },
-  { code:'NAIL01', name:'Nail Trim',                  price:18.00,  visits:180, cat:'palliative',    shoppable:true  },
+  { code:'EXAM01', name:'Physical Examination',      price:65.00,  visits:650, cat:'preventive',  shoppable:true,  lastChanged:'2025-09-03' },
+  { code:'VACC01', name:'DA2PP Vaccine',             price:32.50,  visits:570, cat:'preventive',  shoppable:true,  lastChanged:'2026-03-14' },
+  { code:'VACC02', name:'Rabies Vaccine',            price:28.00,  visits:600, cat:'preventive',  shoppable:true,  lastChanged:'2026-03-14' },
+  { code:'HW01',   name:'Heartworm Test',            price:45.00,  visits:330, cat:'preventive',  shoppable:true,  lastChanged:'2025-12-12' },
+  { code:'FLEA01', name:'Flea/Tick Prevention',      price:58.00,  visits:190, cat:'preventive',  shoppable:true,  lastChanged:'2025-12-12' },
+  { code:'MICRO01',name:'Microchip Implant',         price:55.00,  visits:150, cat:'preventive',  shoppable:true,  lastChanged:'2025-09-03' },
+  { code:'SURG01', name:'Ovariohysterectomy (Spay)', price:425.00, visits:60,  cat:'surgery',     shoppable:true,  lastChanged:'2025-09-03' },
+  { code:'SURG02', name:'Soft Tissue Surgery',       price:680.00, visits:40,  cat:'surgery',     shoppable:false, lastChanged:'2026-03-14' },
+  { code:'DENT02', name:'Dental Extraction',         price:45.00,  visits:180, cat:'surgery',     shoppable:false, lastChanged:'2024-06-01' },
+  { code:'BLOOD01',name:'Complete Blood Count',      price:89.00,  visits:320, cat:'diagnostics', shoppable:false, lastChanged:'2026-03-14' },
+  { code:'LAB01',  name:'Chemistry Panel',           price:115.00, visits:320, cat:'diagnostics', shoppable:false, lastChanged:'2026-03-14' },
+  { code:'URINE01',name:'Urinalysis',                price:52.00,  visits:240, cat:'diagnostics', shoppable:false, lastChanged:'2025-12-12' },
+  { code:'XRAY01', name:'Radiograph (2 views)',      price:145.00, visits:130, cat:'diagnostics', shoppable:false, lastChanged:'2025-09-03' },
+  { code:'ULTRA01',name:'Abdominal Ultrasound',      price:220.00, visits:70,  cat:'diagnostics', shoppable:false, lastChanged:'2025-12-12' },
+  { code:'PATH01', name:'Histopathology',            price:165.00, visits:90,  cat:'diagnostics', shoppable:false, lastChanged:'2024-06-01' },
+  { code:'DENT01', name:'Dental Cleaning',           price:285.00, visits:120, cat:'dental',      shoppable:true,  lastChanged:'2025-09-03' },
+  { code:'ANES01', name:'Anesthesia',                price:185.00, visits:160, cat:'hospital',    shoppable:false, lastChanged:'2026-03-14' },
+  { code:'IV01',   name:'IV Catheter & Fluids',      price:95.00,  visits:240, cat:'hospital',    shoppable:false, lastChanged:'2025-12-12' },
+  { code:'HOSP01', name:'Hospitalization (per day)', price:75.00,  visits:220, cat:'hospital',    shoppable:false, lastChanged:'2025-09-03' },
+  { code:'NAIL01', name:'Nail Trim',                 price:18.00,  visits:180, cat:'other',       shoppable:true,  lastChanged:'2024-06-01' },
 ];
-SVCS.forEach(s => s.rev = Math.round(s.price * s.visits));
+SVCS.forEach(s => { s.rev = Math.round(s.price * s.visits); s.lastMs = new Date(s.lastChanged).getTime(); });
 
-// Category definitions
 const CATS = [
-  { id:'preventive',  label:'Preventive Care',  icon:'💉', sub:'Vaccines, wellness, parasite prevention', count:35 },
-  { id:'surgery',     label:'Surgery',           icon:'🔬', sub:'Soft tissue, ortho, spay/neuter',         count:22 },
-  { id:'diagnostics', label:'Diagnostics',       icon:'🧪', sub:'Labs, imaging, urinalysis, pathology',    count:68 },
-  { id:'dental',      label:'Dental',            icon:'🦷', sub:'Cleanings, extractions, oral procedures', count:18 },
-  { id:'in-hospital', label:'In-Hospital',       icon:'🏥', sub:'Anesthesia, fluids, hospitalization',     count:28 },
-  { id:'palliative',  label:'Palliative & Other',icon:'❤️', sub:'Pain mgmt, comfort care, misc services',  count:109 },
+  { id:'preventive',  label:'Preventive Care',    icon:'💉', count:35  },
+  { id:'surgery',     label:'Surgery',             icon:'🔬', count:22  },
+  { id:'diagnostics', label:'Diagnostics',         icon:'🧪', count:68  },
+  { id:'dental',      label:'Dental',              icon:'🦷', count:18  },
+  { id:'hospital',    label:'In-Hospital',         icon:'🏥', count:28  },
+  { id:'other',       label:'Palliative & Other',  icon:'❤️', count:109 },
 ];
-const TOTAL = 280;
-const SHOPPABLE_N = 48;
+const TOTAL = 280, SHP_N = 48;
 
 // ── OPTION SELECTION ─────────────────────────────────────────────────
 let active = null;
@@ -639,10 +551,9 @@ function pick(id) {
   const p = document.getElementById('panel-' + id);
   p.classList.add('open');
   setTimeout(() => p.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
-  if (id === 'flat')   flatPreview();
-  if (id === 'smart')  { buildCats(); smartPreview(); }
+  if (id === 'adjust') { buildCats(); adjustPreview(); }
   if (id === 'manual') renderManual('');
-  if (id === 'ai')     { renderSugs('all'); }
+  if (id === 'ai')     renderSugs('all');
 }
 function close() {
   active = null;
@@ -650,111 +561,126 @@ function close() {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('open'));
 }
 
-// ── FLAT ─────────────────────────────────────────────────────────────
-function syncF(v, src) {
+// ── ADJUST PANEL ──────────────────────────────────────────────────────
+const excl = new Set();
+let timeFilter = '3m';
+
+function syncA(v, src) {
   const n = Math.max(0.1, Math.min(50, parseFloat(v)||0));
-  if (src==='sl') document.getElementById('f-pct').value = n;
-  else { const sl = document.getElementById('f-slider'); if (n>=1&&n<=15) sl.value=n; }
-  flatPreview();
-}
-function flatPreview() {
-  const pct  = parseFloat(document.getElementById('f-pct').value)||0;
-  const skip = document.getElementById('f-shp').checked;
-  const count = skip ? TOTAL - SHOPPABLE_N : TOTAL;
-  const avgRev = SVCS.reduce((t,s)=>t+s.rev,0)/SVCS.length * (TOTAL/SVCS.length);
-  const impact = Math.round(count * (avgRev/TOTAL) * pct/100 * TOTAL * 0.9);
-  const avgPrice = SVCS.reduce((t,s)=>t+s.price,0)/SVCS.length;
-  document.getElementById('f-count').textContent  = count.toLocaleString();
-  document.getElementById('f-impact').textContent = '+$' + Math.round(pct * 8600).toLocaleString();
-  document.getElementById('f-avg').textContent    = '+$' + (avgPrice * pct/100).toFixed(2);
-  document.getElementById('f-chips').innerHTML    = skip
-    ? `<span class="pchip">⊘ ${SHOPPABLE_N} price-sensitive skipped</span>`
-    : `<span class="pchip safe">✓ All ${TOTAL} services included</span>`;
+  if (src==='sl') document.getElementById('a-pct').value = n;
+  else { const sl = document.getElementById('a-slider'); if (n>=1&&n<=15) sl.value=n; }
+  adjustPreview();
 }
 
-// ── SMART / CATEGORIES ────────────────────────────────────────────────
-const excluded = new Set();
 function buildCats() {
-  document.getElementById('cat-grid').innerHTML = CATS.map(c => `
-    <div class="cat-chip${excluded.has(c.id) ? ' excluded' : ' on'}" id="chip-${c.id}" onclick="toggleCat('${c.id}')">
+  if (document.getElementById('cat-grid').children.length) return;
+  document.getElementById('cat-grid').innerHTML = CATS.map(c =>
+    `<div class="chip on" id="ch-${c.id}" onclick="toggleCat('${c.id}')">
       <span class="chip-dot"></span>
-      <span class="chip-icon">${c.icon}</span>
-      <div class="chip-info">
+      <span style="font-size:1.05rem">${c.icon}</span>
+      <div class="chip-body">
         <div class="chip-name">${c.label}</div>
         <div class="chip-sub">${c.count} services</div>
       </div>
-    </div>`).join('');
+    </div>`
+  ).join('');
 }
+
 function toggleCat(id) {
-  excluded.has(id) ? excluded.delete(id) : excluded.add(id);
-  const el = document.getElementById('chip-' + id);
-  el.classList.toggle('on', !excluded.has(id));
-  el.classList.toggle('excluded', excluded.has(id));
-  smartPreview();
+  excl.has(id) ? excl.delete(id) : excl.add(id);
+  const el = document.getElementById('ch-' + id);
+  el.classList.toggle('on', !excl.has(id));
+  el.classList.toggle('off', excl.has(id));
+  adjustPreview();
 }
-function toggleSShop() {
-  const cb = document.getElementById('s-shp');
-  cb.checked = !cb.checked; smartPreview();
+
+function setTime(t) {
+  timeFilter = t;
+  document.querySelectorAll('.tc').forEach(c => c.classList.remove('on'));
+  document.getElementById('tc-' + t).classList.add('on');
+  adjustPreview();
 }
-function toggleFShop() {
-  const cb = document.getElementById('f-shp');
-  cb.checked = !cb.checked; flatPreview();
+
+function toggleShp() {
+  const cb = document.getElementById('a-shp'); cb.checked = !cb.checked; adjustPreview();
 }
-function smartPreview() {
-  const pct  = parseFloat(document.getElementById('s-pct').value)||0;
-  const skip = document.getElementById('s-shp').checked;
-  const exCount = Array.from(excluded).reduce((t,id) => {
-    const c = CATS.find(x=>x.id===id); return t + (c?c.count:0);
-  }, 0);
-  const shopHit = skip ? Math.round(SHOPPABLE_N * (1 - exCount/TOTAL)) : 0;
-  const count   = Math.max(0, TOTAL - exCount - shopHit);
-  const excl    = Array.from(excluded).map(id => CATS.find(c=>c.id===id)?.label).filter(Boolean);
-  document.getElementById('s-count').textContent  = count.toLocaleString();
-  document.getElementById('s-impact').textContent = '+$' + Math.round(count * pct * 42).toLocaleString();
-  const chips = excl.map(l=>`<span class="pchip">⊘ ${l} excluded</span>`).join('');
-  const shopChip = shopHit ? `<span class="pchip">⊘ ~${shopHit} price-sensitive skipped</span>` : '';
-  document.getElementById('s-chips').innerHTML = chips + shopChip ||
-    `<span class="pchip safe">✓ All categories included</span>`;
+
+// How many services pass the timeline filter (approximate, based on sample)
+const timeCutoffs = { 'any': 0, '3m': Date.now()-90*86400000, '6m': Date.now()-180*86400000, '12m': Date.now()-365*86400000, 'never': Infinity };
+
+function adjustPreview() {
+  const pct     = parseFloat(document.getElementById('a-pct').value)||0;
+  const skipShp = document.getElementById('a-shp').checked;
+  const cutoff  = timeCutoffs[timeFilter];
+
+  const exclCount = Array.from(excl).reduce((t,id) => t + (CATS.find(c=>c.id===id)?.count||0), 0);
+  const catCount  = TOTAL - exclCount;
+
+  // Estimate timeline-filtered (use sample as proxy)
+  const samplePass = SVCS.filter(s =>
+    !excl.has(s.cat) &&
+    (!skipShp || !s.shoppable) &&
+    (timeFilter === 'never' ? false : timeFilter === 'any' ? true : s.lastMs < cutoff)
+  ).length;
+  const scaledCount = Math.round(samplePass / SVCS.length * catCount * (skipShp ? (1 - SHP_N/TOTAL) : 1));
+  const count       = Math.max(0, Math.min(catCount, scaledCount));
+  const impact      = Math.round(count * pct * 43);
+  const avgInc      = (SVCS.reduce((t,s)=>t+s.price,0)/SVCS.length * pct/100).toFixed(2);
+
+  document.getElementById('a-count').textContent  = count.toLocaleString();
+  document.getElementById('a-impact').textContent = '+$' + impact.toLocaleString();
+  document.getElementById('a-avg').textContent    = '+$' + avgInc;
+
+  const tags = [];
+  Array.from(excl).forEach(id => { const c = CATS.find(x=>x.id===id); if(c) tags.push(`<span class="ptag">⊘ ${c.label} excluded</span>`); });
+  if (skipShp) tags.push(`<span class="ptag">⊘ Price-sensitive skipped</span>`);
+  if (timeFilter !== 'any') {
+    const tl = { '3m':'3+ months', '6m':'6+ months', '12m':'12+ months', 'never':'Never changed' };
+    tags.push(`<span class="ptag">⏱ Last changed ${tl[timeFilter]} ago</span>`);
+  }
+  if (!tags.length) tags.push(`<span class="ptag ok">✓ All ${TOTAL} services included</span>`);
+  document.getElementById('a-tags').innerHTML = tags.join('');
 }
 
 // ── MANUAL ────────────────────────────────────────────────────────────
-const mChanges = {};
+const mChg = {};
 function renderManual(q) {
   const lq = q.toLowerCase();
   const rows = SVCS.filter(s => !lq || s.name.toLowerCase().includes(lq) || s.code.toLowerCase().includes(lq));
+  const fmtDate = d => new Date(d).toLocaleDateString('en-CA', {month:'short', day:'numeric', year:'numeric'});
   document.getElementById('m-body').innerHTML = rows.map(s => {
-    const chg = mChanges[s.code];
-    const val = chg !== undefined ? chg : s.price.toFixed(2);
+    const chg = mChg[s.code], val = chg !== undefined ? chg : s.price.toFixed(2);
     return `<tr>
       <td><div class="td-name">${s.name}${s.shoppable?`<span class="shp-tag">⚠ Sensitive</span>`:''}</div><div class="td-code">${s.code}</div></td>
       <td><div class="td-rev">$${s.rev.toLocaleString()}/yr</div></td>
-      <td><div class="td-cur">$${s.price.toFixed(2)}</div></td>
-      <td style="text-align:right"><input class="svc-input${chg!==undefined?' chg':''}" type="number" step="0.01" min="0" value="${val}" data-code="${s.code}" data-orig="${s.price.toFixed(2)}" oninput="onMChg(this)"></td>
+      <td><div class="td-code">${fmtDate(s.lastChanged)}</div></td>
+      <td><div class="td-name">$${s.price.toFixed(2)}</div></td>
+      <td style="text-align:right"><input class="price-input${chg!==undefined?' chg':''}" type="number" step="0.01" min="0" value="${val}" data-code="${s.code}" data-orig="${s.price.toFixed(2)}" oninput="onMChg(this)"></td>
     </tr>`;
   }).join('');
 }
 function onMChg(el) {
-  const code = el.dataset.code, orig = parseFloat(el.dataset.orig), val = parseFloat(el.value);
-  if (!isNaN(val) && val !== orig) { mChanges[code] = val.toFixed(2); el.classList.add('chg'); }
-  else { delete mChanges[code]; el.classList.remove('chg'); }
-  const n = Object.keys(mChanges).length;
-  document.getElementById('m-count').textContent = n;
+  const orig = parseFloat(el.dataset.orig), val = parseFloat(el.value);
+  if (!isNaN(val) && val !== orig) { mChg[el.dataset.code] = val.toFixed(2); el.classList.add('chg'); }
+  else { delete mChg[el.dataset.code]; el.classList.remove('chg'); }
+  const n = Object.keys(mChg).length;
+  document.getElementById('m-n').textContent = n;
   document.getElementById('m-bar').classList.toggle('show', n > 0);
 }
 function resetManual() {
-  Object.keys(mChanges).forEach(k=>delete mChanges[k]);
-  renderManual(document.getElementById('m-search').value);
-  document.getElementById('m-count').textContent = '0';
+  Object.keys(mChg).forEach(k=>delete mChg[k]);
+  renderManual(document.getElementById('m-q').value);
+  document.getElementById('m-n').textContent = '0';
   document.getElementById('m-bar').classList.remove('show');
 }
 
 // ── AI SUGGESTIONS ────────────────────────────────────────────────────
-const accepted = new Set(), skipped = new Set();
-let sfActive = 'all';
-const SUGS = SVCS.map(s => ({ ...s, newPrice: parseFloat((s.price * 1.0738).toFixed(2)) }));
+const acc = new Set(), skp = new Set();
+let sfA = 'all';
+const SUGS = SVCS.map(s => ({ ...s, newP: parseFloat((s.price * 1.0738).toFixed(2)) }));
 
 function sfilt(f) {
-  sfActive = f;
+  sfA = f;
   document.querySelectorAll('.sf-btn').forEach(b => b.classList.remove('on'));
   document.getElementById('sf-' + (f==='shoppable'?'shp':f==='safe'?'safe':'all')).classList.add('on');
   renderSugs(f);
@@ -765,65 +691,61 @@ function renderSugs(f) {
   document.getElementById('sf-n-safe').textContent = SUGS.filter(s=>!s.shoppable).length;
   document.getElementById('sf-n-shp').textContent  = SUGS.filter(s=>s.shoppable).length;
   document.getElementById('sug-list').innerHTML = items.map(s => {
-    const delta = (s.newPrice - s.price).toFixed(2);
-    const acc = accepted.has(s.code), skp = skipped.has(s.code);
-    return `<div class="sug-item${acc?' acc':skp?' skp':''}" id="si-${s.code}">
+    const d = (s.newP - s.price).toFixed(2), isAcc = acc.has(s.code), isSkp = skp.has(s.code);
+    return `<div class="si${isAcc?' acc':isSkp?' skp':''}" id="si-${s.code}">
       <div class="si-info">
         <div class="si-name">${s.name}${s.shoppable?`<span class="shp-tag">⚠ Sensitive</span>`:''}</div>
-        <div class="si-meta">${s.code} · ${s.visits.toLocaleString()} visits/yr</div>
+        <div class="si-meta">${s.code} · ${s.visits.toLocaleString()} visits/yr · Last changed ${new Date(s.lastChanged).toLocaleDateString('en-CA',{month:'short',year:'numeric'})}</div>
       </div>
       <div class="si-price">
         <span class="si-old">$${s.price.toFixed(2)}</span>
         <span style="color:var(--muted)">→</span>
-        <span class="si-new">$${s.newPrice.toFixed(2)}</span>
-        <span class="si-delta">+$${delta}</span>
+        <span class="si-new">$${s.newP.toFixed(2)}</span>
+        <span class="si-delta">+$${d}</span>
       </div>
       <div class="si-acts">
-        <button class="btn-acc${acc?' on':''}" onclick="tAcc('${s.code}')">${acc?'✓ Accepted':'✓ Accept'}</button>
+        <button class="btn-acc${isAcc?' on':''}" onclick="tAcc('${s.code}')">${isAcc?'✓ Accepted':'✓ Accept'}</button>
         <button class="btn-skp" onclick="tSkp('${s.code}')">Skip</button>
       </div>
     </div>`;
   }).join('');
 }
-function tAcc(code) { accepted.has(code)?accepted.delete(code):accepted.add(code); skipped.delete(code); updAiBar(); renderSugs(sfActive); }
-function tSkp(code) { skipped.add(code); accepted.delete(code); updAiBar(); renderSugs(sfActive); }
-function updAiBar() {
-  const n = accepted.size;
+function tAcc(code) { acc.has(code)?acc.delete(code):acc.add(code); skp.delete(code); updAi(); renderSugs(sfA); }
+function tSkp(code) { skp.add(code); acc.delete(code); updAi(); renderSugs(sfA); }
+function updAi() {
+  const n = acc.size;
   document.getElementById('ai-n').textContent = n;
   document.getElementById('ai-bar').classList.toggle('show', n>0);
 }
 
-// ── APPLY & MODAL ─────────────────────────────────────────────────────
-function apply(type) {
+// ── APPLY & MODAL ──────────────────────────────────────────────────────
+function applyIt(type) {
   let title, sub, detail;
-  if (type==='flat') {
-    const pct=document.getElementById('f-pct').value, cnt=document.getElementById('f-count').textContent, imp=document.getElementById('f-impact').textContent, skip=document.getElementById('f-shp').checked;
-    title='Flat Increase Applied'; sub='Q2 2026 update saved.';
-    detail=`<strong>${pct}% increase</strong> applied to <strong>${cnt} services</strong>${skip?', excluding price-sensitive items':''}.<br>Est. annual impact: <strong style="color:var(--green)">${imp}/yr</strong>`;
-  } else if (type==='smart') {
-    const pct=document.getElementById('s-pct').value, cnt=document.getElementById('s-count').textContent, imp=document.getElementById('s-impact').textContent;
-    const excl=Array.from(excluded).map(id=>CATS.find(c=>c.id===id)?.label).filter(Boolean).join(', ')||'none';
-    title='Category Increase Applied'; sub='Q2 2026 update saved.';
-    detail=`<strong>${pct}% increase</strong> applied to <strong>${cnt} services</strong>.<br>Excluded: ${excl}.<br>Est. impact: <strong style="color:var(--green)">${imp}/yr</strong>`;
+  if (type==='adjust') {
+    const pct=document.getElementById('a-pct').value, cnt=document.getElementById('a-count').textContent, imp=document.getElementById('a-impact').textContent;
+    const exclCats = Array.from(excl).map(id=>CATS.find(c=>c.id===id)?.label).filter(Boolean).join(', ')||null;
+    const tl = {any:'any time',  '3m':'3+ months ago','6m':'6+ months ago','12m':'12+ months ago','never':'never changed'}[timeFilter];
+    title='Changes Applied'; sub='Q2 2026 price update saved.';
+    detail=`<strong>${pct}% increase</strong> applied to <strong>${cnt} services</strong>.<br>`
+      + (exclCats ? `Excluded: ${exclCats}.<br>` : '')
+      + `Last changed: ${tl}.<br>`
+      + `Est. annual impact: <strong style="color:var(--green)">${imp}/yr</strong>`;
   } else if (type==='manual') {
-    const n=Object.keys(mChanges).length;
+    const n=Object.keys(mChg).length;
     title='Manual Changes Saved'; sub='Your updates are recorded.';
-    detail=`<strong>${n} service${n!==1?'s':''}</strong> updated directly. All changes are logged in your price history.`;
+    detail=`<strong>${n} service${n!==1?'s':''}</strong> updated. All changes are logged in your price history.`;
   } else {
-    const n=accepted.size;
-    title='Suggestions Applied'; sub='Selected changes have been saved.';
-    detail=`<strong>${n} suggestion${n!==1?'s':''}</strong> accepted and applied.<br>Based on Canada CPI 2.38% · You can view or revert any change in your price history.`;
+    const n=acc.size;
+    title='Suggestions Applied'; sub='Selected changes saved.';
+    detail=`<strong>${n} suggestion${n!==1?'s':''}</strong> accepted and applied.<br>Based on Canada CPI 2.38% · View or revert any change in price history.`;
   }
-  document.getElementById('m-title').textContent = title;
-  document.getElementById('m-sub').textContent   = sub;
-  document.getElementById('m-detail').innerHTML  = detail;
+  document.getElementById('mo-title').textContent = title;
+  document.getElementById('mo-sub').textContent   = sub;
+  document.getElementById('mo-detail').innerHTML  = detail;
   document.getElementById('modal').classList.add('open');
 }
-function closeModal() { document.getElementById('modal').classList.remove('open'); close(); }
-document.getElementById('modal').addEventListener('click', e => { if(e.target===document.getElementById('modal')) closeModal(); });
-
-// init previews
-flatPreview();
+function closeMo() { document.getElementById('modal').classList.remove('open'); close(); }
+document.getElementById('modal').addEventListener('click', e => { if(e.target===document.getElementById('modal')) closeMo(); });
 </script>
 </body>
 </html>
