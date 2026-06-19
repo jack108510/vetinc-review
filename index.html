@@ -73,8 +73,8 @@ main { max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 7rem; }
 
 /* TABLE */
 .tbl-hd {
-  display: grid; grid-template-columns: 1.6fr 80px 100px 110px 68px 110px 80px;
-  gap: 0; padding: 0 1rem 0.45rem; align-items: end;
+  display: grid; grid-template-columns: 1.6fr 80px 120px 130px 72px 120px 110px;
+  gap: 0; padding: 0 1.25rem 0.45rem; align-items: end;
   font-size: 0.62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;
   border-bottom: 1px solid var(--border);
 }
@@ -83,9 +83,9 @@ main { max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 7rem; }
 .item-list { display: flex; flex-direction: column; gap: 0; }
 
 .item {
-  display: grid; grid-template-columns: 1.6fr 80px 100px 110px 68px 110px 80px;
+  display: grid; grid-template-columns: 1.6fr 80px 120px 130px 72px 120px 110px;
   gap: 0; align-items: center;
-  padding: 0.75rem 1rem; background: var(--surface);
+  padding: 0.75rem 1.25rem; background: var(--surface);
   border-bottom: 1px solid var(--border);
   transition: background .1s;
 }
@@ -113,11 +113,11 @@ main { max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 7rem; }
 .skip-btn {
   display: block; margin-left: auto; padding: 4px 10px;
   border: 1px solid var(--border); border-radius: 6px; background: none;
-  font-size: 0.73rem; font-weight: 500; color: var(--muted); cursor: pointer; transition: all .12s;
-  font-family: inherit;
+  font-size: 0.72rem; font-weight: 500; color: var(--muted); cursor: pointer; transition: all .12s;
+  font-family: inherit; white-space: nowrap;
 }
 .skip-btn:hover { border-color: #94a3b8; color: var(--text); }
-.skip-btn.on { border-color: #fca5a5; background: #fff5f5; color: #b91c1c; }
+.skip-btn.on { border-color: #94a3b8; background: var(--surface2); color: var(--text); font-weight: 600; }
 
 /* BOTTOM BAR */
 .bottom-bar {
@@ -286,7 +286,7 @@ function render() {
       <div class="item-cur" id="pct-${d.code}" style="text-align:right;color:${s.skipped?'var(--muted)':'var(--green)'}">${s.skipped?'—':'+'+pctInc+'%'}</div>
       <div class="item-cur" id="upl-${d.code}" style="text-align:right;font-weight:600;color:${s.skipped?'var(--muted)':'var(--green)'}">${s.skipped?'—':'$'+uplift.toLocaleString()}</div>
       <div>
-        <button class="skip-btn${s.skipped?' on':''}" onclick="toggleSkip('${d.code}')">${s.skipped?'Undo':'Skip'}</button>
+        <button class="skip-btn${s.skipped?' on':''}" onclick="toggleSkip('${d.code}')">${s.skipped?'Undo':'Leave as is'}</button>
       </div>
     </div>`;
   }).join('');
